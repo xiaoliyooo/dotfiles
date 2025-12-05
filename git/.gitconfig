@@ -1,0 +1,20 @@
+[alias]
+	co = "!f() { git checkout \"$1\" && git pull; }; f"
+	cp = cherry-pick
+[pull]
+	rebase = false
+[core]
+	editor = nvim
+  pager = delta
+	excludesfile = ~/.gitignore_global
+	ignorecase = false
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    dark = true      # or light = true, or omit for auto-detection
+    side-by-side = true
+[merge]
+    conflictstyle = zdiff3
+[http]
+	sslVersion = tlsv1.2
