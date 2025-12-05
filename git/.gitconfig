@@ -1,3 +1,9 @@
+; ---------.gitconfig----------
+; [include]
+;    path = ~/dotfiles/git/.gitconfig
+; -------.gitconfig end--------
+
+
 [alias]
 	co = "!f() { git checkout \"$1\" && git pull; }; f"
 	cp = cherry-pick
