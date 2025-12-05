@@ -22,6 +22,7 @@ install_if_missing "bat"
 install_if_missing "eza"
 install_if_missing "nvim" "neovim"
 install_if_missing "gdate" "coreutils"
+install_if_missing "mcfly"
 
 mkdir -p ~/.config/kitty
 mkdir -p ~/.config/lazygit

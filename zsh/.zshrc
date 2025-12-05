@@ -15,3 +15,6 @@ source $ZSH/oh-my-zsh.sh
 source "$ZDOTDIR/aliases.zsh"
 
 
+eval "$(mcfly init zsh)"
+
+
