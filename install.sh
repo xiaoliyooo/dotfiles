@@ -23,8 +23,14 @@ install_if_missing "eza"
 install_if_missing "nvim" "neovim"
 install_if_missing "gdate" "coreutils"
 
+mkdir -p ~/.config/kitty
+mkdir -p ~/.config/lazygit
+mkdir -p ~/.config/git
+
 ln -sf ~/dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf
 ln -sf ~/dotfiles/lazygit/lazygit_config.yml ~/.config/lazygit/config.yml
+ln -sf ~/dotfiles/git/attributes ~/.config/git/attributes
+
 echo "🔗 配置文件链接完成..."
 
 echo "✅ 安装完成！"
