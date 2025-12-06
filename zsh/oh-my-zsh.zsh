@@ -7,6 +7,5 @@ plugins=(
   zsh-syntax-highlighting
   copypath
   copyfile
-  web-search
   macos
 )
