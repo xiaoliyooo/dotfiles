@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# 定义变量
+DOTFILES_DIR="$HOME/dotfiles"
+CONFIG_DIR="$HOME/.config"
+
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
@@ -25,15 +29,16 @@ install_if_missing "gdate" "coreutils"
 install_if_missing "mcfly"
 install_if_missing "mergiraf"
 install_if_missing "starship"
+install_if_missing "lazygit"
 
-mkdir -p ~/.config/kitty
-mkdir -p ~/.config/lazygit
-mkdir -p ~/.config/git
+mkdir -p "$CONFIG_DIR/kitty"
+mkdir -p "$CONFIG_DIR/lazygit"
+mkdir -p "$CONFIG_DIR/git"
 
-ln -sf ~/dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf
-ln -sf ~/dotfiles/lazygit/lazygit_config.yml ~/.config/lazygit/config.yml
-ln -sf ~/dotfiles/git/attributes ~/.config/git/attributes
-ln -sf ~/dotfiles/starship/starship.toml ~/.config/starship.toml 
+ln -sf "$DOTFILES_DIR/kitty/kitty.conf" "$CONFIG_DIR/kitty/kitty.conf"
+ln -sf "$DOTFILES_DIR/lazygit/lazygit_config.yml" "$CONFIG_DIR/lazygit/config.yml"
+ln -sf "$DOTFILES_DIR/git/attributes" "$CONFIG_DIR/git/attributes"
+ln -sf "$DOTFILES_DIR/starship/starship.toml" "$CONFIG_DIR/starship.toml"
 
 echo "🔗 配置文件链接完成..."
 
