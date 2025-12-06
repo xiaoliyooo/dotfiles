@@ -24,6 +24,7 @@ install_if_missing "nvim" "neovim"
 install_if_missing "gdate" "coreutils"
 install_if_missing "mcfly"
 install_if_missing "mergiraf"
+install_if_missing "starship"
 
 mkdir -p ~/.config/kitty
 mkdir -p ~/.config/lazygit
@@ -32,6 +33,7 @@ mkdir -p ~/.config/git
 ln -sf ~/dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf
 ln -sf ~/dotfiles/lazygit/lazygit_config.yml ~/.config/lazygit/config.yml
 ln -sf ~/dotfiles/git/attributes ~/.config/git/attributes
+ln -sf ~/dotfiles/starship/starship.toml ~/.config/starship.toml 
 
 echo "🔗 配置文件链接完成..."
 
