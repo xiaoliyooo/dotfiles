@@ -30,6 +30,7 @@ install_if_missing "mcfly"
 install_if_missing "mergiraf"
 install_if_missing "starship"
 install_if_missing "lazygit"
+install_if_missing "less"
 
 mkdir -p "$CONFIG_DIR/kitty"
 mkdir -p "$CONFIG_DIR/lazygit"
@@ -39,6 +40,8 @@ ln -sf "$DOTFILES_DIR/kitty/kitty.conf" "$CONFIG_DIR/kitty/kitty.conf"
 ln -sf "$DOTFILES_DIR/lazygit/lazygit_config.yml" "$CONFIG_DIR/lazygit/config.yml"
 ln -sf "$DOTFILES_DIR/git/attributes" "$CONFIG_DIR/git/attributes"
 ln -sf "$DOTFILES_DIR/starship/starship.toml" "$CONFIG_DIR/starship.toml"
+ln -sf "$DOTFILES_DIR/less/.lesskey" "$HOME/.lesskey"
+
 
 echo "🔗 配置文件链接完成..."
 
