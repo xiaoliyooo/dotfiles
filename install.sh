@@ -35,12 +35,16 @@ install_if_missing "less"
 mkdir -p "$CONFIG_DIR/kitty"
 mkdir -p "$CONFIG_DIR/lazygit"
 mkdir -p "$CONFIG_DIR/git"
+mkdir -p "$CONFIG_DIR/yazi"
 
 ln -sf "$DOTFILES_DIR/kitty/kitty.conf" "$CONFIG_DIR/kitty/kitty.conf"
 ln -sf "$DOTFILES_DIR/lazygit/lazygit_config.yml" "$CONFIG_DIR/lazygit/config.yml"
 ln -sf "$DOTFILES_DIR/git/attributes" "$CONFIG_DIR/git/attributes"
 ln -sf "$DOTFILES_DIR/starship/starship.toml" "$CONFIG_DIR/starship.toml"
 ln -sf "$DOTFILES_DIR/less/.lesskey" "$HOME/.lesskey"
+ln -sf  "$DOTFILES_DIR/yazi/keymap.toml" "$CONFIG_DIR/yazi/keymap.toml" 
+ln -sf  "$DOTFILES_DIR/yazi/theme.toml" "$CONFIG_DIR/yazi/theme.toml" 
+ln -sf  "$DOTFILES_DIR/yazi/yazi.toml" "$CONFIG_DIR/yazi/yazi.toml" 
 
 
 echo "🔗 配置文件链接完成..."
