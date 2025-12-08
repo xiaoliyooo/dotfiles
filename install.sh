@@ -33,6 +33,7 @@ install_if_missing "lazygit"
 install_if_missing "less"
 install_if_missing "z" "zoxide"
 install_if_missing "yazi"
+install_if_missing "fzf"
 
 mkdir -p "$CONFIG_DIR/kitty"
 mkdir -p "$CONFIG_DIR/lazygit"
