@@ -16,4 +16,5 @@ source "$ZDOTDIR/aliases.zsh"
 
 eval "$(mcfly init zsh)"
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 

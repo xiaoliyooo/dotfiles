@@ -31,6 +31,8 @@ install_if_missing "mergiraf"
 install_if_missing "starship"
 install_if_missing "lazygit"
 install_if_missing "less"
+install_if_missing "z" "zoxide"
+install_if_missing "yazi"
 
 mkdir -p "$CONFIG_DIR/kitty"
 mkdir -p "$CONFIG_DIR/lazygit"
