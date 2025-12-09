@@ -6,8 +6,8 @@ prepend_keymap = [
   { on = "Z", run = "noop" },
   { on = "<D-p>", run = "search fd", desc = "Search files by name with fd" },
   { on = "<D-S-f>", run = "search rg", desc = "Search files by content with ripgrep" },
-  { on = "z", run = "plugin zoxide", desc = "zoxide" },
-  { on = "Z", run = "plugin fzf", desc = "fzf search files" },
+  { on = "j", run = "plugin zoxide", desc = "zoxide" },
+  { on = "z", run = "plugin fzf", desc = "fzf search files" },
   { on = [
     "g",
     "d",

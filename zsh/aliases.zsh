@@ -1,5 +1,6 @@
 alias reload='. ~/.zshrc'
 alias zshc='vim ~/.zshrc'
+alias j='z'
 
 if command -v eza >/dev/null 2>&1; then
     alias ls="eza -la"
@@ -19,3 +20,4 @@ if command -v gdate >/dev/null 2>&1; then
     alias date='gdate "+%Y-%m-%d %H:%M:%S %A"'
     alias dt='date'
 fi
+
