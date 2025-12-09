@@ -49,6 +49,24 @@ ln -sf  "$DOTFILES_DIR/yazi/keymap.toml" "$CONFIG_DIR/yazi/keymap.toml"
 ln -sf  "$DOTFILES_DIR/yazi/theme.toml" "$CONFIG_DIR/yazi/theme.toml" 
 ln -sf  "$DOTFILES_DIR/yazi/yazi.toml" "$CONFIG_DIR/yazi/yazi.toml" 
 
+FZF_TAB_DIR="${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab"
+if [ ! -d "$FZF_TAB_DIR" ]; then
+    echo "📦 安装 fzf-tab"
+    git clone https://github.com/Aloxaf/fzf-tab "$FZF_TAB_DIR"
+    echo "✓ fzf-tab 插件安装完成"
+else
+    echo "✓ fzf-tab 插件已存在"
+fi
+
+ZSH_COMPLETIONS_DIR="${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions"
+if [ ! -d "$FZF_TAB_DIR" ]; then
+    echo "📦 安装 zsh-completions"
+    git clone https://github.com/zsh-users/zsh-completions.git "$ZSH_COMPLETIONS_DIR"
+    echo "✓ zsh-completions 插件安装完成"
+else
+    echo "✓ zsh-completions 插件已存在"
+fi
+
 
 echo "🔗 配置文件链接完成..."
 

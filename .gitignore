@@ -74,3 +74,4 @@ Temporary Items
 zsh/*
 !zsh/*.zsh
 !zsh/.zshrc
+!zsh/plugins
