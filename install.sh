@@ -17,6 +17,10 @@ install_if_missing() {
     else
         echo "⚠ $cmd 未找到，正在安装 $package..."
         brew install "$package"
+        
+        if [ "$package" = "yazi" ]; then
+            ya pkg add yazi-rs/plugins:full-border
+        fi
     fi
 }
 
@@ -31,7 +35,7 @@ install_if_missing "mergiraf"
 install_if_missing "starship"
 install_if_missing "lazygit"
 install_if_missing "less"
-install_if_missing "z" "zoxide"
+install_if_missing "zoxide"
 install_if_missing "yazi"
 install_if_missing "fzf"
 install_if_missing "fastfetch"
@@ -50,6 +54,7 @@ ln -sf "$DOTFILES_DIR/less/.lesskey" "$HOME/.lesskey"
 ln -sf  "$DOTFILES_DIR/yazi/keymap.toml" "$CONFIG_DIR/yazi/keymap.toml" 
 ln -sf  "$DOTFILES_DIR/yazi/theme.toml" "$CONFIG_DIR/yazi/theme.toml" 
 ln -sf  "$DOTFILES_DIR/yazi/yazi.toml" "$CONFIG_DIR/yazi/yazi.toml" 
+ln -sf  "$DOTFILES_DIR/yazi/init.lua" "$CONFIG_DIR/yazi/init.lua" 
 ln -sf  "$DOTFILES_DIR/fastfetch/config.jsonc" "$CONFIG_DIR/fastfetch/config.jsonc" 
 ln -sf  "$DOTFILES_DIR/fastfetch/ascii.txt" "$CONFIG_DIR/fastfetch/ascii.txt"
 
