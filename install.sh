@@ -34,11 +34,13 @@ install_if_missing "less"
 install_if_missing "z" "zoxide"
 install_if_missing "yazi"
 install_if_missing "fzf"
+install_if_missing "fastfetch"
 
 mkdir -p "$CONFIG_DIR/kitty"
 mkdir -p "$CONFIG_DIR/lazygit"
 mkdir -p "$CONFIG_DIR/git"
 mkdir -p "$CONFIG_DIR/yazi"
+mkdir -p "$CONFIG_DIR/fastfetch"
 
 ln -sf "$DOTFILES_DIR/kitty/kitty.conf" "$CONFIG_DIR/kitty/kitty.conf"
 ln -sf "$DOTFILES_DIR/lazygit/lazygit_config.yml" "$CONFIG_DIR/lazygit/config.yml"
@@ -48,6 +50,7 @@ ln -sf "$DOTFILES_DIR/less/.lesskey" "$HOME/.lesskey"
 ln -sf  "$DOTFILES_DIR/yazi/keymap.toml" "$CONFIG_DIR/yazi/keymap.toml" 
 ln -sf  "$DOTFILES_DIR/yazi/theme.toml" "$CONFIG_DIR/yazi/theme.toml" 
 ln -sf  "$DOTFILES_DIR/yazi/yazi.toml" "$CONFIG_DIR/yazi/yazi.toml" 
+ln -sf  "$DOTFILES_DIR/fastfetch/config.jsonc" "$CONFIG_DIR/fastfetch/config.jsonc" 
 
 FZF_TAB_DIR="${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab"
 if [ ! -d "$FZF_TAB_DIR" ]; then
