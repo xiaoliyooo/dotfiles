@@ -51,6 +51,7 @@ ln -sf  "$DOTFILES_DIR/yazi/keymap.toml" "$CONFIG_DIR/yazi/keymap.toml"
 ln -sf  "$DOTFILES_DIR/yazi/theme.toml" "$CONFIG_DIR/yazi/theme.toml" 
 ln -sf  "$DOTFILES_DIR/yazi/yazi.toml" "$CONFIG_DIR/yazi/yazi.toml" 
 ln -sf  "$DOTFILES_DIR/fastfetch/config.jsonc" "$CONFIG_DIR/fastfetch/config.jsonc" 
+ln -sf  "$DOTFILES_DIR/fastfetch/ascii.txt" "$CONFIG_DIR/fastfetch/ascii.txt"
 
 FZF_TAB_DIR="${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab"
 if [ ! -d "$FZF_TAB_DIR" ]; then
