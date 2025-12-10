@@ -5,7 +5,7 @@
 
 
 [alias]
-	co = "!f() { git checkout \"$1\" && git pull; }; f"
+	co = checkout
 	cp = cherry-pick
 [pull]
 	rebase = false
