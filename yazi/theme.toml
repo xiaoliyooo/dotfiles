@@ -31,7 +31,6 @@ unset_alt = { fg = "#e5c07b", bg = "#282c34" }
 
 # Tabs
 [tabs]
-active = { fg = "#282c34", bg = "#c678dd", bold = true }
-inactive = { fg = "#5c6370", bg = "#3e4451" }
-sep_inner = { open = "[", close = "]" }
-sep_outer = { open = " ", close = " " }
+inactive = { fg = "#abb2bf", bg = "#3e4451" }
+sep_inner = { open = "", close = "" }
+sep_outer = { open = "", close = "" }
