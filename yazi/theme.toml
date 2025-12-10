@@ -13,3 +13,25 @@ marker_copied = { fg = "lightyellow", bg = "lightyellow" }
 marker_cut = { fg = "lightred", bg = "lightred" }
 
 border_style = { fg = "blue" }
+
+# Status
+[status]
+overall = { fg = "#abb2bf", bg = "#282c34" }
+sep_left = { open = " ", close = " " }
+sep_right = { open = " ", close = " " }
+
+# Mode
+[mode]
+normal_main = { fg = "#abb2bf", bg = "#3e4451", bold = true }
+normal_alt = { fg = "#5c6370", bg = "#282c34" }
+select_main = { fg = "#282c34", bg = "#c678dd", bold = true }
+select_alt = { fg = "#c678dd", bg = "#282c34" }
+unset_main = { fg = "#282c34", bg = "#e5c07b", bold = true }
+unset_alt = { fg = "#e5c07b", bg = "#282c34" }
+
+# Tabs
+[tabs]
+active = { fg = "#282c34", bg = "#c678dd", bold = true }
+inactive = { fg = "#5c6370", bg = "#3e4451" }
+sep_inner = { open = "[", close = "]" }
+sep_outer = { open = " ", close = " " }
