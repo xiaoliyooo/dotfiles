@@ -52,6 +52,7 @@ install_if_missing "zoxide"
 install_if_missing "yazi"
 install_if_missing "fzf"
 install_if_missing "fastfetch"
+install_if_missing "git-summary" "git-extras"
 install_awrit_if_missing
 
 mkdir -p "$CONFIG_DIR/kitty"
