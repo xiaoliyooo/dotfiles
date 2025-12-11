@@ -24,6 +24,19 @@ install_if_missing() {
     fi
 }
 
+install_tdf_if_missing() {
+    local cmd="tdf"
+    local package="$cmd"
+    
+    if command_exists "$cmd"; then
+        echo "✓ $cmd 已安装"
+    else
+        echo "⚠ $cmd 未找到，正在安装 $package..."
+       cargo install --git https://github.com/itsjunetime/tdf.git 
+    fi
+}
+
+
 install_awrit_if_missing() {
     local cmd="awrit"
     local package="$cmd"
@@ -54,6 +67,7 @@ install_if_missing "fzf"
 install_if_missing "fastfetch"
 install_if_missing "git-summary" "git-extras"
 install_awrit_if_missing
+install_tdf_if_missing
 
 mkdir -p "$CONFIG_DIR/kitty"
 mkdir -p "$CONFIG_DIR/lazygit"

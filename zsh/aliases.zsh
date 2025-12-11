@@ -22,3 +22,8 @@ if command -v gdate >/dev/null 2>&1; then
     alias dt='date'
 fi
 
+if command -v tdf >/dev/null 2>&1; then
+    alias pdf='tdf'
+fi
+
+
