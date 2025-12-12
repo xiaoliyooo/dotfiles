@@ -2,7 +2,7 @@ ZSH_THEME="robbyrussell"
 
 plugins=(
   git
-  # autojump
+  autojump
   fzf-tab
   fzf
   zsh-autosuggestions
