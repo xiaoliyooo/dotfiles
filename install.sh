@@ -66,6 +66,7 @@ install_if_missing "yazi"
 install_if_missing "fzf"
 install_if_missing "fastfetch"
 install_if_missing "git-summary" "git-extras"
+install_if_missing "gemini"
 install_awrit_if_missing
 install_tdf_if_missing
 
