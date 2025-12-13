@@ -1,6 +1,7 @@
 alias reload='. ~/.zshrc'
 alias zshc='vim ~/.zshrc'
 alias y='yazi'
+alias ge='gemini'
 
 if command -v eza >/dev/null 2>&1; then
     alias ls="eza -la"
