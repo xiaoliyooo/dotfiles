@@ -11,3 +11,6 @@ export EDITOR=nvim
 
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANPAGER="nvim +Man!"
+
+export NVM_DIR="$HOME/.nvm"
+

@@ -24,3 +24,23 @@ git() {
     command git "$@"
   fi
 }
+
+gs() {
+    local projects=(
+        "$HOME/dotfiles"
+        "$HOME/.config/nvim"
+        "$HOME/obsidian/xiaoli-notes"
+    )
+
+    for proj in "${projects[@]}"; do
+        proj="${proj/#\~/$HOME}"
+        
+        if [ -d "$proj/.git" ]; then
+            echo -e "\n\033[1;34m==> Project: $proj\033[0m"
+            git -C "$proj" status -s
+        else
+            echo -e "\n\033[1;33m==> Skipping: $proj (Not a git repo)\033[0m"
+        fi
+    done
+}
+

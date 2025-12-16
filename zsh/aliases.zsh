@@ -26,4 +26,3 @@ if command -v tdf >/dev/null 2>&1; then
     alias pdf='tdf'
 fi
 
-
