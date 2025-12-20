@@ -29,7 +29,8 @@ gs() {
     local projects=(
         "$HOME/dotfiles"
         "$HOME/.config/nvim"
-        "$HOME/obsidian/xiaoli-notes"
+        "$HOME/xiaoli-notes"
+        "$HOME/apps"
     )
 
     for proj in "${projects[@]}"; do
