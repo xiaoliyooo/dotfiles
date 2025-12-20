@@ -89,6 +89,15 @@ install_npm_if_missing() {
     fi
 }
 
+install_kitty_if_missing() {
+    if command_exists "kitty"; then
+        echo "✓ kitty 已安装"
+    else
+        echo "⚠ kitty 未找到，正在安装..."
+        curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+    fi
+}
+
 
 
 
@@ -97,6 +106,7 @@ echo "🚀 开始安装 dotfiles..."
 install_brew_if_missing
 install_rust_if_missing
 install_nvm_if_missing
+install_kitty_if_missing
 install_npm_if_missing "pnpm"
 install_npm_if_missing "tsc" "typescript"
 install_if_missing "git"
