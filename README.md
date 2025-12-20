@@ -17,4 +17,4 @@ export ZDOTDIR="$HOME/dotfiles/zsh"
    path = ~/dotfiles/git/gitconfig
 ```
 
-3. 如果执行 `git effort` 报错 `/opt/homebrew/bin/git-effort: line 273:  ${nJobs@P} >= nProcs : bad substitution`，执行 `brew install bash`
+3. 如果执行 `git effort` 报错 `/opt/homebrew/bin/git-effort: line 273:  ${nJobs@P} >= nProcs : bad substitution`，因为MacOS 捆绑的 `/bin/bash` 版本 3.2.57太低了，不支持 `${parameter@P}`。执行 `brew install bash` 更新到4.0+。
