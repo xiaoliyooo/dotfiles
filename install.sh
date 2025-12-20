@@ -36,11 +36,70 @@ install_tdf_if_missing() {
     fi
 }
 
+install_zsh_plugin() {
+    local repo_url="$1"
+    local plugin_name="$2"
+    local plugin_dir="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/$plugin_name"
+    
+    if [ ! -d "$plugin_dir" ]; then
+        echo "📦 安装 $plugin_name"
+        git clone "$repo_url" "$plugin_dir"
+        echo "✓ $plugin_name 插件安装完成"
+    else
+        echo "✓ $plugin_name 插件已存在"
+    fi
+}
+
+install_brew_if_missing() {
+    if command_exists "brew"; then
+        echo "✓ Homebrew 已安装"
+    else
+        echo "⚠ Homebrew 未找到，正在安装..."
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+}
+
+install_rust_if_missing() {
+    if command_exists "rustc"; then
+        echo "✓ Rust 已安装"
+    else
+        echo "⚠ Rust 未找到，正在安装..."
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    fi
+}
+
+install_nvm_if_missing() {
+    if command_exists "nvm"; then
+        echo "✓ nvm 已安装"
+    else
+        echo "⚠ nvm 未找到，正在安装..."
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+    fi
+}
+
+install_npm_if_missing() {
+    local cmd="$1"
+    local package="${2:-$1}"
+
+    if command_exists "$cmd"; then
+        echo "✓ $cmd 已安装"
+    else
+        echo "⚠ $cmd 未找到，正在安装 $package..."
+        npm i -g "$package"
+    fi
+}
+
 
 
 
 echo "🚀 开始安装 dotfiles..."
 
+install_brew_if_missing
+install_rust_if_missing
+install_nvm_if_missing
+install_npm_if_missing "pnpm"
+install_npm_if_missing "tsc" "typescript"
+install_if_missing "git"
 install_if_missing "bat"
 install_if_missing "delta"
 install_if_missing "eza"
@@ -77,23 +136,10 @@ ln -sf  "$DOTFILES_DIR/yazi/init.lua" "$CONFIG_DIR/yazi/init.lua"
 ln -sf  "$DOTFILES_DIR/fastfetch/config.jsonc" "$CONFIG_DIR/fastfetch/config.jsonc" 
 ln -sf  "$DOTFILES_DIR/fastfetch/ascii.txt" "$CONFIG_DIR/fastfetch/ascii.txt"
 
-FZF_TAB_DIR="${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab"
-if [ ! -d "$FZF_TAB_DIR" ]; then
-    echo "📦 安装 fzf-tab"
-    git clone https://github.com/Aloxaf/fzf-tab "$FZF_TAB_DIR"
-    echo "✓ fzf-tab 插件安装完成"
-else
-    echo "✓ fzf-tab 插件已存在"
-fi
-
-ZSH_COMPLETIONS_DIR="${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions"
-if [ ! -d "$FZF_TAB_DIR" ]; then
-    echo "📦 安装 zsh-completions"
-    git clone https://github.com/zsh-users/zsh-completions.git "$ZSH_COMPLETIONS_DIR"
-    echo "✓ zsh-completions 插件安装完成"
-else
-    echo "✓ zsh-completions 插件已存在"
-fi
+install_zsh_plugin "https://github.com/Aloxaf/fzf-tab" "fzf-tab"
+install_zsh_plugin "https://github.com/zsh-users/zsh-completions.git" "zsh-completions"
+install_zsh_plugin "https://github.com/zsh-users/zsh-autosuggestions" "zsh-autosuggestions"
+install_zsh_plugin "https://github.com/zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting"
 
 
 echo "🔗 配置文件链接完成..."
