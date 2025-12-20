@@ -25,3 +25,9 @@ fastfetch
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# 强制在每次显示提示符前将光标重置为Block
+_force_cursor_block() {
+    echo -ne '\e[2 q'
+}
+precmd_functions+=(_force_cursor_block)
