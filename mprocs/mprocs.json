@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json.schemastore.org/mprocs-0.6.4.json",
+  "procs": {
+    "npm-demo": {
+      "shell": "cd ~/xxx && npm run dev"
+    }
+  }
+}

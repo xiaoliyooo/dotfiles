@@ -125,6 +125,7 @@ install_if_missing "yazi"
 install_if_missing "fzf"
 install_if_missing "tokei"
 install_if_missing "fastfetch"
+install_if_missing "mprocs"
 install_if_missing "git-summary" "git-extras"
 install_if_missing "gemini" "gemini-cli"
 install_tdf_if_missing
@@ -146,6 +147,8 @@ ln -sf  "$DOTFILES_DIR/yazi/yazi.toml" "$CONFIG_DIR/yazi/yazi.toml"
 ln -sf  "$DOTFILES_DIR/yazi/init.lua" "$CONFIG_DIR/yazi/init.lua" 
 ln -sf  "$DOTFILES_DIR/fastfetch/config.jsonc" "$CONFIG_DIR/fastfetch/config.jsonc" 
 ln -sf  "$DOTFILES_DIR/fastfetch/ascii.txt" "$CONFIG_DIR/fastfetch/ascii.txt"
+ln -sf "$DOTFILES_DIR/mprocs" "$CONFIG_DIR/mprocs"
+
 
 install_zsh_plugin "https://github.com/Aloxaf/fzf-tab" "fzf-tab"
 install_zsh_plugin "https://github.com/zsh-users/zsh-completions.git" "zsh-completions"
