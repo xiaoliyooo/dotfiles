@@ -4,5 +4,12 @@
     "npm-demo": {
       "shell": "cd ~/xxx && npm run dev"
     }
+  },
+  "proc_list_width": 40,
+  "keymap_procs": {
+    "<Right>": { "c": "toggle-focus" }
+  },
+  "keymap_term": {
+    "<Left>": { "c": "toggle-focus" }
   }
 }
