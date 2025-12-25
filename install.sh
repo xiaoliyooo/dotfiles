@@ -128,6 +128,14 @@ install_if_missing "fastfetch"
 install_if_missing "mprocs"
 install_if_missing "git-summary" "git-extras"
 install_if_missing "gemini" "gemini-cli"
+
+#   ━━━━━━━━━━━━━━━━━━━━ neovim formatter/linter start ━━━━━━━━━━━━━━━━━━
+install_if_missing "stylua"
+install_if_missing "shfmt"
+install_if_missing "shellcheck"
+install_if_missing "taplo"
+install_if_missing "ruff"
+#   ━━━━━━━━━━━━━━━━━━━━━ neovim formatter/linter end ━━━━━━━━━━━━━━━━━━━
 install_tdf_if_missing
 
 mkdir -p "$CONFIG_DIR/kitty"
