@@ -25,20 +25,33 @@ git() {
   fi
 }
 
-gs() {
-    local projects=(
-        "$HOME/dotfiles"
-        "$HOME/.config/nvim"
-        "$HOME/xiaoli-notes"
-        "$HOME/apps"
-    )
+GIT_PROJECTS=(
+    "$HOME/dotfiles"
+    "$HOME/.config/nvim"
+    "$HOME/xiaoli-notes"
+    "$HOME/apps"
+)
 
-    for proj in "${projects[@]}"; do
+gs() {
+    for proj in "${GIT_PROJECTS[@]}"; do
         proj="${proj/#\~/$HOME}"
         
         if [ -d "$proj/.git" ]; then
             echo -e "\n\033[1;34m==> Project: $proj\033[0m"
             git -C "$proj" status -s
+        else
+            echo -e "\n\033[1;33m==> Skipping: $proj (Not a git repo)\033[0m"
+        fi
+    done
+}
+
+gpl() {
+    for proj in "${GIT_PROJECTS[@]}"; do
+        proj="${proj/#\~/$HOME}"
+        
+        if [ -d "$proj/.git" ]; then
+            echo -e "\n\033[1;34m==> Pulling: $proj\033[0m"
+            git -C "$proj" pull
         else
             echo -e "\n\033[1;33m==> Skipping: $proj (Not a git repo)\033[0m"
         fi
