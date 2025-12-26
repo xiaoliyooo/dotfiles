@@ -7,9 +7,9 @@
   },
   "proc_list_width": 40,
   "keymap_procs": {
-    "<Right>": { "c": "toggle-focus" }
+    "<l>": { "c": "toggle-focus" }
   },
   "keymap_term": {
-    "<Left>": { "c": "toggle-focus" }
+    "<h>": { "c": "toggle-focus" }
   }
 }
