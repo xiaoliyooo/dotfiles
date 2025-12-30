@@ -14,7 +14,7 @@ export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 export FZF_COMPLETION_TRIGGER='j'
 
-export GREEN_COLOR="#0bf432" # 注释绿色
+export LIGHT_GREEN="#0bf432" # 注释绿色
 
 export FZF_DEFAULT_OPTS="
   --preview 'eza --tree --color=always {} | head -200'
@@ -33,7 +33,7 @@ export FZF_DEFAULT_OPTS="
   --color 'preview-border:#9999cc,preview-label:#ccccff'
   --color 'list-border:#9999cc,list-label:#ccccff'
   --color 'input-border:#9999cc,input-label:#ccccff'
-  --color=hl:#14c0ff,hl+:$GREEN_COLOR,prompt:$GREEN_COLOR,pointer:$GREEN_COLOR
+  --color=hl:#14c0ff,hl+:$LIGHT_GREEN,prompt:$LIGHT_GREEN,pointer:$LIGHT_GREEN
 "
 
 
