@@ -4,7 +4,7 @@ alias y='yazi'
 alias ge='gemini'
 
 if command -v eza >/dev/null 2>&1; then
-    alias ls="eza -la"
+    alias ls="eza -la --icons --no-filesize --no-time --no-user --git"
 else
     alias ls="ls -la"
 fi

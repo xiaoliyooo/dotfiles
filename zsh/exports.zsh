@@ -10,6 +10,33 @@ export MCFLY_FUZZY=2
 
 export EDITOR=nvim
 
+export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+export FZF_COMPLETION_TRIGGER='j'
+
+export GREEN_COLOR="#0bf432" # 注释绿色
+
+export FZF_DEFAULT_OPTS="
+  --preview 'eza --tree --color=always {} | head -200'
+  --style full
+  --padding 1,2
+  --input-label ' Keyword '
+  --bind 'result:transform-list-label:
+      if [[ -z \$FZF_QUERY ]]; then
+        echo \" \$FZF_MATCH_COUNT items \"
+      else
+        echo \" \$FZF_MATCH_COUNT matches for [\$FZF_QUERY] \"
+      fi
+      '
+  --bind 'focus:transform-preview-label:[[ -n {} ]] && printf \" Previewing [%s] \" {}'
+  --color 'label:#cccccc'
+  --color 'preview-border:#9999cc,preview-label:#ccccff'
+  --color 'list-border:#9999cc,list-label:#ccccff'
+  --color 'input-border:#9999cc,input-label:#ccccff'
+  --color=hl:#14c0ff,hl+:$GREEN_COLOR,prompt:$GREEN_COLOR,pointer:$GREEN_COLOR
+"
+
+
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANPAGER="nvim +Man!"
 
