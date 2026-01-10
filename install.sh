@@ -69,6 +69,9 @@ install_rust_if_missing() {
 }
 
 install_nvm_if_missing() {
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
     if command_exists "nvm"; then
         echo "✓ nvm 已安装"
     else
