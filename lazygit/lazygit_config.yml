@@ -1,6 +1,5 @@
 os:
-  editPreset: "nvim"
-  editAtLine: "nvim +{{line}} {{filename}}"
+  editPreset: "nvim-remote"
 gui:
   sidePanelWidth: 0.25 #左侧面板宽度 (0 - 1.0)
   showFileTree: false
