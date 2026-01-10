@@ -68,6 +68,15 @@ install_rust_if_missing() {
     fi
 }
 
+install_pip3_if_missing() {
+    if command_exists "pip3"; then
+        echo "✓ pip3 已安装"
+    else
+        echo "⚠ pip3 未找到，正在通过 Homebrew 安装 Python..."
+        brew install python
+    fi
+}
+
 install_nvm_if_missing() {
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -121,6 +130,7 @@ echo "🚀 开始安装 dotfiles..."
 install_brew_if_missing
 install_rust_if_missing
 install_nvm_if_missing
+install_pip3_if_missing
 install_kitty_if_missing
 install_npm_if_missing "pnpm"
 install_npm_if_missing "tsc" "typescript"
