@@ -189,6 +189,7 @@ install_zsh_plugin "https://github.com/Aloxaf/fzf-tab" "fzf-tab"
 install_zsh_plugin "https://github.com/zsh-users/zsh-completions.git" "zsh-completions"
 install_zsh_plugin "https://github.com/zsh-users/zsh-autosuggestions" "zsh-autosuggestions"
 install_zsh_plugin "https://github.com/zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting"
+install_zsh_plugin "https://github.com/jeffreytse/zsh-vi-mode" "zsh-vi-mode"
 
 
 echo "🔗 配置文件链接完成..."

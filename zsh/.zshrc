@@ -33,3 +33,10 @@ npm() { _lazy_nvm && npm "$@"; }
 npx() { _lazy_nvm && npx "$@"; }
 yarn() { _lazy_nvm && yarn "$@"; }
 # <<< nvm lazy init <<<
+
+function zvm_after_init() {
+    bindkey -M vicmd 'H' beginning-of-line
+    bindkey -M vicmd 'L' end-of-line
+    bindkey -M vicmd '^R' redo
+    bindkey -M viins '^R' mcfly-history-widget
+}

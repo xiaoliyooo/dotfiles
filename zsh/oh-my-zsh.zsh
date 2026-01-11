@@ -22,4 +22,5 @@ plugins=(
   copypath
   copyfile
   macos
+  zsh-vi-mode
 )
