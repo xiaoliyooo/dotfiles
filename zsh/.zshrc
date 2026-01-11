@@ -6,12 +6,10 @@ NC='\033[0m' # No Color
 
 echo "${BOLD_CYAN}ZDOTDIR${NC} => ${BOLD_GREEN}$ZDOTDIR${NC}"
 
+source "$ZDOTDIR/oh-my-zsh.zsh"
 source "$ZDOTDIR/exports.zsh"
 source "$ZDOTDIR/functions.zsh"
-source "$ZDOTDIR/oh-my-zsh.zsh"
 source "$ZDOTDIR/plugins/fzf-tab/config.zsh"
-
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 # 后定义别名
 source $ZSH/oh-my-zsh.sh
@@ -21,13 +19,17 @@ eval "$(mcfly init zsh)"
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
-fastfetch
+# fastfetch
 
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# 强制在每次显示提示符前将光标重置为Block
-_force_cursor_block() {
-    echo -ne '\e[2 q'
+# >>> nvm lazy init >>>
+_lazy_nvm() {
+    unfunction nvm node npm npx yarn pnpm 2>/dev/null
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 }
-precmd_functions+=(_force_cursor_block)
+nvm() { _lazy_nvm && nvm "$@"; }
+node() { _lazy_nvm && node "$@"; }
+npm() { _lazy_nvm && npm "$@"; }
+npx() { _lazy_nvm && npx "$@"; }
+yarn() { _lazy_nvm && yarn "$@"; }
+# <<< nvm lazy init <<<
