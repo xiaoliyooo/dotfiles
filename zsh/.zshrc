@@ -18,7 +18,7 @@ source "$ZDOTDIR/aliases.zsh"
 eval "$(mcfly init zsh)"
 # eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
-
+ZVM_SYSTEM_CLIPBOARD_ENABLED=true
 # fastfetch
 
 # >>> nvm lazy init >>>
