@@ -54,11 +54,11 @@ gui:
       - default
 # Config relating to git
 git:
-  paging:
-    colorArg: always
-    pager: "delta --dark --paging=never"
-    useConfig: false
-    externalDiffCommand: ""
+  pagers:
+    - colorArg: always
+      pager: "delta --dark --paging=never"
+      useConfig: false
+      externalDiffCommand: ""
   # Command used when displaying the current branch git log in the main window
   branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'%C(yellow)%h%Creset %C(white)-%Creset %C(bold magenta)%an%Creset %C(white)-%Creset %C(cyan)%ad%Creset %C(white)-%Creset %C(bold green)%s%Creset' {{branchName}}"
   # Commands used to display git log of all branches in the main window, they will be cycled in order of appearance (array of strings)
