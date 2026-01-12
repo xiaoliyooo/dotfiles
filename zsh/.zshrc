@@ -23,9 +23,9 @@ ZVM_SYSTEM_CLIPBOARD_ENABLED=true
 
 # >>> nvm lazy init >>>
 _lazy_nvm() {
-    unfunction nvm node npm npx yarn pnpm 2>/dev/null
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+  unfunction nvm node npm npx yarn pnpm 2>/dev/null
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 }
 nvm() { _lazy_nvm && nvm "$@"; }
 node() { _lazy_nvm && node "$@"; }
@@ -35,10 +35,11 @@ yarn() { _lazy_nvm && yarn "$@"; }
 # <<< nvm lazy init <<<
 
 function zvm_after_init() {
-    bindkey -M vicmd 'H' beginning-of-line
-    bindkey -M vicmd 'L' end-of-line
-    bindkey -M vicmd '^R' redo
-    bindkey -M viins '^R' mcfly-history-widget
+  bindkey -M vicmd 'H' beginning-of-line
+  bindkey -M vicmd 'L' end-of-line
+  bindkey -M vicmd '^R' redo
+  bindkey -M viins '^R' mcfly-history-widget
 }
 
 [[ ! -f ~/dotfiles/p10k/.p10k.zsh ]] || source ~/dotfiles/p10k/.p10k.zsh
+source "$ZDOTDIR/../bd.zsh"

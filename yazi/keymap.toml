@@ -10,19 +10,19 @@ prepend_keymap = [
   { on = "<D-S-f>", run = "search rg", desc = "Search files by content with ripgrep" },
   { on = [
     "g",
-    "t",
+    "t"
   ], run = "plugin zoxide", desc = "zoxide" },
   { on = "z", run = "plugin fzf", desc = "fzf search files" },
   { on = [
     "g",
-    "d",
+    "d"
   ], run = "cd ~/Downloads", desc = "Go to Downloads" },
   { on = [
     "g",
-    "v",
+    "v"
   ], run = "cd ~/.config/nvim", desc = "Go to Neovim config" },
   { on = [
     "g",
-    "/",
-  ], run = "cd ~", desc = "go home" },
+    "/"
+  ], run = "cd ~", desc = "go home" }
 ]

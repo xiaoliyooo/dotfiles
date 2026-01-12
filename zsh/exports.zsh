@@ -38,11 +38,7 @@ export FZF_DEFAULT_OPTS="
   --color=hl:#14c0ff,hl+:$LIGHT_GREEN,prompt:$LIGHT_GREEN,pointer:$LIGHT_GREEN
 "
 
-
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANPAGER="nvim +Man!"
 
 export NVM_DIR="$HOME/.nvm"
-
-
-

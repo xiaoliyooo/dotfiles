@@ -1,5 +1,5 @@
 [mgr]
-ratio = [1, 3, 4]
+ratio = [ 1, 3, 4 ]
 
 sort_sensitive = false
 sort_reverse = false
@@ -18,10 +18,10 @@ cache_dir = ""
 # 文件打开程序配置
 edit = [
   { run = 'nvim "$@"', desc = "Edit with Neovim", block = true },
-  { run = 'code "$@"', desc = "Edit with VS Code" },
+  { run = 'code "$@"', desc = "Edit with VS Code" }
 ]
-open = [{ run = 'open "$@"', desc = "Open" }]
-reveal = [{ run = 'open -R "$@"', desc = "Reveal in Finder" }]
+open = [ { run = 'open "$@"', desc = "Open" } ]
+reveal = [ { run = 'open -R "$@"', desc = "Reveal in Finder" } ]
 
 [open]
 # 文件类型关联
@@ -31,5 +31,5 @@ rules = [
   { mime = "image/*", use = "open" },
   { mime = "video/*", use = "open" },
   { mime = "audio/*", use = "open" },
-  { mime = "inode/x-empty", use = "edit" },
+  { mime = "inode/x-empty", use = "edit" }
 ]

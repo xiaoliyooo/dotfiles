@@ -26,50 +26,47 @@ git() {
 }
 
 GIT_PROJECTS=(
-    "$HOME/dotfiles"
-    "$HOME/.config/nvim"
-    "$HOME/xiaoli-notes"
-    "$HOME/apps"
+  "$HOME/dotfiles"
+  "$HOME/.config/nvim"
+  "$HOME/xiaoli-notes"
+  "$HOME/apps"
 )
 
 gs() {
-    for proj in "${GIT_PROJECTS[@]}"; do
-        proj="${proj/#\~/$HOME}"
-        
-        if [ -d "$proj/.git" ]; then
-            echo -e "\n\033[1;34m==> Project: $proj\033[0m"
-            git -C "$proj" status -s
-        else
-            echo -e "\n\033[1;33m==> Skipping: $proj (Not a git repo)\033[0m"
-        fi
-    done
+  for proj in "${GIT_PROJECTS[@]}"; do
+    proj="${proj/#\~/$HOME}"
+
+    if [ -d "$proj/.git" ]; then
+      echo -e "\n\033[1;34m==> Project: $proj\033[0m"
+      git -C "$proj" status -s
+    else
+      echo -e "\n\033[1;33m==> Skipping: $proj (Not a git repo)\033[0m"
+    fi
+  done
 }
 
 gpl() {
-    for proj in "${GIT_PROJECTS[@]}"; do
-        proj="${proj/#\~/$HOME}"
-        
-        if [ -d "$proj/.git" ]; then
-            echo -e "\n\033[1;34m==> Pulling: $proj\033[0m"
-            git -C "$proj" pull
-        else
-            echo -e "\n\033[1;33m==> Skipping: $proj (Not a git repo)\033[0m"
-        fi
-    done
+  for proj in "${GIT_PROJECTS[@]}"; do
+    proj="${proj/#\~/$HOME}"
+
+    if [ -d "$proj/.git" ]; then
+      echo -e "\n\033[1;34m==> Pulling: $proj\033[0m"
+      git -C "$proj" pull
+    else
+      echo -e "\n\033[1;33m==> Skipping: $proj (Not a git repo)\033[0m"
+    fi
+  done
 }
-
-
-
 
 _fzf_comprun() {
   local command=$1
   shift
-  
+
   case "$command" in
-    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-    export|unset) fzf --preview "eval 'echo \$' {}" "$@" ;;
-    ssh)          fzf --preview 'dig {}' "$@" ;;
-    *)            fzf --preview 'bat -n --color=always --line-range :500 {}' "$@" ;;
+    cd) fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export | unset) fzf --preview "eval 'echo \$' {}" "$@" ;;
+    ssh) fzf --preview 'dig {}' "$@" ;;
+    *) fzf --preview 'bat -n --color=always --line-range :500 {}' "$@" ;;
   esac
 }
 
@@ -81,4 +78,3 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
-
