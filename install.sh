@@ -101,17 +101,6 @@ install_npm_if_missing() {
     fi
 }
 
-install_pip_if_missing() {
-    local cmd="$1"
-    local package="${2:-$1}"
-
-    if command_exists "$cmd"; then
-        echo "✓ $cmd 已安装"
-    else
-        echo "⚠ $cmd 未找到，正在安装 $package..."
-        pip3 install "$package"
-    fi
-}
 
 install_kitty_if_missing() {
     if command_exists "kitty"; then
@@ -144,7 +133,7 @@ install_if_missing "mcfly"
 install_if_missing "mergiraf"
 install_if_missing "starship"
 install_if_missing "lazygit"
-install_pip_if_missing "nvr" "neovim-remote"
+install_if_missing "nvr" "neovim-remote"
 install_if_missing "less"
 install_if_missing "zoxide"
 install_if_missing "yazi"
