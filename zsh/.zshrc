@@ -11,8 +11,8 @@ source "$ZDOTDIR/exports.zsh"
 source "$ZDOTDIR/functions.zsh"
 source "$ZDOTDIR/plugins/fzf-tab/config.zsh"
 
-# 后定义别名
 source $ZSH/oh-my-zsh.sh
+# 后定义别名
 source "$ZDOTDIR/aliases.zsh"
 
 eval "$(mcfly init zsh)"
@@ -41,4 +41,4 @@ function zvm_after_init() {
     bindkey -M viins '^R' mcfly-history-widget
 }
 
-[[ ! -f ~/dotfiles/zsh/.p10k.zsh ]] || source ~/dotfiles/zsh/.p10k.zsh
+[[ ! -f ~/dotfiles/p10k/.p10k.zsh ]] || source ~/dotfiles/p10k/.p10k.zsh

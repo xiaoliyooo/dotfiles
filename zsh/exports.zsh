@@ -44,3 +44,8 @@ export MANPAGER="nvim +Man!"
 
 export NVM_DIR="$HOME/.nvm"
 
+# >>> zsh-vi-mode >>>
+export ZVM_SYSTEM_CLIPBOARD_ENABLED=true
+# <<< zsh-vi-mode <<<
+
+
