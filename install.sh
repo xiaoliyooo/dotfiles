@@ -36,6 +36,20 @@ install_tdf_if_missing() {
     fi
 }
 
+install_zsh_theme() {
+    local repo_url="$1"
+    local theme_name="$2"
+    local theme_dir="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/$theme_name"
+    
+    if [ ! -d "$theme_dir" ]; then
+        echo "📦 安装 $theme_name"
+        git clone "$repo_url" "$theme_dir"
+        echo "✓ $theme_name 主题安装完成"
+    else
+        echo "✓ $theme_name 主题已存在"
+    fi
+}
+
 install_zsh_plugin() {
     local repo_url="$1"
     local plugin_name="$2"
@@ -179,6 +193,7 @@ install_zsh_plugin "https://github.com/zsh-users/zsh-completions.git" "zsh-compl
 install_zsh_plugin "https://github.com/zsh-users/zsh-autosuggestions" "zsh-autosuggestions"
 install_zsh_plugin "https://github.com/zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting"
 install_zsh_plugin "https://github.com/jeffreytse/zsh-vi-mode" "zsh-vi-mode"
+install_zsh_theme "https://github.com/romkatv/powerlevel10k.git" "powerlevel10k"
 
 
 echo "🔗 配置文件链接完成..."

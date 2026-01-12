@@ -16,7 +16,7 @@ source $ZSH/oh-my-zsh.sh
 source "$ZDOTDIR/aliases.zsh"
 
 eval "$(mcfly init zsh)"
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 # fastfetch
@@ -40,3 +40,5 @@ function zvm_after_init() {
     bindkey -M vicmd '^R' redo
     bindkey -M viins '^R' mcfly-history-widget
 }
+
+[[ ! -f ~/dotfiles/zsh/.p10k.zsh ]] || source ~/dotfiles/zsh/.p10k.zsh
