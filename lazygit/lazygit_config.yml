@@ -3,9 +3,13 @@ os:
   editPreset: "nvim-remote"
 keybinding:
   universal:
-    focusMainView: "<TAB>"
+    nextScreenMode: <tab>
+    prevScreenMode: <backtab>
+    togglePanel: ""
+    nextBlock-alt2: ""
+    prevBlock-alt2: ""
 gui:
-  sidePanelWidth: 0.25 #左侧面板宽度 (0 - 1.0)
+  sidePanelWidth: 0.2 #左侧面板宽度 (0 - 1.0)
   showFileTree: false
   timeFormat: "2006-01-02"
   shortTimeFormat: "2006-01-02"
