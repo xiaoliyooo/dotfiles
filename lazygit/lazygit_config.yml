@@ -1,8 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
 os:
   editPreset: "nvim-remote"
+keybinding:
+  universal:
+    focusMainView: "<TAB>"
 gui:
   sidePanelWidth: 0.25 #左侧面板宽度 (0 - 1.0)
   showFileTree: false
+  timeFormat: "2006-01-02"
+  shortTimeFormat: "2006-01-02"
+  commitAuthorShortLength: 8
+  commitAuthorLongLength: 12
+  border: "bold"
   nerdFontsVersion: "3"
   branchColorPatterns:
     "^feature/": "#00ff00"
@@ -57,7 +66,6 @@ git:
   pagers:
     - colorArg: always
       pager: "delta --dark --paging=never"
-      useConfig: false
       externalDiffCommand: ""
   # Command used when displaying the current branch git log in the main window
   branchLogCmd: "git log --graph --color=always --abbrev-commit --decorate --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'%C(yellow)%h%Creset %C(white)-%Creset %C(bold magenta)%an%Creset %C(white)-%Creset %C(cyan)%ad%Creset %C(white)-%Creset %C(bold green)%s%Creset' {{branchName}}"
