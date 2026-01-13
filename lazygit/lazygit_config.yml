@@ -3,11 +3,7 @@ os:
   editPreset: "nvim-remote"
 keybinding:
   universal:
-    nextScreenMode: <tab>
-    prevScreenMode: <backtab>
-    togglePanel: ""
-    nextBlock-alt2: ""
-    prevBlock-alt2: ""
+    focusMainView: "<tab>"
 gui:
   sidePanelWidth: 0.2 #左侧面板宽度 (0 - 1.0)
   showFileTree: false
