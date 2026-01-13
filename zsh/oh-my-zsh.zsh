@@ -41,6 +41,5 @@ plugins=(
   zsh-syntax-highlighting
   copypath
   copyfile
-  macos
   zsh-vi-mode
 )
