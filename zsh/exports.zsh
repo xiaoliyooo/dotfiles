@@ -12,9 +12,13 @@ export MCFLY_FUZZY=2
 
 export EDITOR=nvim
 
+# Ctrl+T 搜索文件
+export FZF_CTRL_T_COMMAND="fd --type f --hidden --follow --exclude .git"
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
+# Ctrl+D 搜索目录
+export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude .git"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
-export FZF_COMPLETION_TRIGGER='j'
+export FZF_COMPLETION_TRIGGER='xx'
 
 export LIGHT_GREEN="#0bf432" # 注释绿色
 

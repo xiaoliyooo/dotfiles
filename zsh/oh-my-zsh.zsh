@@ -36,7 +36,6 @@ plugins=(
   git
   autojump
   fzf-tab
-  fzf
   zsh-autosuggestions
   zsh-syntax-highlighting
   copypath

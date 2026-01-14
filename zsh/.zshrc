@@ -39,6 +39,10 @@ function zvm_after_init() {
   bindkey -M vicmd 'L' end-of-line
   bindkey -M vicmd '^R' redo
   bindkey -M viins '^R' mcfly-history-widget
+
+  # 在 zsh-vi-mode 初始化后手动加载，代替 plugins fzf配置
+  [ -f /opt/homebrew/opt/fzf/shell/completion.zsh ] && source /opt/homebrew/opt/fzf/shell/completion.zsh
+  [ -f /opt/homebrew/opt/fzf/shell/key-bindings.zsh ] && source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
 }
 
 [[ ! -f ~/dotfiles/p10k/.p10k.zsh ]] || source ~/dotfiles/p10k/.p10k.zsh
