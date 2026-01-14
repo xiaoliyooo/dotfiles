@@ -21,6 +21,12 @@ install_if_missing() {
     if [ "$package" = "yazi" ]; then
       ya pkg add yazi-rs/plugins:full-border
     fi
+
+    if [ "$cmd" = "opencode" ]; then
+      echo "📦 安装 oh-my-opencode..."
+      (cd "$CONFIG_DIR/opencode" && bun i oh-my-opencode@3.0.0-beta.6)
+      echo "✓ oh-my-opencode 安装完成"
+    fi
   fi
 }
 
@@ -126,6 +132,8 @@ install_kitty_if_missing() {
 
 echo "🚀 开始安装 dotfiles..."
 
+ln -sf "$DOTFILES_DIR/bun/.bunfig.toml" "$HOME/.bunfig.toml"
+
 install_brew_if_missing
 install_rust_if_missing
 install_nvm_if_missing
@@ -134,6 +142,7 @@ install_kitty_if_missing
 install_npm_if_missing "pnpm"
 install_npm_if_missing "prettier"
 install_npm_if_missing "tsc" "typescript"
+install_npm_if_missing "bun"
 install_if_missing "git"
 install_if_missing "bat"
 install_if_missing "delta"
@@ -155,6 +164,7 @@ install_if_missing "fastfetch"
 install_if_missing "mprocs"
 install_if_missing "git-summary" "git-extras"
 install_if_missing "gemini" "gemini-cli"
+install_if_missing "opencode" "anomalyco/tap/opencode"
 
 #   ━━━━━━━━━━━━━━━━━━━━ neovim formatter/linter start ━━━━━━━━━━━━━━━━━━
 install_if_missing "stylua"
@@ -170,6 +180,7 @@ mkdir -p "$CONFIG_DIR/lazygit"
 mkdir -p "$CONFIG_DIR/git"
 mkdir -p "$CONFIG_DIR/yazi"
 mkdir -p "$CONFIG_DIR/fastfetch"
+mkdir -p "$CONFIG_DIR/opencode"
 
 ln -sf "$DOTFILES_DIR/kitty/kitty.conf" "$CONFIG_DIR/kitty/kitty.conf"
 ln -sf "$DOTFILES_DIR/lazygit/lazygit_config.yml" "$CONFIG_DIR/lazygit/config.yml"
