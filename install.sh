@@ -183,6 +183,7 @@ mkdir -p "$CONFIG_DIR/fastfetch"
 mkdir -p "$CONFIG_DIR/opencode"
 
 ln -sf "$DOTFILES_DIR/kitty/kitty.conf" "$CONFIG_DIR/kitty/kitty.conf"
+ln -sf "$DOTFILES_DIR/kitty/smart_scroll.py" "$CONFIG_DIR/kitty/smart_scroll.py"
 ln -sf "$DOTFILES_DIR/lazygit/lazygit_config.yml" "$CONFIG_DIR/lazygit/config.yml"
 ln -sf "$DOTFILES_DIR/git/attributes" "$CONFIG_DIR/git/attributes"
 ln -sf "$DOTFILES_DIR/starship/starship.toml" "$CONFIG_DIR/starship.toml"

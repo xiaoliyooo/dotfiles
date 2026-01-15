@@ -44,6 +44,18 @@ function zvm_after_init() {
   bindkey -M vicmd '^R' redo
   bindkey -M viins '^R' mcfly-history-widget
 
+  # fix: kitty-scrollback.nvim回退到终端时，zsh-vi-mode vi mode导致无法粘贴
+  # 先切换到 insert 模式，再执行 bracketed paste
+  function _ksb_bracketed_paste_viins() {
+    if [[ $KEYMAP == vicmd ]]; then
+      zvm_enter_insert_mode
+    fi
+    zle .bracketed-paste
+  }
+  zle -N _ksb_bracketed_paste_viins
+
+  bindkey -M vicmd "^[[200~" _ksb_bracketed_paste_viins
+
 }
 
 # [[ ! -f ~/dotfiles/p10k/.p10k.zsh ]] || source ~/dotfiles/p10k/.p10k.zsh
