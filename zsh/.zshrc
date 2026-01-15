@@ -16,7 +16,7 @@ source $ZSH/oh-my-zsh.sh
 source "$ZDOTDIR/aliases.zsh"
 
 eval "$(mcfly init zsh)"
-# eval "$(starship init zsh)"
+eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 ZVM_SYSTEM_CLIPBOARD_ENABLED=true
 # fastfetch
@@ -46,5 +46,5 @@ function zvm_after_init() {
 
 }
 
-[[ ! -f ~/dotfiles/p10k/.p10k.zsh ]] || source ~/dotfiles/p10k/.p10k.zsh
+# [[ ! -f ~/dotfiles/p10k/.p10k.zsh ]] || source ~/dotfiles/p10k/.p10k.zsh
 source "$ZDOTDIR/../bd.zsh"
