@@ -1,7 +1,10 @@
 [mgr]
 cwd = { fg = "cyan" }
 syntect_theme = "~/dotfiles/yazi/CiapreBlack.tmTheme"
-hovered = { fg = "black", bg = "lightblue" }
+
+[indicator]
+current = { fg = "black", bg = "lightblue" }
+padding = { open = "█", close = "█" }
 
 # Find
 find_keyword = { fg = "yellow", italic = true }
