@@ -175,15 +175,14 @@ install_if_missing "ruff"
 #   ━━━━━━━━━━━━━━━━━━━━━ neovim formatter/linter end ━━━━━━━━━━━━━━━━━━━
 install_tdf_if_missing
 
-mkdir -p "$CONFIG_DIR/kitty"
+rm -rf "$CONFIG_DIR/kitty"
 mkdir -p "$CONFIG_DIR/lazygit"
 mkdir -p "$CONFIG_DIR/git"
 mkdir -p "$CONFIG_DIR/yazi"
 mkdir -p "$CONFIG_DIR/fastfetch"
 mkdir -p "$CONFIG_DIR/opencode"
 
-ln -sf "$DOTFILES_DIR/kitty/kitty.conf" "$CONFIG_DIR/kitty/kitty.conf"
-ln -sf "$DOTFILES_DIR/kitty/smart_scroll.py" "$CONFIG_DIR/kitty/smart_scroll.py"
+ln -sf "$DOTFILES_DIR/kitty" "$CONFIG_DIR/kitty"
 ln -sf "$DOTFILES_DIR/lazygit/lazygit_config.yml" "$CONFIG_DIR/lazygit/config.yml"
 ln -sf "$DOTFILES_DIR/git/attributes" "$CONFIG_DIR/git/attributes"
 ln -sf "$DOTFILES_DIR/starship/starship.toml" "$CONFIG_DIR/starship.toml"
