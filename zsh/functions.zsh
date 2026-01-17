@@ -45,16 +45,26 @@ gs() {
   done
 }
 
-gpl() {
+pull() {
+  setopt local_options no_notify no_monitor
+  local pids=()
+
   for proj in "${GIT_PROJECTS[@]}"; do
     proj="${proj/#\~/$HOME}"
 
     if [ -d "$proj/.git" ]; then
-      echo -e "\n\033[1;34m==> Pulling: $proj\033[0m"
-      git -C "$proj" pull
+      (
+        result=$(git -C "$proj" pull 2>&1)
+        echo -e "\033[1;34m==> $proj\033[0m\n$result"
+      ) &
+      pids+=($!)
     else
-      echo -e "\n\033[1;33m==> Skipping: $proj (Not a git repo)\033[0m"
+      echo -e "\033[1;33m==> Skipping: $proj (Not a git repo)\033[0m"
     fi
+  done
+
+  for pid in "${pids[@]}"; do
+    wait $pid
   done
 }
 
@@ -77,4 +87,8 @@ _fzf_compgen_path() {
 
 _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
+}
+
+lg() {
+  ls | rg -i "$@"
 }
