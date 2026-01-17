@@ -74,6 +74,12 @@ function zvm_after_init() {
   bindkey -M menuselect 'j' down-line-or-history
   bindkey -M menuselect 'k' up-line-or-history
   bindkey -M menuselect 'l' forward-char
+
+  # 插入模式上下键历史记录导航
+  bindkey -M viins '^[[A' up-line-or-history
+  bindkey -M viins '^[[B' down-line-or-history
+  bindkey -M viins '^[OA' up-line-or-history
+  bindkey -M viins '^[OB' down-line-or-history
 }
 
 # normal 模式下禁用实时补全显示
