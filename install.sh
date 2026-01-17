@@ -201,6 +201,8 @@ install_zsh_plugin "https://github.com/zsh-users/zsh-completions.git" "zsh-compl
 install_zsh_plugin "https://github.com/marlonrichert/zsh-autocomplete" "zsh-autocomplete"
 install_zsh_plugin "https://github.com/zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting"
 install_zsh_plugin "https://github.com/jeffreytse/zsh-vi-mode" "zsh-vi-mode"
+install_zsh_plugin "https://github.com/grigorii-zander/zsh-npm-scripts-autocomplete" "zsh-npm-scripts-autocomplete"
+
 install_zsh_theme "https://github.com/romkatv/powerlevel10k.git" "powerlevel10k"
 
 echo "🔗 配置文件链接完成..."

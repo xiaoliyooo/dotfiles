@@ -38,6 +38,7 @@ plugins=(
   zsh-autocomplete
   zsh-autosuggestions
   zsh-completions
+  zsh-npm-scripts-autocomplete
   copypath
   copyfile
   zsh-vi-mode
