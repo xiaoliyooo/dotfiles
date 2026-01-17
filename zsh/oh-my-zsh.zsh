@@ -1,6 +1,5 @@
 ZSH_THEME="robbyrussell"
 # ZSH_THEME="powerlevel10k/powerlevel10k"
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 function compinit() {
   local zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
@@ -35,10 +34,12 @@ function compinit() {
 plugins=(
   git
   autojump
-  fzf-tab
+  # fzf-tab 和 zsh-autocomplete 二选一
+  zsh-autocomplete
   zsh-autosuggestions
-  zsh-syntax-highlighting
+  zsh-completions
   copypath
   copyfile
   zsh-vi-mode
+  zsh-syntax-highlighting
 )
