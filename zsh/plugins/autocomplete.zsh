@@ -1,3 +1,3 @@
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} 'ma=30;102' # 选中绿色
 zstyle ':autocomplete:*' async true
-
+zstyle ':autocomplete:*' min-input 2
