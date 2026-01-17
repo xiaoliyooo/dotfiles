@@ -60,7 +60,12 @@ function zvm_after_init() {
   # >>> 解决 zsh-vi-mode 与 zsh-autocomplete 的兼容性问题 >>>
   function _menu_select_insert_only() {
     if [[ $ZVM_MODE == $ZVM_MODE_INSERT ]]; then
-      zle menu-select
+      # fzf模糊搜索优先
+      if [[ "$LBUFFER" == *"${FZF_COMPLETION_TRIGGER:-**}" ]]; then
+        zle fzf-completion
+      else
+        zle menu-select
+      fi
     fi
   }
   zle -N _menu_select_insert_only
