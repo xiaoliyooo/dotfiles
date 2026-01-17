@@ -12,6 +12,8 @@ source "$ZDOTDIR/functions.zsh"
 # source "$ZDOTDIR/plugins/fzf-tab/config.zsh"
 
 source $ZSH/oh-my-zsh.sh
+source "$ZDOTDIR/plugins/autocomplete.zsh"
+
 # 后定义别名
 source "$ZDOTDIR/aliases.zsh"
 
