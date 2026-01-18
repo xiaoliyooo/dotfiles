@@ -130,6 +130,29 @@ install_kitty_if_missing() {
   fi
 }
 
+install_cask_if_missing() {
+  local cask_name="$1"
+
+  if brew list --cask "$cask_name" &>/dev/null; then
+    echo "✓ $cask_name 已安装"
+  else
+    echo "⚠ $cask_name 未找到，正在安装..."
+    brew install --cask "$cask_name"
+  fi
+}
+
+install_font_if_missing() {
+  local font_file="$1"
+  local font_name="${font_file%.ttf}"
+
+  if [ -f "$HOME/Library/Fonts/$font_file" ]; then
+    echo "✓ $font_name 字体已安装"
+  else
+    echo "⚠ $font_name 字体未找到，正在安装..."
+    cp "$DOTFILES_DIR/fonts/$font_file" "$HOME/Library/Fonts/"
+  fi
+}
+
 echo "🚀 开始安装 dotfiles..."
 
 ln -sf "$DOTFILES_DIR/bun/.bunfig.toml" "$HOME/.bunfig.toml"
@@ -139,6 +162,9 @@ install_rust_if_missing
 install_nvm_if_missing
 install_pip3_if_missing
 install_kitty_if_missing
+install_font_if_missing "JetBrainsMonoNL-Bold.ttf"
+install_cask_if_missing "font-fira-code"
+install_cask_if_missing "font-fira-code-nerd-font"
 install_npm_if_missing "pnpm"
 install_npm_if_missing "prettier"
 install_npm_if_missing "tsc" "typescript"
