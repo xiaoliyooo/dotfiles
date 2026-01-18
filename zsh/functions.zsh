@@ -89,6 +89,6 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
-lg() {
-  ls | rg -i "$@"
+lsg() {
+  eza -la --no-filesize --no-time --no-user --git | rg -i "$@"
 }
