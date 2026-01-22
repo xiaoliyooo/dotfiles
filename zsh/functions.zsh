@@ -14,6 +14,8 @@ git() {
     elif [[ "$2" == "list" ]]; then
       command git worktree list
     fi
+  elif [[ "$1" == "up" ]]; then
+    command git add . && command git commit -m "update" && command git push
   elif [[ "$1" == "merge" ]]; then
     if [[ "$2" == "--abort" ]] || [[ "$2" == "--continue" ]] || [[ "$2" == "--quit" ]]; then
       command git "$@"
