@@ -14,8 +14,18 @@ git() {
     elif [[ "$2" == "list" ]]; then
       command git worktree list
     fi
-  elif [[ "$1" == "up" ]]; then
-    command git add . && command git commit -m "update" && command git push
+  elif [[ "$1" == "sync" ]]; then
+    # >>> 防止 .obsidian/workspace.json 冲突 >>>
+    # 1. 取消暂存
+    if command git diff --cached --name-only | grep -q '\.obsidian/workspace\.json'; then
+      command git restore --staged .obsidian/workspace.json
+    fi
+    # 2. 撤回更改
+    if command git diff --name-only | grep -q '\.obsidian/workspace\.json'; then
+      command git checkout -- .obsidian/workspace.json
+    fi
+    # <<< 防止 .obsidian/workspace.json 冲突 <<<
+    command git pull && command git add . && command git commit -m "update" && command git push
   elif [[ "$1" == "merge" ]]; then
     if [[ "$2" == "--abort" ]] || [[ "$2" == "--continue" ]] || [[ "$2" == "--quit" ]]; then
       command git "$@"
