@@ -226,7 +226,6 @@ install_zsh_plugin "https://github.com/zsh-users/zsh-autosuggestions" "zsh-autos
 install_zsh_plugin "https://github.com/zsh-users/zsh-completions.git" "zsh-completions"
 install_zsh_plugin "https://github.com/marlonrichert/zsh-autocomplete" "zsh-autocomplete"
 install_zsh_plugin "https://github.com/zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting"
-install_zsh_plugin "https://github.com/jeffreytse/zsh-vi-mode" "zsh-vi-mode"
 install_zsh_plugin "https://github.com/grigorii-zander/zsh-npm-scripts-autocomplete" "zsh-npm-scripts-autocomplete"
 install_zsh_plugin "https://github.com/hlissner/zsh-autopair" "zsh-autopair"
 

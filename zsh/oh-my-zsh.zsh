@@ -34,14 +34,15 @@ function compinit() {
 plugins=(
   git
   autojump
+  fzf
   # fzf-tab 和 zsh-autocomplete 二选一
+  # fzf-tab
   zsh-autocomplete
   zsh-autosuggestions
   zsh-completions
   zsh-npm-scripts-autocomplete
   copypath
   copyfile
-  zsh-vi-mode
   zsh-autopair
   zsh-syntax-highlighting
 )
