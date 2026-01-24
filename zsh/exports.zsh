@@ -45,4 +45,7 @@ export FZF_DEFAULT_OPTS="
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANPAGER="nvim +Man!"
 
+export NVM_COMPLETION=true
+export NVM_LAZY_LOAD=true
+
 export NVM_DIR="$HOME/.nvm"

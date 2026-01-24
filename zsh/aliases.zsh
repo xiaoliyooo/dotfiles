@@ -2,6 +2,7 @@ alias reload='exec zsh'
 alias zshc='vim ~/.zshrc'
 alias y='yazi'
 alias ge='gemini'
+alias j='z'
 
 alias ls="eza -la --icons --no-filesize --no-time --no-user --git"
 alias vim="nvim"

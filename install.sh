@@ -42,32 +42,23 @@ install_tdf_if_missing() {
   fi
 }
 
-install_zsh_theme() {
-  local repo_url="$1"
-  local theme_name="$2"
-  local theme_dir="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/$theme_name"
+install_zinit_if_missing() {
+  local zinit_home="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/zinit.git"
 
-  if [ ! -d "$theme_dir" ]; then
-    echo "📦 安装 $theme_name"
-    git clone "$repo_url" "$theme_dir"
-    echo "✓ $theme_name 主题安装完成"
+  if [ -f "$zinit_home/zinit.zsh" ]; then
+    echo "✓ zinit 已安装"
   else
-    echo "✓ $theme_name 主题已存在"
+    echo "📦 安装 zinit..."
+    mkdir -p "$(dirname "$zinit_home")"
+    git clone https://github.com/zdharma-continuum/zinit.git "$zinit_home"
+    echo "✓ zinit 安装完成"
   fi
 }
 
-install_zsh_plugin() {
-  local repo_url="$1"
-  local plugin_name="$2"
-  local plugin_dir="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/$plugin_name"
-
-  if [ ! -d "$plugin_dir" ]; then
-    echo "📦 安装 $plugin_name"
-    git clone "$repo_url" "$plugin_dir"
-    echo "✓ $plugin_name 插件安装完成"
-  else
-    echo "✓ $plugin_name 插件已存在"
-  fi
+install_zinit_plugins() {
+  echo "📦 安装 zinit 插件..."
+  zsh -i -c "@zinit-scheduler burst" 2>/dev/null || true
+  echo "✓ zinit 插件安装完成"
 }
 
 install_brew_if_missing() {
@@ -162,6 +153,8 @@ install_rust_if_missing
 install_nvm_if_missing
 install_pip3_if_missing
 install_kitty_if_missing
+install_zinit_if_missing
+install_zinit_plugins
 install_font_if_missing "JetBrainsMonoNL-Bold.ttf"
 install_cask_if_missing "font-fira-code"
 install_cask_if_missing "font-fira-code-nerd-font"
@@ -175,7 +168,6 @@ install_if_missing "delta"
 install_if_missing "eza"
 install_if_missing "nvim" "neovim"
 install_if_missing "gdate" "coreutils"
-install_if_missing "mcfly"
 install_if_missing "mergiraf"
 install_if_missing "starship"
 install_if_missing "lazygit"
@@ -220,16 +212,6 @@ ln -sf "$DOTFILES_DIR/yazi/init.lua" "$CONFIG_DIR/yazi/init.lua"
 ln -sf "$DOTFILES_DIR/fastfetch/config.jsonc" "$CONFIG_DIR/fastfetch/config.jsonc"
 ln -sf "$DOTFILES_DIR/fastfetch/ascii.txt" "$CONFIG_DIR/fastfetch/ascii.txt"
 ln -sf "$DOTFILES_DIR/mprocs" "$CONFIG_DIR/mprocs"
-
-install_zsh_plugin "https://github.com/Aloxaf/fzf-tab" "fzf-tab"
-install_zsh_plugin "https://github.com/zsh-users/zsh-autosuggestions" "zsh-autosuggestions"
-install_zsh_plugin "https://github.com/zsh-users/zsh-completions.git" "zsh-completions"
-install_zsh_plugin "https://github.com/marlonrichert/zsh-autocomplete" "zsh-autocomplete"
-install_zsh_plugin "https://github.com/zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting"
-install_zsh_plugin "https://github.com/grigorii-zander/zsh-npm-scripts-autocomplete" "zsh-npm-scripts-autocomplete"
-install_zsh_plugin "https://github.com/hlissner/zsh-autopair" "zsh-autopair"
-
-install_zsh_theme "https://github.com/romkatv/powerlevel10k.git" "powerlevel10k"
 
 echo "🔗 配置文件链接完成..."
 
