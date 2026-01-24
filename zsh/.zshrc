@@ -29,6 +29,7 @@ _lazy_nvm() {
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 }
+pnpm() { _lazy_nvm && pnpm "$@"; }
 nvm() { _lazy_nvm && nvm "$@"; }
 node() { _lazy_nvm && node "$@"; }
 npm() { _lazy_nvm && npm "$@"; }
