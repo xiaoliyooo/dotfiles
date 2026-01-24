@@ -42,5 +42,6 @@ plugins=(
   copypath
   copyfile
   zsh-vi-mode
+  zsh-autopair
   zsh-syntax-highlighting
 )

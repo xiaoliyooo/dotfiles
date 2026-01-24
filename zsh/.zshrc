@@ -41,6 +41,8 @@ function zvm_after_init() {
   # 在 zsh-vi-mode 初始化后手动加载，代替 plugins fzf配置
   [ -f /opt/homebrew/opt/fzf/shell/completion.zsh ] && source /opt/homebrew/opt/fzf/shell/completion.zsh
   [ -f /opt/homebrew/opt/fzf/shell/key-bindings.zsh ] && source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
+  # autopair与zsh-vi-mode冲突 后加载
+  source ${ZSH_CUSTOM:-$ZSH/custom}/plugins/zsh-autopair/zsh-autopair.plugin.zsh
 
   bindkey -M vicmd 'H' beginning-of-line
   bindkey -M vicmd 'L' end-of-line
