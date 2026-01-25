@@ -48,4 +48,5 @@ export MANPAGER="nvim +Man!"
 export NVM_COMPLETION=true
 export NVM_LAZY_LOAD=true
 
+export ABBR_SET_EXPANSION_CURSOR=1
 export NVM_DIR="$HOME/.nvm"

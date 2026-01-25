@@ -10,7 +10,8 @@ zinit wait lucid for \
   zsh-users/zsh-completions \
   hlissner/zsh-autopair \
   zsh-users/zsh-syntax-highlighting \
-  zdharma-continuum/fast-syntax-highlighting
+  zdharma-continuum/fast-syntax-highlighting \
+  olets/zsh-abbr
 
 zinit ice wait lucid atload'_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
