@@ -15,7 +15,12 @@ zinit wait lucid for \
 zinit ice wait lucid atload'_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
 
-autoload -Uz compinit && compinit
+autoload -Uz compinit
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C  # 使用缓存，24小时内不重建
+fi
 
 # 禁用补全 "do you wish to see all X possibilities?" 提示
 LISTMAX=0
