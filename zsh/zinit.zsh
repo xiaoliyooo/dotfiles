@@ -9,6 +9,7 @@ zinit wait lucid for \
   OMZP::fzf \
   zsh-users/zsh-completions \
   hlissner/zsh-autopair \
+  lukechilds/zsh-nvm \
   zsh-users/zsh-syntax-highlighting \
   zdharma-continuum/fast-syntax-highlighting \
   olets/zsh-abbr
