@@ -121,6 +121,34 @@ install_kitty_if_missing() {
   fi
 }
 
+replace_kitty_icon() {
+  # https://github.com/DinkDonk/kitty-icon
+  local icon_source="$DOTFILES_DIR/kitty/kitty-dark.icns"
+  local kitty_app="/Applications/kitty.app"
+  local icon_dest="$kitty_app/Contents/Resources/kitty.icns"
+
+  if [ ! -d "$kitty_app" ]; then
+    echo "⚠ kitty.app 未找到，跳过图标替换"
+    return
+  fi
+
+  if [ ! -f "$icon_source" ]; then
+    echo "⚠ kitty-dark.icns 未找到，跳过图标替换"
+    return
+  fi
+
+  echo "🎨 替换 kitty 图标..."
+  cp "$icon_source" "$icon_dest"
+
+  rm -rf /var/folders/*/*/*/com.apple.dock.iconcache 2>/dev/null || true
+  killall Dock 2>/dev/null || true
+
+  # 触发 Finder 刷新应用图标
+  touch "$kitty_app"
+
+  echo "✓ kitty 图标替换完成"
+}
+
 install_cask_if_missing() {
   local cask_name="$1"
 
@@ -153,6 +181,7 @@ install_rust_if_missing
 install_nvm_if_missing
 install_pip3_if_missing
 install_kitty_if_missing
+replace_kitty_icon
 install_zinit_if_missing
 install_zinit_plugins
 install_font_if_missing "JetBrainsMonoNL-Bold.ttf"
