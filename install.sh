@@ -137,6 +137,11 @@ replace_kitty_icon() {
     return
   fi
 
+  if cmp -s "$icon_source" "$icon_dest"; then
+    echo "✓ kitty 图标已是最新"
+    return
+  fi
+
   echo "🎨 替换 kitty 图标..."
   cp "$icon_source" "$icon_dest"
 
@@ -160,6 +165,18 @@ install_cask_if_missing() {
   fi
 }
 
+install_app_if_missing() {
+  local app_name="$1"
+  local cask_name="$2"
+
+  if [ -d "/Applications/$app_name.app" ]; then
+    echo "✓ $app_name 已安装"
+  else
+    echo "⚠ $app_name 未找到，正在安装..."
+    brew install --cask "$cask_name"
+  fi
+}
+
 install_font_if_missing() {
   local font_file="$1"
   local font_name="${font_file%.ttf}"
@@ -170,6 +187,64 @@ install_font_if_missing() {
     echo "⚠ $font_name 字体未找到，正在安装..."
     cp "$DOTFILES_DIR/fonts/$font_file" "$HOME/Library/Fonts/"
   fi
+}
+
+clone_apps_repo() {
+  local apps_dir="$HOME/apps"
+
+  if [ -d "$apps_dir" ]; then
+    echo "✓ apps 仓库已存在"
+  else
+    echo "📦 克隆 apps 仓库..."
+    git clone https://github.com/xiaoliyooo/apps "$apps_dir"
+    echo "✓ apps 仓库克隆完成"
+  fi
+}
+
+install_from_dmg() {
+  local dmg_path="$1"
+  local filename=$(basename "$dmg_path")
+  # 文件名格式: 软件名_版本.dmg
+  local app_name="${filename%%_*}"
+
+  if [ -d "/Applications/$app_name.app" ]; then
+    echo "✓ $app_name 已安装"
+    return 0
+  fi
+
+  echo "⚠ 正在从 dmg 安装 $app_name..."
+
+  local mount_output=$(yes | hdiutil attach "$dmg_path" -nobrowse -noautoopen -noverify 2>/dev/null)
+  local mount_point=$(echo "$mount_output" | grep "/Volumes" | sed 's/.*\(\/Volumes\/.*\)/\1/' | head -1)
+
+  if [ -z "$mount_point" ]; then
+    echo "✗ 无法挂载 $dmg_path"
+    return 1
+  fi
+
+  if ls "$mount_point"/*.app 1>/dev/null 2>&1; then
+    cp -Rf "$mount_point"/*.app /Applications/
+    echo "✓ $app_name 安装完成"
+  else
+    echo "⚠ $mount_point 中未找到 .app 文件"
+  fi
+}
+
+scan_and_install_dmgs() {
+  local dir="$1"
+
+  if [ ! -d "$dir" ]; then
+    echo "⚠ 目录不存在: $dir"
+    return 1
+  fi
+
+  for item in "$dir"/*; do
+    if [ -d "$item" ]; then
+      scan_and_install_dmgs "$item"
+    elif [ -f "$item" ] && [[ "$item" == *.dmg ]]; then
+      install_from_dmg "$item"
+    fi
+  done
 }
 
 echo "🚀 开始安装 dotfiles..."
@@ -247,5 +322,23 @@ ln -sf "$DOTFILES_DIR/fastfetch/ascii.txt" "$CONFIG_DIR/fastfetch/ascii.txt"
 ln -sf "$DOTFILES_DIR/mprocs" "$CONFIG_DIR/mprocs"
 
 echo "🔗 配置文件链接完成..."
+
+install_app_if_missing "WeChat" "wechat"
+install_app_if_missing "QQMusic" "qqmusic"
+install_app_if_missing "NeteaseMusic" "neteasemusic"
+install_app_if_missing "Google Chrome" "google-chrome"
+install_app_if_missing "元宝" "yuanbao"
+install_app_if_missing "Obsidian" "obsidian"
+install_app_if_missing "Karabiner-Elements" "karabiner-elements"
+install_app_if_missing "Docker" "docker"
+install_app_if_missing "wpsoffice" "wpsoffice"
+install_app_if_missing "Clash Verge" "clash-verge-rev"
+install_app_if_missing "Snipaste" "snipaste"
+install_app_if_missing "SwitchHosts" "switchhosts"
+install_app_if_missing "Ice" "jordanbaird-ice"
+install_app_if_missing "Tencent Lemon" "tencent-lemon"
+
+clone_apps_repo
+scan_and_install_dmgs "$HOME/apps/app-dmg"
 
 echo "✅ 安装完成！"
