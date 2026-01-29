@@ -104,3 +104,7 @@ _fzf_compgen_dir() {
 lss() {
   eza -la --no-filesize --no-time --no-user --git | rg -i "$@"
 }
+
+tree() {
+  command tree -C -L 2 -a -I "node_modules" "$@"
+}
