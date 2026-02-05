@@ -30,18 +30,6 @@ install_if_missing() {
   fi
 }
 
-install_tdf_if_missing() {
-  local cmd="tdf"
-  local package="$cmd"
-
-  if command_exists "$cmd"; then
-    echo "✓ $cmd 已安装"
-  else
-    echo "⚠ $cmd 未找到，正在安装 $package..."
-    cargo install --git https://github.com/itsjunetime/tdf.git
-  fi
-}
-
 install_zinit_if_missing() {
   local zinit_home="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/zinit.git"
 
@@ -288,6 +276,9 @@ install_if_missing "mprocs"
 install_if_missing "git-summary" "git-extras"
 install_if_missing "gemini" "gemini-cli"
 install_if_missing "opencode" "anomalyco/tap/opencode"
+install_if_missing "ttyd"
+install_if_missing "ni"
+install_if_missing "killport"
 
 #   ━━━━━━━━━━━━━━━━━━━━ neovim formatter/linter start ━━━━━━━━━━━━━━━━━━
 install_if_missing "stylua"
@@ -296,7 +287,6 @@ install_if_missing "shellcheck"
 install_if_missing "taplo"
 install_if_missing "ruff"
 #   ━━━━━━━━━━━━━━━━━━━━━ neovim formatter/linter end ━━━━━━━━━━━━━━━━━━━
-install_tdf_if_missing
 
 rm -rf "$CONFIG_DIR/kitty"
 mkdir -p "$CONFIG_DIR/lazygit"
