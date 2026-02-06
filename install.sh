@@ -279,6 +279,7 @@ install_if_missing "opencode" "anomalyco/tap/opencode"
 install_if_missing "ttyd"
 install_if_missing "ni"
 install_if_missing "killport"
+install_if_missing "onefetch"
 
 #   ━━━━━━━━━━━━━━━━━━━━ neovim formatter/linter start ━━━━━━━━━━━━━━━━━━
 install_if_missing "stylua"

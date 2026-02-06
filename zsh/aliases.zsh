@@ -13,3 +13,4 @@ alias date='gdate "+%Y-%m-%d %H:%M:%S %A"'
 alias dt='date'
 
 alias kp="killport"
+alias repo="onefetch"
