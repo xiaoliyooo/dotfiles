@@ -13,4 +13,4 @@ alias date='gdate "+%Y-%m-%d %H:%M:%S %A"'
 alias dt='date'
 
 alias kp="killport"
-alias repo="onefetch"
+alias repo="onefetch --churn-pool-size 1000 --number-of-file-churns 15"
