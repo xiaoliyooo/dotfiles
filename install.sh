@@ -326,6 +326,7 @@ install_app_if_missing "SwitchHosts" "switchhosts"
 install_app_if_missing "Ice" "jordanbaird-ice"
 install_app_if_missing "Tencent Lemon" "tencent-lemon"
 install_app_if_missing "Visual Studio Code" "visual-studio-code"
+install_app_if_missing "AltTab" "alt-tab"
 
 clone_apps_repo
 scan_and_install_dmgs "$HOME/apps/app-dmg"
