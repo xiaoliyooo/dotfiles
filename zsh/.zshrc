@@ -23,3 +23,6 @@ zi() {
 }
 
 source "$ZDOTDIR/../bd.zsh"
+source "$ZDOTDIR/setup_zshrc_local.sh"
+
+setup_zshrc_local && source "$HOME/.zshrc.local"

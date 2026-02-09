@@ -1,8 +1,4 @@
-; ---------.gitconfig----------
-; [include]
-;    path = ~/dotfiles/git/.gitconfig
-; -------.gitconfig end--------
-
+# user配置通过 GIT_AUTHOR_NAME、GIT_AUTHOR_EMAIL、GIT_COMMITTER_NAME、GIT_COMMITTER_EMAIL 设置
 
 [alias]
 	co = checkout

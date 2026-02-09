@@ -73,4 +73,5 @@ zsh/*
 !zsh/*.zsh
 !zsh/.zshrc
 !zsh/plugins
+!zsh/setup_zshrc_local.sh
 mprocs

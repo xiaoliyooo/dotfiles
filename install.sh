@@ -3,6 +3,7 @@
 # 定义变量
 DOTFILES_DIR="$HOME/dotfiles"
 CONFIG_DIR="$HOME/.config"
+source "$DOTFILES_DIR/zsh/setup_zshrc_local.sh"
 
 command_exists() {
   command -v "$1" >/dev/null 2>&1
@@ -296,6 +297,7 @@ mkdir -p "$CONFIG_DIR/yazi"
 mkdir -p "$CONFIG_DIR/opencode"
 mkdir -p "$CONFIG_DIR/zsh-abbr"
 
+ln -sf "$DOTFILES_DIR/git/gitconfig" "$HOME/.gitconfig"
 ln -sf "$DOTFILES_DIR/kitty" "$CONFIG_DIR/kitty"
 ln -sf "$DOTFILES_DIR/zsh/plugins/zsh-abbr/user-abbreviations" "$CONFIG_DIR/zsh-abbr/user-abbreviations"
 ln -sf "$DOTFILES_DIR/lazygit/lazygit_config.yml" "$CONFIG_DIR/lazygit/config.yml"
