@@ -10,7 +10,6 @@ zinit wait lucid for \
   zsh-users/zsh-completions \
   hlissner/zsh-autopair \
   lukechilds/zsh-nvm \
-  zsh-users/zsh-syntax-highlighting \
   zdharma-continuum/fast-syntax-highlighting \
   olets/zsh-abbr
 
