@@ -10,11 +10,13 @@ export ZDOTDIR="$HOME/dotfiles/zsh"
 [[ -f "$ZDOTDIR/.zshrc" ]] && source "$ZDOTDIR/.zshrc"
 ```
 
-2. 为全局git配置文件 `~/.gitconfig` 增加下面引用：
+2. 在 `~/.zshrc.local` 中配置 Git 环境变量：
 
 ```bash
-[include]
-   path = ~/dotfiles/git/gitconfig
+export GIT_AUTHOR_NAME=""
+export GIT_AUTHOR_EMAIL=""
+export GIT_COMMITTER_NAME=""
+export GIT_COMMITTER_EMAIL=""
 ```
 
 3. 如果执行 `git effort` 报错 `/opt/homebrew/bin/git-effort: line 273:  ${nJobs@P} >= nProcs : bad substitution`，因为MacOS 捆绑的 `/bin/bash` 版本 3.2.57太低了，不支持 `${parameter@P}`。执行 `brew install bash` 更新到4.0+。
