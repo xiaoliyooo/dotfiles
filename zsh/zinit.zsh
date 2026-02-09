@@ -17,6 +17,10 @@ zinit wait lucid for \
 zinit ice wait lucid atload'_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
 
+# atuin 懒加载
+zinit ice wait lucid as"null" atload'eval "$(atuin init zsh)"'
+zinit light zdharma-continuum/null
+
 autoload -Uz compinit
 if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
   compinit

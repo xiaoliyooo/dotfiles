@@ -281,6 +281,7 @@ install_if_missing "ttyd"
 install_if_missing "ni"
 install_if_missing "killport"
 install_if_missing "onefetch"
+install_if_missing "atuin"
 
 #   ━━━━━━━━━━━━━━━━━━━━ neovim formatter/linter start ━━━━━━━━━━━━━━━━━━
 install_if_missing "stylua"
@@ -296,6 +297,7 @@ mkdir -p "$CONFIG_DIR/git"
 mkdir -p "$CONFIG_DIR/yazi"
 mkdir -p "$CONFIG_DIR/opencode"
 mkdir -p "$CONFIG_DIR/zsh-abbr"
+mkdir -p "$CONFIG_DIR/atuin"
 
 ln -sf "$DOTFILES_DIR/git/gitconfig" "$HOME/.gitconfig"
 ln -sf "$DOTFILES_DIR/kitty" "$CONFIG_DIR/kitty"
@@ -308,6 +310,7 @@ ln -sf "$DOTFILES_DIR/yazi/keymap.toml" "$CONFIG_DIR/yazi/keymap.toml"
 ln -sf "$DOTFILES_DIR/yazi/theme.toml" "$CONFIG_DIR/yazi/theme.toml"
 ln -sf "$DOTFILES_DIR/yazi/yazi.toml" "$CONFIG_DIR/yazi/yazi.toml"
 ln -sf "$DOTFILES_DIR/yazi/init.lua" "$CONFIG_DIR/yazi/init.lua"
+ln -sf "$DOTFILES_DIR/atuin/config.toml" "$CONFIG_DIR/atuin/config.toml"
 ln -sf "$DOTFILES_DIR/mprocs" "$CONFIG_DIR/mprocs"
 
 echo "🔗 配置文件链接完成..."

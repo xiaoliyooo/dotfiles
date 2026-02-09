@@ -1,0 +1,9 @@
+style = "full"
+enter_accept = true
+filter_mode = "global"
+show_numeric_shortcuts = false
+invert = true
+search_mode_shell_up_key_binding = "fuzzy"
+
+[theme]
+name = "marine"
