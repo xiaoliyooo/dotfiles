@@ -9,9 +9,6 @@ export TIME_STYLE="+%Y-%m-%d %H:%M"
 
 export TEALDEER_CONFIG_DIR="$HOME/.config/tealdeer"
 
-export MCFLY_KEY_SCHEME=emacs # 主要为了<C-w>删除单词
-export MCFLY_FUZZY=2
-
 export EDITOR=nvim
 
 # Ctrl+T 搜索文件
