@@ -1,4 +1,4 @@
-alias reload='. ~/.zshrc && . ~/.zshrc.local && exec zsh'
+alias reload='. ~/.zshrc'
 alias zshc='vim ~/.zshrc'
 alias y='yazi'
 alias ge='gemini'
