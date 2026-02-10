@@ -1,6 +1,7 @@
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 source "${ZINIT_HOME}/zinit.zsh"
 
+# zsh-users/zsh-syntax-highlighting理论上和fast-syntax-highlighting功能重复，但是通过tab补全后fast-syntax-highlighting不会第一时间高亮，zsh-users/zsh-syntax-highlighting弥补这个场景
 zinit wait lucid for \
   OMZL::clipboard.zsh \
   OMZL::completion.zsh \
@@ -10,8 +11,9 @@ zinit wait lucid for \
   zsh-users/zsh-completions \
   hlissner/zsh-autopair \
   lukechilds/zsh-nvm \
+  zsh-users/zsh-syntax-highlighting \
   zdharma-continuum/fast-syntax-highlighting \
-  olets/zsh-abbr
+  Aloxaf/fzf-tab
 
 zinit ice wait lucid atload'_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
