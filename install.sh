@@ -282,6 +282,7 @@ install_if_missing "ni"
 install_if_missing "killport"
 install_if_missing "onefetch"
 install_if_missing "atuin"
+install_if_missing "tldr" "tealdeer"
 
 #   ━━━━━━━━━━━━━━━━━━━━ neovim formatter/linter start ━━━━━━━━━━━━━━━━━━
 install_if_missing "stylua"
@@ -309,6 +310,7 @@ ln -sf "$DOTFILES_DIR/yazi/theme.toml" "$CONFIG_DIR/yazi/theme.toml"
 ln -sf "$DOTFILES_DIR/yazi/yazi.toml" "$CONFIG_DIR/yazi/yazi.toml"
 ln -sf "$DOTFILES_DIR/yazi/init.lua" "$CONFIG_DIR/yazi/init.lua"
 ln -sf "$DOTFILES_DIR/atuin/config.toml" "$CONFIG_DIR/atuin/config.toml"
+ln -sf "$DOTFILES_DIR/tealdeer" "$CONFIG_DIR/tealdeer"
 ln -sf "$DOTFILES_DIR/mprocs" "$CONFIG_DIR/mprocs"
 
 echo "🔗 配置文件链接完成..."
