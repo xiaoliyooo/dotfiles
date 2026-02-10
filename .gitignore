@@ -75,3 +75,4 @@ zsh/*
 !zsh/plugins
 !zsh/setup_zshrc_local.sh
 mprocs
+tealdeer

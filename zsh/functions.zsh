@@ -142,3 +142,7 @@ lss() {
 tree() {
   command tree -C -L 2 -a -I "node_modules" "$@"
 }
+
+dti() {
+  cd ~/dotfiles && sh install.sh
+}
