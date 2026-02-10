@@ -124,7 +124,7 @@ conf() {
     for dir in "${conf_dirs[@]}"; do
       [[ -d "$dir" ]] && fd --type f --hidden \
         --exclude '{.git,node_modules,*.lock,*lock.json,js-debug}' \
-        '\.(json|toml|zsh|rgignore)$|(gitconfig|attributes)$' "$dir"
+        '\.(json|toml|zsh|rgignore|yml)$|(gitconfig|attributes)$' "$dir"
     done
     for f in "${conf_files[@]}"; do
       [[ -f "$f" ]] && echo "$f"

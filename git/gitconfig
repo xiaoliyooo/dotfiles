@@ -1,5 +1,13 @@
 # user配置通过 GIT_AUTHOR_NAME、GIT_AUTHOR_EMAIL、GIT_COMMITTER_NAME、GIT_COMMITTER_EMAIL 设置
 
+[push]
+  autoSetupRemote = true
+[branch]
+  sort = -committerdate
+[column]
+  ui = auto
+[fetch]
+  prune = true
 [alias]
 	co = checkout
 	cp = cherry-pick
