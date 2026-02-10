@@ -5,7 +5,8 @@ export https_proxy="http://127.0.0.1:7897"
 export http_proxy="http://127.0.0.1:7897"
 export all_proxy="socks5://127.0.0.1:7897"
 
-export EZA_CONFIG_DIR="$HOME/.config/nvim/eza/themes"
+export TIME_STYLE="+%Y-%m-%d %H:%M"
+
 export TEALDEER_CONFIG_DIR="$HOME/.config/tealdeer"
 
 export MCFLY_KEY_SCHEME=emacs # 主要为了<C-w>删除单词
@@ -51,3 +52,5 @@ export NVM_LAZY_LOAD=true
 export NVM_LAZY_LOAD_EXTRA_COMMANDS=('ni' 'nlx' 'nr' 'nun' 'nup')
 
 export NVM_DIR="$HOME/.nvm"
+
+export LS_COLORS="$(vivid generate nord)"

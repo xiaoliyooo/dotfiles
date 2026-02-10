@@ -4,7 +4,7 @@ alias y='yazi'
 alias ge='gemini'
 alias j='z'
 
-alias ls="eza -la --icons --no-filesize --no-time --no-user --git"
+alias ls="eza -la --no-filesize --no-user --git"
 alias vim="nvim"
 
 alias cat="bat"
