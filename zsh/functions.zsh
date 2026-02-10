@@ -143,6 +143,6 @@ tree() {
   command tree -C -L 2 -a -I "node_modules" "$@"
 }
 
-dti() {
+ii() {
   cd ~/dotfiles && sh install.sh
 }
