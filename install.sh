@@ -238,6 +238,9 @@ scan_and_install_dmgs() {
 
 echo "🚀 开始安装 dotfiles..."
 
+# 禁用系统默认英文 "Last login:" 消息
+[[ ! -e "$HOME/.hushlogin" ]] && touch "$HOME/.hushlogin"
+
 ln -sf "$DOTFILES_DIR/bun/.bunfig.toml" "$HOME/.bunfig.toml"
 
 install_brew_if_missing
