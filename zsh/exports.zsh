@@ -13,7 +13,7 @@ export MCFLY_FUZZY=2
 export EDITOR=nvim
 
 # Ctrl+T 搜索文件
-export FZF_CTRL_T_COMMAND="fd --type f --hidden --follow --exclude .git"
+export FZF_CTRL_T_COMMAND="fd --type f --follow --exclude '{.git,node_modules,*.lock,*lock.json,js-debug,.zsh_sessions,apps,awrit,Library,Pictures}'"
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
 # Ctrl+D 搜索目录
 export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude .git"
