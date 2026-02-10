@@ -19,14 +19,18 @@ install_if_missing() {
     echo "⚠ $cmd 未找到，正在安装 $package..."
     brew install "$package"
 
-    if [ "$package" = "yazi" ]; then
-      ya pkg add yazi-rs/plugins:full-border
-    fi
-
     if [ "$cmd" = "opencode" ]; then
       echo "📦 安装 oh-my-opencode..."
       (cd "$CONFIG_DIR/opencode" && bun i oh-my-opencode@3.0.0-beta.6)
       echo "✓ oh-my-opencode 安装完成"
+    fi
+
+    if [ "$package" = "yazi" ]; then
+      ya pkg add yazi-rs/plugins:full-border
+    fi
+
+    if [ "$package" = "tealdeer" ]; then
+      tldr --update
     fi
   fi
 }
@@ -278,6 +282,7 @@ install_if_missing "tokei"
 install_if_missing "mprocs"
 install_if_missing "git-summary" "git-extras"
 install_if_missing "git-absorb"
+install_if_missing "difft" "difftastic"
 install_if_missing "gemini" "gemini-cli"
 install_if_missing "opencode" "anomalyco/tap/opencode"
 install_if_missing "ttyd"
