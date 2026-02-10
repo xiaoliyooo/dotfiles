@@ -6,10 +6,13 @@ zinit wait lucid for \
   OMZL::completion.zsh \
   OMZL::history.zsh \
   OMZL::key-bindings.zsh \
-  OMZP::fzf \
   zsh-users/zsh-completions \
   hlissner/zsh-autopair \
   lukechilds/zsh-nvm
+
+# 解绑Esc触发fzf搜索
+zinit ice wait lucid atload'bindkey -r "\ec"'
+zinit snippet OMZP::fzf
 
 # fzf-tab
 zinit ice wait lucid atload'source ${ZDOTDIR}/plugins/fzf-tab.zsh'

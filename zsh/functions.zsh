@@ -108,6 +108,33 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
+conf() {
+  local conf_dirs=(
+    "$HOME/dotfiles"
+    "$HOME/.config/opencode"
+    "$HOME/xiaoli-nvim"
+  )
+  local conf_files=(
+    "$HOME/.zshrc"
+    "$HOME/GUI_Agent_Platform/mprocs.json"
+  )
+
+  local selected
+  selected=$({
+    for dir in "${conf_dirs[@]}"; do
+      [[ -d "$dir" ]] && fd --type f --hidden \
+        --exclude '{.git,node_modules,*.lock,*lock.json,js-debug}' \
+        '\.(json|toml|zsh|rgignore)$|(gitconfig|attributes)$' "$dir"
+    done
+    for f in "${conf_files[@]}"; do
+      [[ -f "$f" ]] && echo "$f"
+    done
+  } | sed "s|^$HOME/||" | sort | fzf --prompt="Configuration ❯ " \
+    --preview "bat -n --color=always --line-range :500 $HOME/{}") || return 0
+
+  [[ -n "$selected" ]] && ${EDITOR:-nvim} "$HOME/$selected"
+}
+
 lss() {
   eza -la --no-filesize --no-time --no-user --git | rg -i "$@"
 }
