@@ -12,8 +12,11 @@ zinit wait lucid for \
   hlissner/zsh-autopair \
   lukechilds/zsh-nvm \
   zsh-users/zsh-syntax-highlighting \
-  zdharma-continuum/fast-syntax-highlighting \
-  Aloxaf/fzf-tab
+  zdharma-continuum/fast-syntax-highlighting
+
+# fzf-tab
+zinit ice wait lucid atload'source ${ZDOTDIR}/plugins/fzf-tab.zsh'
+zinit light Aloxaf/fzf-tab
 
 zinit ice wait lucid atload'_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
