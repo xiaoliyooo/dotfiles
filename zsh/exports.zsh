@@ -51,3 +51,5 @@ export NVM_LAZY_LOAD_EXTRA_COMMANDS=('ni' 'nlx' 'nr' 'nun' 'nup')
 export NVM_DIR="$HOME/.nvm"
 
 export LS_COLORS="$(vivid generate nord)"
+
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'

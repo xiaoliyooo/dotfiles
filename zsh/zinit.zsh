@@ -14,6 +14,10 @@ zinit wait lucid for \
 zinit ice wait lucid atload'bindkey -r "\ec"'
 zinit snippet OMZP::fzf
 
+# carapace 额外补全
+zinit ice wait lucid as"null" atload'source <(carapace _carapace)'
+zinit light zdharma-continuum/null
+
 # fzf-tab
 zinit ice wait lucid atload'source ${ZDOTDIR}/plugins/fzf-tab.zsh'
 zinit light Aloxaf/fzf-tab

@@ -286,6 +286,7 @@ install_if_missing "onefetch"
 install_if_missing "atuin"
 install_if_missing "tldr" "tealdeer"
 install_if_missing "vivid"
+install_if_missing "carapace"
 
 #   ━━━━━━━━━━━━━━━━━━━━ neovim formatter/linter start ━━━━━━━━━━━━━━━━━━
 install_if_missing "stylua"
