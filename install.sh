@@ -315,6 +315,7 @@ ln -sf "$DOTFILES_DIR/yazi/init.lua" "$CONFIG_DIR/yazi/init.lua"
 ln -sf "$DOTFILES_DIR/atuin/config.toml" "$CONFIG_DIR/atuin/config.toml"
 ln -sf "$DOTFILES_DIR/tealdeer" "$CONFIG_DIR/tealdeer"
 ln -sf "$DOTFILES_DIR/mprocs" "$CONFIG_DIR/mprocs"
+ln -sf "$DOTFILES_DIR/bat" "$CONFIG_DIR/bat"
 
 echo "🔗 配置文件链接完成..."
 
