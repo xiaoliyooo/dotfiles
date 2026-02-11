@@ -39,6 +39,10 @@ install_if_missing() {
     if [ "$package" = "tealdeer" ]; then
       tldr --update
     fi
+
+    if [ "$package" = "kitty" ]; then
+      replace_kitty_icon
+    fi
   fi
 }
 
@@ -109,15 +113,6 @@ install_npm_if_missing() {
   else
     echo "⚠ $cmd 未找到，正在安装 $package..."
     npm i -g "$package"
-  fi
-}
-
-install_kitty_if_missing() {
-  if command_exists "kitty"; then
-    echo "✓ kitty 已安装"
-  else
-    echo "⚠ kitty 未找到，正在安装..."
-    curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
   fi
 }
 
@@ -258,17 +253,16 @@ install_brew_if_missing
 install_rust_if_missing
 install_nvm_if_missing
 install_pip3_if_missing
-install_kitty_if_missing
-replace_kitty_icon
 install_zinit_if_missing
 install_zinit_plugins
 install_font_if_missing "JetBrainsMonoNL-Bold.ttf"
 install_cask_if_missing "font-fira-code"
 install_cask_if_missing "font-fira-code-nerd-font"
-install_npm_if_missing "pnpm"
-install_npm_if_missing "prettier"
 install_npm_if_missing "tsc" "typescript"
 install_npm_if_missing "bun"
+install_if_missing "kitty"
+install_if_missing "prettier"
+install_if_missing "pnpm"
 install_if_missing "git"
 install_if_missing "bat"
 install_if_missing "delta"
@@ -318,7 +312,6 @@ mkdir -p "$CONFIG_DIR/atuin"
 mkdir -p "$CONFIG_DIR/btop"
 
 ln -sf "$DOTFILES_DIR/git/gitconfig" "$HOME/.gitconfig"
-ln -sfn "$DOTFILES_DIR/kitty" "$CONFIG_DIR/kitty"
 ln -sf "$DOTFILES_DIR/lazygit/lazygit_config.yml" "$CONFIG_DIR/lazygit/config.yml"
 ln -sf "$DOTFILES_DIR/git/attributes" "$CONFIG_DIR/git/attributes"
 ln -sf "$DOTFILES_DIR/starship/starship.toml" "$CONFIG_DIR/starship.toml"
@@ -328,6 +321,8 @@ ln -sf "$DOTFILES_DIR/yazi/theme.toml" "$CONFIG_DIR/yazi/theme.toml"
 ln -sf "$DOTFILES_DIR/yazi/yazi.toml" "$CONFIG_DIR/yazi/yazi.toml"
 ln -sf "$DOTFILES_DIR/yazi/init.lua" "$CONFIG_DIR/yazi/init.lua"
 ln -sf "$DOTFILES_DIR/atuin/config.toml" "$CONFIG_DIR/atuin/config.toml"
+
+link_dir "kitty"
 link_dir "tealdeer"
 link_dir "mprocs"
 link_dir "bat"
