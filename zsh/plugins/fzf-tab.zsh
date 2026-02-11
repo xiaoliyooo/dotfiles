@@ -5,3 +5,13 @@ zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
 zstyle ':completion:*' menu no
+
+# zoxide 数据库历史路径替代默认目录补全，fzf-tab接管
+_z() {
+  local -a dirs
+  dirs=(${(f)"$(zoxide query -l -- ${words[2,-1]} 2>/dev/null)"})
+  compadd -U -V 'recent directories' -- "${dirs[@]}"
+  # 跳过 / 路径插入
+  compstate[list]="force"
+}
+compdef _z z j
