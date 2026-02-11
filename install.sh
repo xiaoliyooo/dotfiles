@@ -9,6 +9,13 @@ command_exists() {
   command -v "$1" >/dev/null 2>&1
 }
 
+link_dir() {
+  local src="$DOTFILES_DIR/$1"
+  local dest="$CONFIG_DIR/$1"
+  [ -d "$dest" ] && [ ! -L "$dest" ] && rm -rf "$dest"
+  ln -sfn "$src" "$dest"
+}
+
 install_if_missing() {
   local cmd="$1"
   local package="${2:-$1}"
@@ -321,10 +328,10 @@ ln -sf "$DOTFILES_DIR/yazi/theme.toml" "$CONFIG_DIR/yazi/theme.toml"
 ln -sf "$DOTFILES_DIR/yazi/yazi.toml" "$CONFIG_DIR/yazi/yazi.toml"
 ln -sf "$DOTFILES_DIR/yazi/init.lua" "$CONFIG_DIR/yazi/init.lua"
 ln -sf "$DOTFILES_DIR/atuin/config.toml" "$CONFIG_DIR/atuin/config.toml"
-ln -sfn "$DOTFILES_DIR/tealdeer" "$CONFIG_DIR/tealdeer"
-ln -sfn "$DOTFILES_DIR/mprocs" "$CONFIG_DIR/mprocs"
-ln -sfn "$DOTFILES_DIR/bat" "$CONFIG_DIR/bat"
-ln -sfn "$DOTFILES_DIR/btop" "$CONFIG_DIR/btop"
+link_dir "tealdeer"
+link_dir "mprocs"
+link_dir "bat"
+link_dir "btop"
 
 echo "🔗 配置文件链接完成..."
 
