@@ -293,6 +293,7 @@ install_if_missing "atuin"
 install_if_missing "tldr" "tealdeer"
 install_if_missing "vivid"
 install_if_missing "carapace"
+install_if_missing "btop"
 
 #   ━━━━━━━━━━━━━━━━━━━━ neovim formatter/linter start ━━━━━━━━━━━━━━━━━━
 install_if_missing "stylua"
@@ -307,6 +308,7 @@ mkdir -p "$CONFIG_DIR/git"
 mkdir -p "$CONFIG_DIR/yazi"
 mkdir -p "$CONFIG_DIR/opencode"
 mkdir -p "$CONFIG_DIR/atuin"
+mkdir -p "$CONFIG_DIR/btop"
 
 ln -sf "$DOTFILES_DIR/git/gitconfig" "$HOME/.gitconfig"
 ln -sfn "$DOTFILES_DIR/kitty" "$CONFIG_DIR/kitty"
@@ -322,6 +324,7 @@ ln -sf "$DOTFILES_DIR/atuin/config.toml" "$CONFIG_DIR/atuin/config.toml"
 ln -sfn "$DOTFILES_DIR/tealdeer" "$CONFIG_DIR/tealdeer"
 ln -sfn "$DOTFILES_DIR/mprocs" "$CONFIG_DIR/mprocs"
 ln -sfn "$DOTFILES_DIR/bat" "$CONFIG_DIR/bat"
+ln -sfn "$DOTFILES_DIR/btop" "$CONFIG_DIR/btop"
 
 echo "🔗 配置文件链接完成..."
 

@@ -8,6 +8,7 @@ alias ls="eza -la --no-filesize --no-user --git"
 alias vim="nvim"
 
 alias cat="bat"
+alias top="btop"
 
 alias date='gdate "+%Y-%m-%d %H:%M:%S %A"'
 alias dt='date'
