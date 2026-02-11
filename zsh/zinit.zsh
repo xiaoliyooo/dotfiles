@@ -34,6 +34,9 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 zinit ice wait lucid as"null" atload'eval "$(atuin init zsh)"'
 zinit light zdharma-continuum/null
 
+zinit ice wait lucid as"program" pick"git-open"
+zinit light paulirish/git-open
+
 autoload -Uz compinit
 if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
   compinit
