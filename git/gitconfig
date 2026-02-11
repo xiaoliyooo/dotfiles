@@ -1,5 +1,10 @@
 # user配置通过 GIT_AUTHOR_NAME、GIT_AUTHOR_EMAIL、GIT_COMMITTER_NAME、GIT_COMMITTER_EMAIL 设置
 
+[init]
+  defaultBranch = main
+[diff]
+  colorMoved = default 
+  algorithm = histogram
 [push]
   autoSetupRemote = true
 [branch]
@@ -21,9 +26,27 @@
 [interactive]
     diffFilter = delta --color-only
 [delta]
-    navigate = true  # use n and N to move between diff sections
-    dark = true      # or light = true, or omit for auto-detection
+    navigate = true
+    dark = true
     side-by-side = true
+    syntax-theme = Visual Studio Dark+
+    map-styles = "bold purple => #808080, bold cyan => #0bf432"
+
+    ; 文件头
+    file-style = bold yellow ul
+    file-decoration-style = none
+    file-modified-label = "M"
+    file-added-label = "A"
+    file-removed-label = "D"
+    file-renamed-label = "R"
+
+    ; Hunk 头
+    hunk-header-style = syntax bold
+    hunk-header-decoration-style = none
+
+    ; 行号格式（去掉边框）
+    line-numbers-left-format = "{nm:>3} "
+    line-numbers-right-format = "{np:>3} "
 [merge]
     conflictstyle = zdiff3
 [http]
@@ -31,4 +54,3 @@
 [merge "mergiraf"]
 	name = mergiraf
 	driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
-
