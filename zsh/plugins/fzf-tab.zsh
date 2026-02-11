@@ -13,5 +13,6 @@ _z() {
   compadd -U -V 'recent directories' -- "${dirs[@]}"
   # 跳过 / 路径插入
   compstate[list]="force"
+  compstate[insert]=''
 }
 compdef _z z j
