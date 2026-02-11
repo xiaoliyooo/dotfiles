@@ -162,7 +162,7 @@ vim() {
 
   # 3.zoxide 路径跳转
   local matches
-  matches=$(zoxide query --list "$@" 2>/dev/null)
+  matches=$(zoxide query --list "$@" 2>/dev/null | rg -v '\.local|\.cache|node_modules')
 
   if [ -n "$matches" ]; then
     local dir
