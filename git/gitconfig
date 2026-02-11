@@ -30,7 +30,7 @@
     dark = true
     side-by-side = true
     syntax-theme = Visual Studio Dark+
-    map-styles = "bold purple => #808080, bold cyan => #0bf432"
+    map-styles = "bold cyan => #0bf432"
 
     ; 文件头
     file-style = bold yellow ul
@@ -45,8 +45,11 @@
     hunk-header-decoration-style = none
 
     ; 行号格式（去掉边框）
-    line-numbers-left-format = "{nm:>3} "
-    line-numbers-right-format = "{np:>3} "
+    line-numbers-left-format = "{nm:>4} "
+    line-numbers-right-format = "{np:>4} "
+    line-numbers-minus-style = "#901010"
+    line-numbers-plus-style = "#136000"
+    line-numbers-zero-style = "#666666"
 [merge]
     conflictstyle = zdiff3
 [http]
