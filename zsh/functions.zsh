@@ -146,3 +146,33 @@ tree() {
 ii() {
   cd ~/dotfiles && sh install.sh
 }
+
+vim() {
+  # 1.无参数打开当前目录
+  if [ $# -eq 0 ]; then
+    nvim
+    return
+  fi
+
+  # 2.参数包含路径格式或者 vim .
+  if [[ "$*" == *"/"* ]] || [[ "$*" == *"."* ]]; then
+    nvim "$@"
+    return
+  fi
+
+  # 3.zoxide 路径跳转
+  local matches
+  matches=$(zoxide query --list "$@" 2>/dev/null)
+
+  if [ -n "$matches" ]; then
+    local dir
+    dir=$(echo "$matches" | fzf --height=40% --layout=reverse --border --select-1 --exit-0 --prompt='Select > ')
+
+    if [ -n "$dir" ]; then
+      cd "$dir" && nvim .
+    fi
+    return
+  else
+    echo "zoxide: no match found"
+  fi
+}
