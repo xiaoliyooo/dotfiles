@@ -31,7 +31,7 @@ zinit ice wait lucid
 zinit light zdharma-continuum/fast-syntax-highlighting
 
 # atuin 懒加载
-zinit ice wait lucid as"null" atload'eval "$(atuin init zsh)"'
+zinit ice wait lucid as"null" atload'eval "$(atuin init zsh --disable-up-arrow)"'
 zinit light zdharma-continuum/null
 
 zinit ice wait lucid as"program" pick"git-open"
