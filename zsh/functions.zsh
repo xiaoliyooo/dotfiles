@@ -169,7 +169,7 @@ vim() {
     dir=$(echo "$matches" | fzf --height=40% --layout=reverse --border --select-1 --exit-0 --prompt='Select > ')
 
     if [ -n "$dir" ]; then
-      cd "$dir" && nvim .
+      cd "$dir" && nvim
     fi
     return
   else
