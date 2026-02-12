@@ -3,7 +3,7 @@
 # 定义变量
 DOTFILES_DIR="$HOME/dotfiles"
 CONFIG_DIR="$HOME/.config"
-source "$DOTFILES_DIR/zsh/setup_zshrc_local.sh"
+source "$DOTFILES_DIR/env.local/index.zsh"
 
 command_exists() {
   command -v "$1" >/dev/null 2>&1
