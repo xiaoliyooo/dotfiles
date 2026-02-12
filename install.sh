@@ -16,6 +16,31 @@ link_dir() {
   ln -sfn "$src" "$dest"
 }
 
+link_git_scripts() {
+  echo "🔗 正在链接 git 脚本..."
+  local git_scripts_dir="$DOTFILES_DIR/git"
+  local bin_dir="$HOME/.local/bin"
+
+  mkdir -p "$bin_dir"
+
+  for script in "$git_scripts_dir"/git-*; do
+    if [ -f "$script" ]; then
+      local script_name=$(basename "$script")
+      local subcmd=${script_name#git-}
+
+      if git --list-cmds=main,alias | grep -q "^$subcmd$"; then
+        echo "  ⚠️  Git 子命令 '$subcmd' 已存在(内置或别名)，跳过链接 $script_name"
+        continue
+      fi
+
+      ln -sf "$script" "$bin_dir/$script_name"
+      chmod +x "$script"
+      echo "  ✓ Linked $script_name"
+    fi
+
+  done
+}
+
 install_if_missing() {
   local cmd="$1"
   local package="${2:-$1}"
@@ -327,6 +352,8 @@ link_dir "tealdeer"
 link_dir "mprocs"
 link_dir "bat"
 link_dir "btop"
+
+link_git_scripts
 
 echo "🔗 配置文件链接完成..."
 

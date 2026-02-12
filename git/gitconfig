@@ -5,6 +5,7 @@
 [diff]
   colorMoved = default 
   algorithm = histogram
+	renames = true
 [push]
   autoSetupRemote = true
 [branch]
@@ -16,6 +17,7 @@
 [alias]
 	co = checkout
 	cp = cherry-pick
+	cm = commit -m
 [pull]
 	rebase = false
 [core]
@@ -57,3 +59,5 @@
 [merge "mergiraf"]
 	name = mergiraf
 	driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
+[help]
+	autocorrect = immediate 

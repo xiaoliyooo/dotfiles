@@ -13,7 +13,8 @@ export EDITOR=nvim
 
 # Ctrl+T 搜索文件
 export FZF_CTRL_T_COMMAND="fd --type f --follow --exclude '{.git,node_modules,*.lock,*lock.json,js-debug,.zsh_sessions,apps,awrit,Library,Pictures}'"
-export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
+# 预览时现实相对路径，插入转换为绝对路径
+export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}' --bind 'enter:become(zsh -c '\\''print -rl -- \${@:a}'\\'' -- {+})'"
 # Ctrl+D 搜索目录
 export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude .git"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"

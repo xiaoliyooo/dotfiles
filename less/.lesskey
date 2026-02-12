@@ -1,2 +1,7 @@
 J forw-line 5
 K back-line 5
+#env
+LESS = -i -g -j.5
+LESS_TERMCAP_so = \e[37;41m
+LESS_TERMCAP_se = \e[0m
+

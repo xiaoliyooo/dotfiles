@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# >>> 防止 .obsidian/workspace.json 冲突 >>>
+# 1. 取消暂存
+if git diff --cached --name-only | grep -q '\.obsidian/workspace\.json'; then
+  git restore --staged .obsidian/workspace.json
+fi
+# 2. 撤回更改
+if git diff --name-only | grep -q '\.obsidian/workspace\.json'; then
+  git checkout -- .obsidian/workspace.json
+fi
+# <<< 防止 .obsidian/workspace.json 冲突 <<<
+
+git pull && git add . && git commit -m "update" && git push
