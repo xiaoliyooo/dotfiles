@@ -327,6 +327,7 @@ install_if_missing "tldr" "tealdeer"
 install_if_missing "vivid"
 install_if_missing "carapace"
 install_if_missing "btop"
+install_if_missing "dust"
 
 #   ━━━━━━━━━━━━━━━━━━━━ neovim formatter/linter start ━━━━━━━━━━━━━━━━━━
 install_if_missing "stylua"
