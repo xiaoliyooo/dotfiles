@@ -68,6 +68,10 @@ install_if_missing() {
     if [ "$package" = "kitty" ]; then
       replace_kitty_icon
     fi
+
+    if [ "$package" = "git-lfs" ]; then
+      git lfs install
+    fi
   fi
 }
 
@@ -310,6 +314,8 @@ install_if_missing "mprocs"
 install_if_missing "git-summary" "git-extras"
 install_if_missing "git-absorb"
 install_if_missing "difft" "difftastic"
+install_if_missing "git-lfs"
+install_if_missing "git-imerge"
 install_if_missing "gemini" "gemini-cli"
 install_if_missing "opencode" "anomalyco/tap/opencode"
 install_if_missing "ttyd"
