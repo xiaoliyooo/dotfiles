@@ -59,6 +59,12 @@
     line-numbers-minus-style = "#901010"
     line-numbers-plus-style = "#136000"
     line-numbers-zero-style = "#666666"
+
+    ; 冲突样式
+    merge-conflict-ours-diff-header-style = cyan bold
+    merge-conflict-ours-diff-header-decoration-style = none
+    merge-conflict-theirs-diff-header-style = green bold
+    merge-conflict-theirs-diff-header-decoration-style = none
 [merge]
     conflictstyle = zdiff3
 [http]
