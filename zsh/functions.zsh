@@ -39,6 +39,8 @@ gs() {
     if [ -d "$proj/.git" ]; then
       echo -e "\n\033[1;34m==> Project: $proj\033[0m"
       git -C "$proj" status -s
+      local unpushed=$(git -C "$proj" rev-list --count @{u}..HEAD 2>/dev/null)
+      [[ -n "$unpushed" ]] && [[ "$unpushed" -gt 0 ]] && echo -e "\033[1;33m==> Unpushed: $unpushed\033[0m"
     else
       echo -e "\n\033[1;33m==> Skipping: $proj (Not a git repo)\033[0m"
     fi
