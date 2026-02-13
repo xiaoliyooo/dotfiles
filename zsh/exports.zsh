@@ -7,8 +7,8 @@ export all_proxy="socks5://127.0.0.1:7897"
 
 export TIME_STYLE="+%Y-%m-%d %H:%M"
 export EDITOR=nvim
-export MANPAGER="nvim +Man!"
 export LIGHT_GREEN="#0bf432" # 注释绿色
+export PAGER=nvimpager
 
 # Ctrl+T 搜索文件
 export FZF_CTRL_T_COMMAND="fd --type f --follow --exclude '{.git,node_modules,*.lock,*lock.json,js-debug,.zsh_sessions,apps,awrit,Library,Pictures}'"

@@ -37,6 +37,7 @@
 [delta]
     navigate = true
     dark = true
+    pager = less # 覆盖nvimpager
     side-by-side = true
     syntax-theme = Visual Studio Dark+
     map-styles = "bold cyan => #0bf432"

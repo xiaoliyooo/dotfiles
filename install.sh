@@ -294,6 +294,7 @@ install_if_missing "delta"
 install_if_missing "eza"
 install_if_missing "tree"
 install_if_missing "nvim" "neovim"
+install_if_missing "nvimpager"
 install_if_missing "gdate" "coreutils"
 install_if_missing "mergiraf"
 install_if_missing "starship"
@@ -352,6 +353,11 @@ link_dir "tealdeer"
 link_dir "mprocs"
 link_dir "bat"
 link_dir "btop"
+
+echo "🔗 配置 nvimpager..."
+ln -sfn "$CONFIG_DIR/nvim" "$CONFIG_DIR/nvimpager"
+mkdir -p "$HOME/.local/share"
+ln -sfn "$HOME/.local/share/nvim" "$HOME/.local/share/nvimpager"
 
 link_git_scripts
 
