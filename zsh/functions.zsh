@@ -125,6 +125,15 @@ conf() {
   [[ -n "$selected" ]] && ${EDITOR:-nvim} "$HOME/$selected"
 }
 
+dirs() {
+  cd "$(
+    {
+      fd --type d --exclude '{.git,node_modules,js-debug,Library,build,dist,anaconda3,Movies,Music,Pictures,Documents}' . ~
+      fd --type d . ~/.config
+    } | fzf --height 40% --reverse
+  )"
+}
+
 lss() {
   eza -la --no-filesize --no-time --no-user --git | rg -i "$@"
 }
@@ -138,31 +147,16 @@ ii() {
 }
 
 vim() {
-  # 1.无参数打开当前目录
+  # 无参数打开当前目录
   if [ $# -eq 0 ]; then
     nvim
     return
   fi
 
-  # 2.参数包含路径格式或者. -> (vim .)
-  if [[ "$*" == *"/"* ]] || [[ "$*" == *"."* ]]; then
-    nvim "$@"
-    return
-  fi
-
-  # 3.zoxide 路径跳转
-  local matches
-  matches=$(zoxide query --list "$@" 2>/dev/null | rg -v '\.local|\.cache|node_modules')
-
-  if [ -n "$matches" ]; then
-    local dir
-    dir=$(echo "$matches" | fzf --height=40% --layout=reverse --border --select-1 --exit-0 --prompt='Select > ')
-
-    if [ -n "$dir" ]; then
-      cd "$dir" && nvim
-    fi
-    return
+  if [[ -d "$1" ]]; then
+    cd "$1" && nvim
   else
-    echo "zoxide: no match found"
+    nvim "$@"
   fi
+  return
 }

@@ -30,4 +30,7 @@ _fzf_tab_z() {
   compstate[insert]=''
 }
 
+# 补全选择后自动执行
+zstyle ':fzf-tab:complete:(vim|z|j):*' accept-line enter
+
 compdef _fzf_tab_z z j vim
