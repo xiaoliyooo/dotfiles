@@ -125,7 +125,7 @@ conf() {
   [[ -n "$selected" ]] && ${EDITOR:-nvim} "$HOME/$selected"
 }
 
-dirs() {
+dd() {
   cd "$(
     {
       fd --type d --exclude '{.git,node_modules,js-debug,Library,build,dist,anaconda3,Movies,Music,Pictures,Documents}' . ~
