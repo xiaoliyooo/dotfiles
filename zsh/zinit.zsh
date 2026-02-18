@@ -39,9 +39,9 @@ zinit light paulirish/git-open
 
 autoload -Uz compinit
 if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
-  compinit
+  compinit -u
 else
-  compinit -C  # 使用缓存，24小时内不重建
+  compinit -C -u  # 使用缓存，24小时内不重建
 fi
 
 # 禁用补全 "do you wish to see all X possibilities?" 提示
