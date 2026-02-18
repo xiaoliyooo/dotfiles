@@ -1,5 +1,6 @@
 [mgr]
 prepend_keymap = [
+  { on = "r", run = "plugin smart-rename", desc = "Smart rename (auto mkdir)" },
   { on = "<S-j>", run = "arrow 5", desc = "5j" },
   { on = "<S-k>", run = "arrow -5", desc = "tk" },
   { on = "z", run = "noop" },
