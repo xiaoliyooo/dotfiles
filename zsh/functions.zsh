@@ -145,18 +145,3 @@ tree() {
 ii() {
   cd ~/dotfiles && sh install.sh
 }
-
-vim() {
-  # 无参数打开当前目录
-  if [ $# -eq 0 ]; then
-    nvim
-    return
-  fi
-
-  if [[ -d "$1" ]]; then
-    cd "$1" && nvim
-  else
-    nvim "$@"
-  fi
-  return
-}
