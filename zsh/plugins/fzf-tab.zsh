@@ -8,20 +8,6 @@ zstyle ':completion:*' menu no
 
 # zoxide 数据库历史路径替代默认目录补全，fzf-tab接管
 _fzf_tab_z() {
-  # 输入路径前缀，回到标准文件补全
-  # ./
-  # ../
-  # /
-  # ~
-  if [[ ${words[CURRENT]} == ./* ]] || [[ ${words[CURRENT]} == /* ]] || [[ ${words[CURRENT]} == "~"* ]]; then
-    if [[ $service == vim ]]; then
-      _files
-    else
-      _directories
-    fi
-    return
-  fi
-
   local -a dirs
   dirs=(${(f)"$(zoxide query -l -- ${words[2,-1]} 2>/dev/null)"})
   compadd -U -V 'recent directories' -- "${dirs[@]}"
@@ -31,6 +17,6 @@ _fzf_tab_z() {
 }
 
 # 补全选择后自动执行
-zstyle ':fzf-tab:complete:(vim|z|j):*' accept-line enter
+zstyle ':fzf-tab:complete:(vim|nvim|z|j):*' accept-line enter
 
-compdef _fzf_tab_z z j vim
+compdef _fzf_tab_z z j
