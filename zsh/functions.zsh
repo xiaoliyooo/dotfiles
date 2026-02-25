@@ -126,12 +126,7 @@ conf() {
 }
 
 dd() {
-  cd "$(
-    {
-      fd --type d --exclude '{.git,node_modules,js-debug,Library,build,dist,anaconda3,Movies,Music,Pictures,Documents}' . ~
-      fd --type d . ~/.config
-    } | fzf --height 40% --reverse
-  )"
+  cd "$(fzf-dir-search | fzf --height 50% --reverse)"
 }
 
 lss() {

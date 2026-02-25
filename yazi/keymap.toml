@@ -6,6 +6,17 @@ prepend_keymap = [
     "c",
     "m"
   ], run = "plugin chmod", desc = "Chmod on selected files" },
+  {
+    on = "<C-e>",
+    run = '''
+    shell --block --confirm '
+        dest=$(fzf-dir-search | fzf --height 50% --reverse)
+        if [ -n "$dest" ]; then
+            ya emit cd "$dest"
+        fi
+    '
+  ''',
+    desc = "跳转指定文件夹" },
   { on = "<S-j>", run = "arrow 5", desc = "5j" },
   { on = "<S-k>", run = "arrow -5", desc = "tk" },
   { on = "z", run = "noop" },

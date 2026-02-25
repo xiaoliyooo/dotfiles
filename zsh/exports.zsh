@@ -1,5 +1,6 @@
 export PATH="/opt/homebrew/bin:$PATH" # 强制 Homebrew 的 bin 目录排在系统路径之前 覆盖bash版本
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/dotfiles/bin:$PATH"
 
 export https_proxy="http://127.0.0.1:7897"
 export http_proxy="http://127.0.0.1:7897"
