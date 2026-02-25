@@ -2,6 +2,10 @@
 prepend_keymap = [
   { on = "r", run = "plugin smart-rename", desc = "Smart rename (auto mkdir)" },
   { on = "l", run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
+  { on = [
+    "c",
+    "m"
+  ], run = "plugin chmod", desc = "Chmod on selected files" },
   { on = "<S-j>", run = "arrow 5", desc = "5j" },
   { on = "<S-k>", run = "arrow -5", desc = "tk" },
   { on = "z", run = "noop" },

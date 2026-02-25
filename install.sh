@@ -78,6 +78,7 @@ install_yazi_plugins() {
   local plugins=(
     "yazi-rs/plugins:full-border"
     "yazi-rs/plugins:smart-enter"
+    "yazi-rs/plugins:chmod"
   )
 
   for plugin in "${plugins[@]}"; do
