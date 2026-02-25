@@ -57,10 +57,6 @@ install_if_missing() {
       echo "✓ oh-my-opencode 安装完成"
     fi
 
-    if [ "$package" = "yazi" ]; then
-      ya pkg add yazi-rs/plugins:full-border
-    fi
-
     if [ "$package" = "tealdeer" ]; then
       tldr --update
     fi
@@ -73,6 +69,32 @@ install_if_missing() {
       git lfs install
     fi
   fi
+}
+
+install_yazi_plugins() {
+  local yazi_plugins_dir="$CONFIG_DIR/yazi/plugins"
+  mkdir -p "$yazi_plugins_dir"
+
+  local plugins=(
+    "yazi-rs/plugins:full-border"
+    "yazi-rs/plugins:smart-enter"
+  )
+
+  for plugin in "${plugins[@]}"; do
+    local plugin_name="${plugin##*:}"
+    local plugin_dir="$yazi_plugins_dir/${plugin_name}.yazi"
+
+    if [ -d "$plugin_dir" ]; then
+      echo "✓ yazi 插件 $plugin_name 已安装"
+    else
+      echo "📦 安装 yazi 插件 $plugin_name..."
+      # 防止目录不存在但package.toml中仍有记录
+      ya pkg delete "$plugin" 2>/dev/null || true
+      ya pkg add "$plugin"
+    fi
+  done
+
+  ln -sfn "$DOTFILES_DIR/yazi/plugins/smart-rename.yazi" "$CONFIG_DIR/yazi/plugins/smart-rename.yazi"
 }
 
 install_zinit_if_missing() {
@@ -353,7 +375,6 @@ ln -sf "$DOTFILES_DIR/yazi/keymap.toml" "$CONFIG_DIR/yazi/keymap.toml"
 ln -sf "$DOTFILES_DIR/yazi/theme.toml" "$CONFIG_DIR/yazi/theme.toml"
 ln -sf "$DOTFILES_DIR/yazi/yazi.toml" "$CONFIG_DIR/yazi/yazi.toml"
 ln -sf "$DOTFILES_DIR/yazi/init.lua" "$CONFIG_DIR/yazi/init.lua"
-ln -sfn "$DOTFILES_DIR/yazi/plugins/smart-rename.yazi" "$CONFIG_DIR/yazi/plugins/smart-rename.yazi"
 ln -sf "$DOTFILES_DIR/atuin/config.toml" "$CONFIG_DIR/atuin/config.toml"
 
 link_dir "kitty"
@@ -391,5 +412,7 @@ install_app_if_missing "AltTab" "alt-tab"
 
 clone_apps_repo
 scan_and_install_dmgs "$HOME/apps/app-dmg"
+
+install_yazi_plugins
 
 echo "✅ 安装完成！"
