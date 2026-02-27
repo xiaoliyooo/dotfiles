@@ -122,7 +122,16 @@ conf() {
   } | sed "s|^$HOME/||" | sort | fzf --prompt="Configuration ❯ " \
     --preview "bat -n --color=always --line-range :500 $HOME/{}") || return 0
 
-  [[ -n "$selected" ]] && ${EDITOR:-nvim} "$HOME/$selected"
+  if [[ -n "$selected" ]]; then
+    local target="$HOME/$selected"
+    local target_dir target_file
+    target_dir="${target:h}"
+    target_file="${target:t}"
+    (
+      cd "$target_dir" || return
+      ${EDITOR:-nvim} "$target_file"
+    )
+  fi
 }
 
 dd() {
