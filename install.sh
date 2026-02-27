@@ -49,6 +49,11 @@ install_if_missing() {
     echo "✓ $cmd 已安装"
   else
     echo "⚠ $cmd 未找到，正在安装 $package..."
+
+    if [ "$package" = "im-select" ]; then
+      install_tap_if_missing "daipeihust/tap"
+    fi
+
     brew install "$package"
 
     if [ "$cmd" = "opencode" ]; then
@@ -123,6 +128,17 @@ install_brew_if_missing() {
   else
     echo "⚠ Homebrew 未找到，正在安装..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
+}
+
+install_tap_if_missing() {
+  local tap_name="$1"
+
+  if brew tap | grep -qx "$tap_name"; then
+    echo "✓ tap $tap_name 已存在"
+  else
+    echo "📦 添加 Homebrew tap: $tap_name"
+    brew tap "$tap_name"
   fi
 }
 
@@ -341,6 +357,7 @@ install_if_missing "git-lfs"
 install_if_missing "git-imerge"
 install_if_missing "gemini" "gemini-cli"
 install_if_missing "opencode" "anomalyco/tap/opencode"
+install_if_missing "im-select"
 install_if_missing "ttyd"
 install_if_missing "ni"
 install_if_missing "killport"
@@ -351,6 +368,9 @@ install_if_missing "vivid"
 install_if_missing "carapace"
 install_if_missing "btop"
 install_if_missing "dust"
+install_if_missing "magick" "imagemagick"
+install_if_missing "rg" "ripgrep"
+install_if_missing "rust-analyzer"
 
 #   ━━━━━━━━━━━━━━━━━━━━ neovim formatter/linter start ━━━━━━━━━━━━━━━━━━
 install_if_missing "stylua"
@@ -358,6 +378,7 @@ install_if_missing "shfmt"
 install_if_missing "shellcheck"
 install_if_missing "taplo"
 install_if_missing "ruff"
+install_if_missing "sql-formatter"
 #   ━━━━━━━━━━━━━━━━━━━━━ neovim formatter/linter end ━━━━━━━━━━━━━━━━━━━
 
 mkdir -p "$CONFIG_DIR/lazygit"
