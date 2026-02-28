@@ -97,7 +97,7 @@
 | **ruff**               | Python 代码静态分析与格式化工具          |
 | **shellcheck**         | Shell 脚本静态语法扫描与分析工具         |
 | **rust-analyzer**      | Rust 语言分析和自动补全语言服务器        |
-| **nvim / neovim**      | Neovim 文本编辑器                        |
+| **neovim**             | Neovim 文本编辑器                        |
 | **nvimpager**          | 基于 Neovim 的终端分页阅读器             |
 | **opencode**           | 开源智能体                               |
 | **gemini**             | Gemini Cli                               |
@@ -114,13 +114,15 @@
 | **switchhosts**        | Hosts 文件管理                     |
 | **pixpin**             | 多功能截图工具                     |
 | **tencent-lemon**      | macOS 系统本地垃圾缓存清理工具     |
-| **wechat / qqmusic**   | 微信客户端与 QQ 音乐               |
+| **wechat**             | 微信                               |
+| **qqmusic**            | QQ 音乐                            |
 | **google-chrome**      | Google Chrome 浏览器               |
 | **firefox**            | Firefox 浏览器                     |
 | **obsidian**           | Obsidian 笔记软件                  |
 | **wpsoffice**          | WPS                                |
 | **docker**             | Docker                             |
 | **visual-studio-code** | VS Code 编辑器                     |
+| **KeyStats**           | macOS 菜单栏键盘鼠标使用统计工具   |
 
 ## 配置引用方式
 

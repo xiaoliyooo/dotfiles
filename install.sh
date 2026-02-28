@@ -236,6 +236,11 @@ install_app_if_missing() {
     echo "✓ $app_name 已安装"
   else
     echo "⚠ $app_name 未找到，正在安装..."
+
+    if [ "$cask_name" = "keystats" ]; then
+      install_tap_if_missing "debugtheworldbot/keystats"
+    fi
+
     brew install --cask "$cask_name"
   fi
 }
@@ -431,6 +436,7 @@ install_app_if_missing "Ice" "jordanbaird-ice"
 install_app_if_missing "Tencent Lemon" "tencent-lemon"
 install_app_if_missing "Visual Studio Code" "visual-studio-code"
 install_app_if_missing "AltTab" "alt-tab"
+install_app_if_missing "KeyStats" "keystats"
 
 clone_apps_repo
 scan_and_install_dmgs "$HOME/apps/app-dmg"
