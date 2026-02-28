@@ -7,7 +7,7 @@ prepend_keymap = [
     "m"
   ], run = "plugin chmod", desc = "Chmod on selected files" },
   {
-    on = "<C-e>",
+    on = "<C-;>",
     run = '''
     shell --block --confirm '
         dest=$(fzf-dir-search | fzf --height 50% --reverse)

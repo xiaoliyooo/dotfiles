@@ -138,6 +138,21 @@ dd() {
   cd "$(fzf-dir-search | fzf --height 50% --reverse)"
 }
 
+dd-widget() {
+  setopt localoptions pipefail no_aliases 2>/dev/null
+  local dir
+  dir="$(fzf-dir-search | fzf --height 50% --reverse)"
+  if [[ -z "$dir" ]]; then
+    zle redisplay
+    return 0
+  fi
+  builtin cd -- "$dir"
+  zle reset-prompt
+}
+zle -N dd-widget
+# Ctrl+; 通过 kitty send_text 发送 CSI u 序列 \x1b[59;5u
+bindkey '\e[59;5u' dd-widget
+
 lss() {
   eza -la --no-filesize --no-time --no-user --git | rg -i "$@"
 }
