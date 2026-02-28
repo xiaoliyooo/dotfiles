@@ -3,7 +3,7 @@
 # 定义变量
 DOTFILES_DIR="$HOME/dotfiles"
 CONFIG_DIR="$HOME/.config"
-source "$DOTFILES_DIR/env.local/index.zsh"
+source "$DOTFILES_DIR/local/index.zsh"
 
 command_exists() {
   command -v "$1" >/dev/null 2>&1
@@ -403,6 +403,7 @@ ln -sf "$DOTFILES_DIR/yazi/theme.toml" "$CONFIG_DIR/yazi/theme.toml"
 ln -sf "$DOTFILES_DIR/yazi/yazi.toml" "$CONFIG_DIR/yazi/yazi.toml"
 ln -sf "$DOTFILES_DIR/yazi/init.lua" "$CONFIG_DIR/yazi/init.lua"
 ln -sf "$DOTFILES_DIR/atuin/config.toml" "$CONFIG_DIR/atuin/config.toml"
+setup_local
 
 link_dir "kitty"
 link_dir "tealdeer"

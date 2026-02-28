@@ -8,6 +8,6 @@ for folder in "$ZDOTDIR"/../*(/); do
   [[ -f "$folder/index.zsh" ]] && source "$folder/index.zsh"
 done
 
-setup_zshrc_local && source "$HOME/.zshrc.local"
+setup_local && source "$HOME/.zshrc.local"
 
 date

@@ -136,13 +136,21 @@ export ZDOTDIR="$HOME/dotfiles/zsh"
 [[ -f "$ZDOTDIR/.zshrc" ]] && source "$ZDOTDIR/.zshrc"
 ```
 
-同时，我们推荐在局部配置域 `~/.zshrc.local` 中挂载隐私环境变量：
+推荐将本地环境变量（如 PATH、API Key 等）放在 `~/.zshrc.local`（不进仓库，便于保护隐私）：
 
 ```bash
-export GIT_AUTHOR_NAME="YourName"
-export GIT_AUTHOR_EMAIL="your@email.com"
-export GIT_COMMITTER_NAME="YourName"
-export GIT_COMMITTER_EMAIL="your@email.com"
+export PATH="$HOME/.local/bin:$PATH"
+# export OPENAI_API_KEY="your_api_key"
+```
+
+Git 用户信息放在 `~/.gitconfig.local`：
+
+```bash
+cat > ~/.gitconfig.local <<'EOF'
+[user]
+  name = Your Name
+  email = your@email.com
+EOF
 ```
 
 > 提示：若执行 `git effort` 时触发异常：`/opt/homebrew/bin/git-effort: line 273:  ${nJobs@P} >= nProcs : bad substitution`，此现象根源在于 macOS 老旧组件基座(`/bin/bash` 停滞于 3.2.57)不支持现代变量展开参数 `${parameter@P}`。仅需执行指令 `brew install bash` 即可修复。
