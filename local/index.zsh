@@ -16,7 +16,6 @@ _setup_gitconfig_local() {
   local gitconfig_local="$HOME/.gitconfig.local"
 
   if [ -f "$gitconfig_local" ]; then
-    echo "${_ZSHRC_GREEN}✓ Git 本地用户配置已存在${_ZSHRC_NC}"
     return
   fi
 
