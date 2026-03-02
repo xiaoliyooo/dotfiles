@@ -164,3 +164,37 @@ tree() {
 ii() {
   cd ~/dotfiles && sh install.sh
 }
+
+x() {
+  local archive="$1"
+
+  if [[ -z "$archive" ]]; then
+    echo "用法: x <压缩包路径>"
+    return 1
+  fi
+
+  if [[ ! -f "$archive" ]]; then
+    echo "文件不存在: $archive"
+    return 1
+  fi
+
+  local tmpdir=$(mktemp -d) || return 1
+  7zz x "$archive" -o"$tmpdir" -y -x'!__MACOSX' || {
+    rm -rf "$tmpdir"
+    return 1
+  }
+
+  local dest_dir="${archive:A:h}"
+  for item in "$tmpdir"/*; do
+    local name="$(basename "$item")"
+    if [[ ! -e "$dest_dir/$name" ]]; then
+      mv "$item" "$dest_dir/$name"
+    else
+      local i=2
+      while [[ -e "$dest_dir/$name $i" ]]; do ((i++)); done
+      mv "$item" "$dest_dir/$name $i"
+    fi
+  done
+
+  rm -rf "$tmpdir"
+}
