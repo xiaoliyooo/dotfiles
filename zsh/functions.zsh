@@ -1,5 +1,12 @@
 git() {
-  if [[ "$1" == "log" ]]; then
+  if [[ "$1" == "init" ]]; then
+    command git init "${@:2}"
+    local ret=$?
+    if [[ $ret -eq 0 ]] && [[ ! -e .gitignore ]]; then
+      cp ~/dotfiles/git/gitignore_template .gitignore 2>/dev/null && echo "已创建 .gitignore"
+    fi
+    return $ret
+  elif [[ "$1" == "log" ]]; then
     command git log --color=always --date=format:'%Y-%m-%d %H:%M:%S' "${@:2}"
   elif [[ "$1" == "tree" ]]; then
     if [[ "$2" == "add" ]]; then
