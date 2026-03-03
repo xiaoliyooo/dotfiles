@@ -47,59 +47,59 @@
 
 ### 命令行环境与核心工具
 
-| 工具名称               | 功能说明                                 |
-| :--------------------- | :--------------------------------------- |
-| **kitty**              | GPU 加速的终端模拟器                     |
-| **starship**           | 跨 Shell 的终端提示符                    |
-| **vivid**              | `LS_COLORS` 颜色生成工具                 |
-| **carapace**           | 跨 Shell 参数补全引擎                    |
-| **btop**               | 终端系统资源监控面板                     |
-| **bat**                | 带有语法高亮的 `cat` 替代品              |
-| **eza**                | 支持颜色和目录树渲染的 `ls` 替代品       |
-| **fd**                 | `find` 命令的现代替代品                  |
-| **rg (ripgrep)**       | 文本正则内容检索工具                     |
-| **tree**               | 目录树状图展示工具                       |
-| **tldr**               | 精简版命令行社区使用手册                 |
-| **tokei**              | 代码行数统计分析工具                     |
-| **dust**               | 命令行磁盘空间可视化工具                 |
-| **zinit**              | 支持异步加载的 Zsh 插件管理器            |
-| **zoxide**             | 记录频率的终端目录跳转工具               |
-| **atuin**              | 基于 SQLite 的全局历史命令搜索同步工具   |
-| **fzf**                | 终端命令行模糊搜索器                     |
-| **yazi**               | 异步的 TUI 终端文件管理器                |
-| **mprocs**             | 多进程统一调度 TUI 日志面板              |
-| **ttyd**               | 终端到 Web 的命令行远程接入工具          |
-| **lazygit**            | 终端 TUI 模式的 Git 交互面板             |
-| **delta**              | 支持语法高亮与代码块移动检查的 Git diff  |
-| **difft (difftastic)** | 基于 AST 的代码语法树对比工具            |
-| **git-absorb**         | 暂存区代码变更是自动匹配历史 commit 工具 |
-| **git-imerge**         | 针对分支冲突的渐进式合并工具             |
-| **git-lfs**            | 大型二进制文件版本控制托管工具           |
-| **git-summary**        | 仓库活跃报告生成插件                     |
-| **mergiraf**           | 基于 AST 的代码冲突合并引擎              |
-| **less**               | 标准命令行分页浏览器                     |
-| **coreutils (gdate)**  | GNU 核心命令行系统工具集                 |
-| **magick**             | 图像渲染与格式转换工具                   |
-| **killport**           | 端口进程清理与终止工具                   |
-| **onefetch**           | 终端 Git 仓库概览展板工具                |
-| **im-select**          | 终端中英文输入法状态机自动切换组件       |
-| **pip3**               | Python 包管理器                          |
-| **ni**                 | 抹平各个js包管理器差异的通用执行命令     |
-| **nvm**                | Node.js 版本管理器                       |
-| **bun**                | 前端 JavaScript 运行时及包管理引擎       |
-| **pnpm**               | 前端项目依赖包调度管理库                 |
-| **prettier**           | 前端跨文件代码格式化工具                 |
-| **stylua**             | Lua 语言代码格式化工具                   |
-| **shfmt**              | Shell 脚本代码格式化工具                 |
-| **taplo**              | TOML 配置文件格式化与校验工具            |
-| **ruff**               | Python 代码静态分析与格式化工具          |
-| **shellcheck**         | Shell 脚本静态语法扫描与分析工具         |
-| **rust-analyzer**      | Rust 语言分析和自动补全语言服务器        |
-| **neovim**             | Neovim 文本编辑器                        |
-| **nvimpager**          | 基于 Neovim 的终端分页阅读器             |
-| **opencode**           | 开源智能体                               |
-| **gemini**             | Gemini Cli                               |
-| **yuanbao**            | 腾讯元宝大语言模型                       |
+| 工具名称          | 功能说明                                 |
+| :---------------- | :--------------------------------------- |
+| **kitty**         | GPU 加速的终端模拟器                     |
+| **starship**      | 跨 Shell 的终端提示符                    |
+| **vivid**         | `LS_COLORS` 颜色生成工具                 |
+| **carapace**      | 跨 Shell 参数补全引擎                    |
+| **btop**          | 终端系统资源监控面板                     |
+| **bat**           | 带有语法高亮的 `cat` 替代品              |
+| **eza**           | 支持颜色和目录树渲染的 `ls` 替代品       |
+| **fd**            | `find` 命令的现代替代品                  |
+| **ripgrep**       | 文本正则内容检索工具                     |
+| **tree**          | 目录树状图展示工具                       |
+| **tldr**          | 精简版命令行社区使用手册                 |
+| **tokei**         | 代码行数统计分析工具                     |
+| **dust**          | 命令行磁盘空间可视化工具                 |
+| **zinit**         | 支持异步加载的 Zsh 插件管理器            |
+| **zoxide**        | 记录频率的终端目录跳转工具               |
+| **atuin**         | 基于 SQLite 的全局历史命令搜索同步工具   |
+| **fzf**           | 终端命令行模糊搜索器                     |
+| **yazi**          | 异步的 TUI 终端文件管理器                |
+| **mprocs**        | 多进程统一调度 TUI 日志面板              |
+| **ttyd**          | 终端到 Web 的命令行远程接入工具          |
+| **lazygit**       | 终端 TUI 模式的 Git 交互面板             |
+| **delta**         | 支持语法高亮与代码块移动检查的 Git diff  |
+| **difftastic**    | 基于 AST 的代码语法树对比工具            |
+| **git-absorb**    | 暂存区代码变更是自动匹配历史 commit 工具 |
+| **git-imerge**    | 针对分支冲突的渐进式合并工具             |
+| **git-lfs**       | 大型二进制文件版本控制托管工具           |
+| **git-summary**   | 仓库活跃报告生成插件                     |
+| **mergiraf**      | 基于 AST 的代码冲突合并引擎              |
+| **less**          | 标准命令行分页浏览器                     |
+| **coreutils**     | GNU 核心命令行系统工具集                 |
+| **magick**        | 图像渲染与格式转换工具                   |
+| **killport**      | 端口进程清理与终止工具                   |
+| **onefetch**      | 终端 Git 仓库概览展板工具                |
+| **im-select**     | 终端中英文输入法状态机自动切换组件       |
+| **pip3**          | Python 包管理器                          |
+| **ni**            | 抹平各个js包管理器差异的通用执行命令     |
+| **nvm**           | Node.js 版本管理器                       |
+| **bun**           | 前端 JavaScript 运行时及包管理引擎       |
+| **pnpm**          | 前端项目依赖包调度管理库                 |
+| **prettier**      | 前端跨文件代码格式化工具                 |
+| **stylua**        | Lua 语言代码格式化工具                   |
+| **shfmt**         | Shell 脚本代码格式化工具                 |
+| **taplo**         | TOML 配置文件格式化与校验工具            |
+| **ruff**          | Python 代码静态分析与格式化工具          |
+| **shellcheck**    | Shell 脚本静态语法扫描与分析工具         |
+| **rust-analyzer** | Rust 语言分析和自动补全语言服务器        |
+| **neovim**        | Neovim 文本编辑器                        |
+| **nvimpager**     | 基于 Neovim 的终端分页阅读器             |
+| **opencode**      | 开源智能体                               |
+| **gemini**        | Gemini Cli                               |
+| **7zz**           | 高压缩比的命令行文件归档与解压工具       |
 
 ### Mac App
 
@@ -120,7 +120,8 @@
 | **wpsoffice**          | WPS                                |
 | **docker**             | Docker                             |
 | **visual-studio-code** | VS Code 编辑器                     |
-| **KeyStats**           | macOS 菜单栏键盘鼠标使用统计工具   |
+| **keystats**           | macOS 菜单栏键盘鼠标使用统计工具   |
+| **yuanbao**            | 腾讯元宝 AI 对话工具               |
 
 ## 配置引用方式
 
