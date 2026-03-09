@@ -97,13 +97,14 @@ _fzf_comprun() {
 }
 
 # tab 补全
-_fzf_compgen_path() {
-  fd --hidden --exclude .git . "$1"
-}
-
-_fzf_compgen_dir() {
-  fd --type=d --hidden --exclude .git . "$1"
-}
+# https://github.com/junegunn/fzf
+# _fzf_compgen_path() {
+#   fd --hidden --exclude .git . "$1"
+# }
+#
+# _fzf_compgen_dir() {
+#   fd --type=d --hidden --exclude .git . "$1"
+# }
 
 conf() {
   local conf_dirs=(
