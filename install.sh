@@ -160,6 +160,18 @@ install_pip3_if_missing() {
   fi
 }
 
+install_pipx_package_if_missing() {
+  local cmd="$1"
+  local package="${2:-$1}"
+
+  if command_exists "$cmd"; then
+    echo "✓ $cmd 已安装"
+  else
+    echo "⚠ $cmd 未找到，正在通过 pipx 安装 $package..."
+    pipx install "$package"
+  fi
+}
+
 install_nvm_if_missing() {
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -333,6 +345,7 @@ install_cask_if_missing "font-fira-code"
 install_cask_if_missing "font-fira-code-nerd-font"
 install_npm_if_missing "tsc" "typescript"
 install_npm_if_missing "bun"
+install_if_missing "pipx"
 install_if_missing "kitty"
 install_if_missing "prettier"
 install_if_missing "pnpm"
@@ -377,6 +390,7 @@ install_if_missing "dust"
 install_if_missing "magick" "imagemagick"
 install_if_missing "rg" "ripgrep"
 install_if_missing "rust-analyzer"
+install_pipx_package_if_missing "starcli"
 
 #   ━━━━━━━━━━━━━━━━━━━━ neovim formatter/linter start ━━━━━━━━━━━━━━━━━━
 install_if_missing "stylua"

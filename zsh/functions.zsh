@@ -206,3 +206,7 @@ x() {
 
   rm -rf "$tmpdir"
 }
+
+trend() {
+  command starcli -d week --layout table -n 10 "$@"
+}
