@@ -1,3 +1,8 @@
+TRAPUSR1() {
+  [[ -o interactive ]] && source ~/.zshrc
+  zle reset-prompt
+}
+
 git() {
   if [[ "$1" == "init" ]]; then
     command git init "${@:2}"
@@ -209,4 +214,12 @@ x() {
 
 trend() {
   command starcli -d week --layout table -n 10 "$@"
+}
+
+reload() {
+  if [[ "$1" == "-a" ]]; then
+    pkill -USR1 zsh
+  else
+    source ~/.zshrc
+  fi
 }

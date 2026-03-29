@@ -1,4 +1,3 @@
-alias reload='. ~/.zshrc'
 alias zshc='vim ~/.zshrc'
 alias y='yazi'
 alias ge='gemini'
