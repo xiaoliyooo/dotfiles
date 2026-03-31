@@ -402,6 +402,28 @@ install_if_missing "ruff"
 install_if_missing "sql-formatter"
 #   ━━━━━━━━━━━━━━━━━━━━━ neovim formatter/linter end ━━━━━━━━━━━━━━━━━━━
 
+install_app_if_missing "WeChat" "wechat"
+install_app_if_missing "QQMusic" "qqmusic"
+install_app_if_missing "NeteaseMusic" "neteasemusic"
+install_app_if_missing "Google Chrome" "google-chrome"
+install_app_if_missing "Firefox" "firefox"
+install_app_if_missing "元宝" "yuanbao"
+install_app_if_missing "Obsidian" "obsidian"
+install_app_if_missing "Karabiner-Elements" "karabiner-elements"
+install_app_if_missing "Docker" "docker"
+install_app_if_missing "wpsoffice" "wpsoffice"
+install_app_if_missing "Clash Verge" "clash-verge-rev"
+install_app_if_missing "PixPin" "pixpin"
+install_app_if_missing "SwitchHosts" "switchhosts"
+install_app_if_missing "Ice" "jordanbaird-ice"
+install_app_if_missing "Tencent Lemon" "tencent-lemon"
+install_app_if_missing "Visual Studio Code" "visual-studio-code"
+install_app_if_missing "AltTab" "alt-tab"
+install_app_if_missing "KeyStats" "keystats"
+
+clone_apps_repo
+scan_and_install_dmgs "$HOME/apps/app-dmg"
+
 mkdir -p "$CONFIG_DIR/lazygit"
 mkdir -p "$CONFIG_DIR/git"
 mkdir -p "$CONFIG_DIR/yazi"
@@ -438,28 +460,6 @@ ln -sfn "$HOME/.local/share/nvim" "$HOME/.local/share/nvimpager"
 link_git_scripts
 
 echo "🔗 配置文件链接完成..."
-
-install_app_if_missing "WeChat" "wechat"
-install_app_if_missing "QQMusic" "qqmusic"
-install_app_if_missing "NeteaseMusic" "neteasemusic"
-install_app_if_missing "Google Chrome" "google-chrome"
-install_app_if_missing "Firefox" "firefox"
-install_app_if_missing "元宝" "yuanbao"
-install_app_if_missing "Obsidian" "obsidian"
-install_app_if_missing "Karabiner-Elements" "karabiner-elements"
-install_app_if_missing "Docker" "docker"
-install_app_if_missing "wpsoffice" "wpsoffice"
-install_app_if_missing "Clash Verge" "clash-verge-rev"
-install_app_if_missing "PixPin" "pixpin"
-install_app_if_missing "SwitchHosts" "switchhosts"
-install_app_if_missing "Ice" "jordanbaird-ice"
-install_app_if_missing "Tencent Lemon" "tencent-lemon"
-install_app_if_missing "Visual Studio Code" "visual-studio-code"
-install_app_if_missing "AltTab" "alt-tab"
-install_app_if_missing "KeyStats" "keystats"
-
-clone_apps_repo
-scan_and_install_dmgs "$HOME/apps/app-dmg"
 
 install_yazi_plugins
 
