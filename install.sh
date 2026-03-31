@@ -428,6 +428,7 @@ link_dir "tealdeer"
 link_dir "mprocs"
 link_dir "bat"
 link_dir "btop"
+link_dir "karabiner"
 
 echo "🔗 配置 nvimpager..."
 ln -sfn "$CONFIG_DIR/nvim" "$CONFIG_DIR/nvimpager"
