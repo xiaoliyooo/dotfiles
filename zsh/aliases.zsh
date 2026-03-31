@@ -16,3 +16,6 @@ alias kp="killport"
 alias repo="onefetch --churn-pool-size 1000 --number-of-file-churns 15"
 
 alias difftree='GIT_EXTERNAL_DIFF=difft git diff'
+
+alias c='pbcopy'
+alias p='pbpaste'
