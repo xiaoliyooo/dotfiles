@@ -42,5 +42,5 @@ export FZF_DEFAULT_OPTS="
 
 export NVM_COMPLETION=true
 export NVM_LAZY_LOAD=true
-export NVM_LAZY_LOAD_EXTRA_COMMANDS=('ni' 'nlx' 'nr' 'nun' 'nup')
+export NVM_LAZY_LOAD_EXTRA_COMMANDS=('ni' 'nlx' 'nr' 'nun' 'nup' 'has')
 export NVM_DIR="$HOME/.nvm"

@@ -1,0 +1,1 @@
+export HAS_ALLOW_UNSAFE=y
