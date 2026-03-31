@@ -410,6 +410,7 @@ mkdir -p "$CONFIG_DIR/atuin"
 mkdir -p "$CONFIG_DIR/btop"
 
 ln -sf "$DOTFILES_DIR/git/gitconfig" "$HOME/.gitconfig"
+[ -d "$HOME/.hammerspoon" ] && [ ! -L "$HOME/.hammerspoon" ] && rm -rf "$HOME/.hammerspoon"
 ln -sfn "$DOTFILES_DIR/hammerspoon" "$HOME/.hammerspoon"
 ln -sf "$DOTFILES_DIR/lazygit/lazygit_config.yml" "$CONFIG_DIR/lazygit/config.yml"
 ln -sf "$DOTFILES_DIR/git/attributes" "$CONFIG_DIR/git/attributes"
