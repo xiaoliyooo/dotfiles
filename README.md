@@ -212,7 +212,6 @@ export PATH="$HOME/.local/bin:$PATH"
 | **jordanbaird-ice**    | macOS 系统顶部状态栏图标管理工具   |
 | **clash-verge-rev**    | 网络出口协议流量分流及代理工具     |
 | **switchhosts**        | Hosts 文件管理                     |
-| **pixpin**             | 多功能截图工具                     |
 | **tencent-lemon**      | macOS 系统本地垃圾缓存清理工具     |
 | **wechat**             | 微信                               |
 | **qqmusic**            | QQ 音乐                            |
@@ -224,6 +223,21 @@ export PATH="$HOME/.local/bin:$PATH"
 | **visual-studio-code** | VS Code 编辑器                     |
 | **keystats**           | macOS 菜单栏键盘鼠标使用统计工具   |
 | **yuanbao**            | 腾讯元宝 AI 对话工具               |
+
+### Dmg App
+
+| 工具名称             | 功能说明                 |
+| :------------------- | :----------------------- |
+| **PopClip**          | 文本选中即时操作增强工具 |
+| **Shottr**           | 截图工具                 |
+| **Alfred 5**         | 快捷启动与效率工具       |
+| **Bob**              | macOS 翻译和 OCR 工具    |
+| **DEVONthink 3**     | 知识管理与文档数据库工具 |
+| **Keyboard Maestro** | 键盘宏与自动化工具       |
+| **Manico**           | 应用快速切换启动器       |
+| **Moom**             | 窗口布局管理工具         |
+| **ScreenBrush**      | 屏幕实时标注绘画工具     |
+| **TextSniper**       | OCR 文字识别提取工具     |
 
 ## 已知问题
 
