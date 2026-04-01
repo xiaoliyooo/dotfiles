@@ -2,6 +2,7 @@ local M = {}
 local uiConfig = require("config.ui_config")
 
 local reminderCanvas
+local activeTimers = {}
 
 local reminderStyle = {
 	background = uiConfig.colors.panelBackground,
@@ -91,11 +92,17 @@ function M.showReminder(text)
 end
 
 function M.start()
+	for _, t in ipairs(activeTimers) do
+		t:stop()
+	end
+	activeTimers = {}
+
 	for _, reminder in ipairs(reminders) do
 		for _, time in ipairs(reminder.times) do
-			hs.timer.doAt(time, "1d", function()
+			local t = hs.timer.doAt(time, "1d", function()
 				M.showReminder(reminder.text)
 			end)
+			table.insert(activeTimers, t)
 		end
 	end
 
