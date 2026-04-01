@@ -25,6 +25,7 @@
 	co = checkout
 	cp = cherry-pick
 	cm = commit -m
+	rs = restore
 [pull]
 	rebase = false
 [core]
