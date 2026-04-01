@@ -19,3 +19,5 @@ alias difftree='GIT_EXTERNAL_DIFF=difft git diff'
 
 alias c='pbcopy'
 alias p='pbpaste'
+
+alias tq='curl "wttr.in/北京朝阳区?lang=zh-cn"'
