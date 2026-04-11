@@ -5,6 +5,7 @@ alias j='z'
 
 alias ls="eza -la --no-filesize --no-user --git"
 
+alias clear='printf "\033[2J\033[3J\033[H"'
 alias cat="nvimpager"
 alias top="btop"
 alias vim="nvim"
