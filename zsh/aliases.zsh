@@ -19,9 +19,10 @@ alias repo="onefetch --churn-pool-size 1000 --number-of-file-churns 15"
 alias difftree='GIT_EXTERNAL_DIFF=difft git diff'
 
 alias c='pbcopy'
-alias p='pbpaste'
+# alias p='pbpaste'
 
 alias -g G='| rg'
-alias -g C='| wc -l'
+alias -g N='| wc -l'
+alias -g C='| tee >(pbcopy)'
 
 alias tq='curl "wttr.in/北京朝阳区?lang=zh-cn"'
