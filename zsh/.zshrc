@@ -2,6 +2,7 @@ source "$ZDOTDIR/exports.zsh"
 source "$ZDOTDIR/functions.zsh"
 source "$ZDOTDIR/zinit.zsh"
 source "$ZDOTDIR/aliases.zsh"
+source "$ZDOTDIR/command-buffer-hotkeys.zsh"
 
 # Load modular configurations
 for folder in "$ZDOTDIR"/../*(/); do
