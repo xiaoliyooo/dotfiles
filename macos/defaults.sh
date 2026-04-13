@@ -5,7 +5,7 @@ setup_macos_defaults() {
   defaults write NSGlobalDomain KeyRepeat -int 1
 
   # 重复触发前的延迟
-  defaults write NSGlobalDomain InitialKeyRepeat -int 10
+  defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
   # 长按变为连续输入
   defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
