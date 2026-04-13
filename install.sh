@@ -463,4 +463,6 @@ echo "🔗 配置文件链接完成..."
 
 install_yazi_plugins
 
+source "$DOTFILES_DIR/macos/defaults.sh"
+
 echo "✅ 安装完成！"
