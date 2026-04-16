@@ -467,10 +467,11 @@ source "$DOTFILES_DIR/macos/defaults.sh"
 
 # 重载 zsh 和 kitty 配置
 echo "🔄 重载配置..."
-source ~/.zshrc
-reload -a
-if pgrep -x kitty >/dev/null 2>&1; then
-  kitty @ load-config 2>/dev/null || true
+zsh -ic 'source ~/.zshrc && reload -a' 2>/dev/null || true
+if pgrep -f kitty.app >/dev/null 2>&1; then
+  for sock in /tmp/locator_vim_kitty--*; do
+    kitty @ --to "unix:$sock" load-config 2>/dev/null || true
+  done
   echo "✓ kitty 配置已重载"
 fi
 echo "✓ zsh 配置已重载"
