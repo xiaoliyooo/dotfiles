@@ -465,4 +465,14 @@ install_yazi_plugins
 
 source "$DOTFILES_DIR/macos/defaults.sh"
 
+# 重载 zsh 和 kitty 配置
+echo "🔄 重载配置..."
+source ~/.zshrc
+reload -a
+if pgrep -x kitty >/dev/null 2>&1; then
+  kitty @ load-config 2>/dev/null || true
+  echo "✓ kitty 配置已重载"
+fi
+echo "✓ zsh 配置已重载"
+
 echo "✅ 安装完成！"
