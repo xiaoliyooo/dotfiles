@@ -19,3 +19,6 @@ timeAlert.bindHotkeys()
 
 local reminder = require("modules.reminder")
 reminder.start()
+
+local kittyStack = require("modules.kitty_stack")
+kittyStack.bindHotkeys()
