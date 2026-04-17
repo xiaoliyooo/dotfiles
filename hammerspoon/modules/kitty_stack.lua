@@ -35,8 +35,8 @@ function M.stackByHeight()
 		end
 	end
 
-	-- 基础高度 = 屏幕高度的 60%
-	local baseHeight = screenFrame.h * 0.6
+	-- 基础高度 = 屏幕高度的 75%
+	local baseHeight = screenFrame.h * 0.75
 
 	-- 激活窗口高度最小，作为最上层
 	if activeWin then
