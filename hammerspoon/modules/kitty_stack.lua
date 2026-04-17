@@ -24,10 +24,13 @@ function M.stackByHeight()
 	local screen = (focusedWin and focusedWin:screen()) or hs.screen.mainScreen()
 	local screenFrame = screen:frame()
 
-	-- 分离出非激活的 Kitty 窗口
+	-- 分离出激活窗口和非激活窗口
+	local activeWin = nil
 	local others = {}
 	for _, win in ipairs(windows) do
-		if not focusedWin or win:id() ~= focusedWin:id() then
+		if focusedWin and win:id() == focusedWin:id() then
+			activeWin = win
+		else
 			table.insert(others, win)
 		end
 	end
@@ -35,11 +38,19 @@ function M.stackByHeight()
 	-- 基础高度 = 屏幕高度的 60%
 	local baseHeight = screenFrame.h * 0.6
 
-	-- 对非激活窗口按索引分配递增高度，并设置 frame
-	-- 排列后：index 1 最矮 → index n 最高
+	-- 激活窗口高度最小，作为最上层
+	if activeWin then
+		local f = activeWin:frame()
+		f.x = screenFrame.x
+		f.y = screenFrame.y
+		f.w = screenFrame.w
+		f.h = baseHeight
+		activeWin:setFrame(f)
+	end
+
+	-- 非激活窗口从 baseHeight + HEIGHT_STEP 开始递增
 	for i, win in ipairs(others) do
-		local h = baseHeight + (i - 1) * HEIGHT_STEP
-		-- 限制不超过屏幕高度
+		local h = baseHeight + i * HEIGHT_STEP
 		if h > screenFrame.h then
 			h = screenFrame.h
 		end
@@ -57,9 +68,9 @@ function M.stackByHeight()
 	for i = #others, 1, -1 do
 		others[i]:raise()
 	end
-	if focusedWin then
-		focusedWin:raise()
-		focusedWin:focus()
+	if activeWin then
+		activeWin:raise()
+		activeWin:focus()
 	end
 
 	hs.alert.show("Stacked " .. #windows .. " Kitty windows")
