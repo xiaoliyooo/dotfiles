@@ -3,7 +3,7 @@ alias y='yazi'
 alias ge='gemini'
 alias j='z'
 
-alias ls="eza -la --no-filesize --no-user --git"
+alias ls="eza -la --no-filesize --no-user --git --group-directories-first"
 
 alias clear='printf "\033[2J\033[3J\033[H"'
 alias cat="nvimpager"

@@ -223,3 +223,7 @@ reload() {
     source ~/.zshrc
   fi
 }
+
+chpwd() {
+  eza -a --icons --color=always --group-directories-first -w $((COLUMNS * 2 / 3))
+}
