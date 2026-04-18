@@ -201,6 +201,7 @@ export PATH="$HOME/.local/bin:$PATH"
 | **gemini**        | Gemini CLI                              |
 | **7zz**           | 高压缩比的命令行文件归档与解压工具      |
 | **has**           | 检查 PATH 中命令行工具的已安装版本      |
+| **pstree**        | 进程树查看工具                          |
 
 ### Mac App
 

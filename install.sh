@@ -392,6 +392,7 @@ install_if_missing "magick" "imagemagick"
 install_if_missing "rg" "ripgrep"
 install_if_missing "rust-analyzer"
 install_if_missing "has"
+install_if_missing "pstree"
 install_pipx_package_if_missing "starcli"
 
 #   ━━━━━━━━━━━━━━━━━━━━ neovim formatter/linter start ━━━━━━━━━━━━━━━━━━
