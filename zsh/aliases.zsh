@@ -26,3 +26,5 @@ alias -g C='| wc -l'
 alias -g Y='| tee >(pbcopy)'
 
 alias tq='curl "wttr.in/北京朝阳区?lang=zh-cn"'
+
+alias app='open -a'
