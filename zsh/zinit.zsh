@@ -38,10 +38,24 @@ zinit ice wait lucid as"program" pick"git-open"
 zinit light paulirish/git-open
 
 autoload -Uz compinit
-if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
-  compinit -u
-else
-  compinit -C -u  # 使用缓存，24小时内不重建
+compinit -C -u
+
+# 前台启动使用补全缓存，每24小时后台重建缓存
+refresh_stamp=(~/.zcompdump-refresh-stamp(N.mh+24))
+if [[ ! -e ~/.zcompdump-refresh-stamp || ${#refresh_stamp} -ne 0 ]]; then
+  (
+    lock_dir="${TMPDIR:-/tmp}/zcompdump-refresh-${UID}"
+    if ! mkdir "${lock_dir}" 2>/dev/null; then
+      exit 0
+    fi
+    trap 'rmdir "${lock_dir}"' EXIT
+
+    touch ~/.zcompdump-refresh-stamp
+    print -P "%F{244}[zcompdump]%f start: rebuilding .zcompdump"
+    autoload -Uz compinit
+    compinit -u -d ~/.zcompdump >/dev/null 2>&1
+    print -P "%F{244}[zcompdump]%f done: rebuilt .zcompdump"
+  ) &!
 fi
 
 # 禁用补全 "do you wish to see all X possibilities?" 提示
