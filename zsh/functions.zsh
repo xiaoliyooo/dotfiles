@@ -1,6 +1,8 @@
 TRAPUSR1() {
-  [[ -o interactive ]] && source ~/.zshrc
-  zle reset-prompt
+  if [[ -o interactive ]]; then
+    reload
+    zle reset-prompt 2>/dev/null
+  fi
 }
 
 git() {
@@ -220,7 +222,14 @@ reload() {
   if [[ "$1" == "-a" ]]; then
     pkill -USR1 zsh
   else
+    local -a old_path
+    old_path=("${path[@]}")
+
     source ~/.zshrc
+
+    # 保留当前 shell 里运行期注入的 PATH 顺序
+    path=("${old_path[@]}" "${path[@]}")
+    typeset -gU path
   fi
 }
 
