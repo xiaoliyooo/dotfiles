@@ -420,6 +420,7 @@ install_app_if_missing "Tencent Lemon" "tencent-lemon"
 install_app_if_missing "Visual Studio Code" "visual-studio-code"
 install_app_if_missing "AltTab" "alt-tab"
 install_app_if_missing "KeyStats" "keystats"
+install_app_if_missing "Doubao" "doubao"
 
 clone_apps_repo
 scan_and_install_dmgs "$HOME/apps/app-dmg"
