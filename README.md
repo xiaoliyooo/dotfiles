@@ -223,7 +223,6 @@ export PATH="$HOME/.local/bin:$PATH"
 | **docker**             | Docker                             |
 | **visual-studio-code** | VS Code 编辑器                     |
 | **keystats**           | macOS 菜单栏键盘鼠标使用统计工具   |
-| **yuanbao**            | 腾讯元宝 AI 对话工具               |
 
 ### Dmg App
 
