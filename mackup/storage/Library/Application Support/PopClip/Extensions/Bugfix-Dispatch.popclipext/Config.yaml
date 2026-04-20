@@ -1,0 +1,5 @@
+# popclip Bugfix Dispatch extension
+name: Bugfix Dispatch
+icon: iconify:mdi:bug-check
+shell script file: dispatch.sh
+after: show-result

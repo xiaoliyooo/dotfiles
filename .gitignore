@@ -80,3 +80,6 @@ tealdeer/*
 !tealdeer/index.zsh
 karabiner/automatic_backups
 karabiner/assets
+
+# mackup storage: 排除运行时/临时文件
+mackup/storage/**/Running Engine Details

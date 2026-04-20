@@ -1,0 +1,6 @@
+# popclip GitHub Search extension
+name: GitHub Search
+icon: iconify:mdi:github
+javascript: |
+  popclip.copyText(popclip.input.text)
+  popclip.openUrl("https://github.com/search?q=" + encodeURIComponent(popclip.input.text))

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>customSites</key>
+	<dict>
+		<key>3B16ED61-6558-4127-BCFD-68E66C7E41BB</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>review</string>
+			<key>text</key>
+			<string>云效合并请求</string>
+			<key>url</key>
+			<string>https://codeup.aliyun.com/mindflow/SEEDPRO/Web/Web_SeedProWeb/changes</string>
+		</dict>
+		<key>5214EDC3-26F0-4B2F-896B-B5BEF0632984</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>ghs</string>
+			<key>text</key>
+			<string>github search</string>
+			<key>url</key>
+			<string>https://github.com/search?q={query}</string>
+		</dict>
+		<key>97EC0D73-DC23-4E7C-A166-5840DC8ACF23</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>home</string>
+			<key>text</key>
+			<string>homebrew search</string>
+			<key>url</key>
+			<string>https://formulae.brew.sh/formula/{query}#default</string>
+		</dict>
+		<key>D7C21931-DDD6-451B-A900-B5704208C3D5</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>mdn</string>
+			<key>text</key>
+			<string>mdn</string>
+			<key>url</key>
+			<string>https://developer.mozilla.org/zh-CN/search?q={query}</string>
+		</dict>
+		<key>F19339F9-CAE2-4FD2-8B9A-1BC4B1735D13</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>npms</string>
+			<key>text</key>
+			<string>search npm</string>
+			<key>url</key>
+			<string>https://www.npmjs.com/search?q={query}</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

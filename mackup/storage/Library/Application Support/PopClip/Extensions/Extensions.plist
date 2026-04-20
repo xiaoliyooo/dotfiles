@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Installed Extensions</key>
+	<array>
+		<dict>
+			<key>Enabled</key>
+			<true/>
+			<key>Extension Identifier</key>
+			<string>com.pilotmoon.popclip.extension.mdn</string>
+			<key>Extension Name</key>
+			<string>MDN Web Docs</string>
+			<key>Package Name</key>
+			<string>@t65bec.com.pilotmoon.popclip.extension.mdn.popclipext</string>
+		</dict>
+		<dict>
+			<key>Enabled</key>
+			<true/>
+			<key>Extension Identifier</key>
+			<string>autoid.github-search.popclipext</string>
+			<key>Extension Name</key>
+			<string>GitHub Search</string>
+			<key>Package Name</key>
+			<string>GitHub-Search.popclipext</string>
+		</dict>
+		<dict>
+			<key>Enabled</key>
+			<true/>
+			<key>Extension Identifier</key>
+			<string>autoid.bugfix-dispatch.popclipext</string>
+			<key>Extension Name</key>
+			<string>Bugfix Dispatch</string>
+			<key>Package Name</key>
+			<string>Bugfix-Dispatch.popclipext</string>
+		</dict>
+	</array>
+	<key>Version</key>
+	<integer>1</integer>
+</dict>
+</plist>

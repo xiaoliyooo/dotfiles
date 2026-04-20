@@ -393,6 +393,7 @@ install_if_missing "rg" "ripgrep"
 install_if_missing "rust-analyzer"
 install_if_missing "has"
 install_if_missing "pstree"
+install_if_missing "mackup"
 install_pipx_package_if_missing "starcli"
 
 #   ━━━━━━━━━━━━━━━━━━━━ neovim formatter/linter start ━━━━━━━━━━━━━━━━━━
@@ -464,6 +465,11 @@ echo "🔗 配置文件链接完成..."
 
 install_yazi_plugins
 
+# mackup
+ln -sf "$DOTFILES_DIR/.mackup.cfg" "$HOME/.mackup.cfg"
+[ -d "$HOME/.mackup" ] && [ ! -L "$HOME/.mackup" ] && rm -rf "$HOME/.mackup"
+ln -sfn "$DOTFILES_DIR/mackup/applications" "$HOME/.mackup"
+
 source "$DOTFILES_DIR/macos/defaults.sh"
 
 # 重载 zsh 和 kitty 配置
@@ -478,3 +484,7 @@ fi
 echo "✓ zsh 配置已重载"
 
 echo "✅ 安装完成！"
+echo ""
+echo "💡 如需同步Map应用配置(Moom、AltTab、Keyboard Maestro 等)，请手动执行："
+echo "   sh ./app-restore.sh"
+echo "   Bob配置文件在apps中~"
