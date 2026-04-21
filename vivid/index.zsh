@@ -1,1 +1,1 @@
-export LS_COLORS="$(vivid generate nord)"
+export LS_COLORS="$(vivid generate lava)"
