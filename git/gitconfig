@@ -1,10 +1,10 @@
 [include]
-  path = ~/.gitconfig.local
+	path = ~/.gitconfig.local
 [init]
-  defaultBranch = main
+	defaultBranch = main
 [diff]
-  colorMoved = default 
-  algorithm = histogram
+	colorMoved = default
+	algorithm = histogram
 	renames = true
 	tool = difftastic
 [difftool]
@@ -14,13 +14,13 @@
 [pager]
 	difftool = true
 [push]
-  autoSetupRemote = true
+	autoSetupRemote = true
 [branch]
-  sort = -committerdate
+	sort = -committerdate
 [column]
-  ui = auto
+	ui = auto
 [fetch]
-  prune = true
+	prune = true
 [alias]
 	co = checkout
 	cp = cherry-pick
@@ -30,52 +30,52 @@
 	rebase = false
 [core]
 	editor = nvim
-  pager = delta
+	pager = delta
 	excludesfile = ~/.gitignore_global
 	ignorecase = false
 [interactive]
-    diffFilter = delta --color-only
+	diffFilter = delta --color-only
 [delta]
-    navigate = true
-    dark = true
-    pager = less # 覆盖nvimpager
-    side-by-side = true
-    syntax-theme = Visual Studio Dark+
-    map-styles = "bold cyan => #0bf432"
+  navigate = true
+	dark = true
+	pager = less # 覆盖nvimpager
+	side-by-side = true
+	syntax-theme = Visual Studio Dark+
+	map-styles = "bold cyan => #0bf432"
 
-    ; 文件头
-    file-style = bold yellow ul
-    file-decoration-style = none
-    file-modified-label = "M"
-    file-added-label = "A"
-    file-removed-label = "D"
-    file-renamed-label = "R"
+	; 文件头
+	file-style = bold yellow ul
+	file-decoration-style = none
+	file-modified-label = "M"
+	file-added-label = "A"
+	file-removed-label = "D"
+	file-renamed-label = "R"
 
-    ; Hunk 头
-    hunk-header-style = syntax bold
-    hunk-header-decoration-style = none
+	; Hunk 头
+	hunk-header-style = syntax bold
+	hunk-header-decoration-style = none
 
-    ; 行号格式（去掉边框）
-    line-numbers-left-format = "{nm:>4} "
-    line-numbers-right-format = "{np:>4} "
-    line-numbers-minus-style = "#901010"
-    line-numbers-plus-style = "#136000"
-    line-numbers-zero-style = "#666666"
+	; 行号格式（去掉边框）
+	line-numbers-left-format = "{nm:>4} "
+	line-numbers-right-format = "{np:>4} "
+	line-numbers-minus-style = "#901010"
+	line-numbers-plus-style = "#136000"
+	line-numbers-zero-style = "#666666"
 
-    ; 冲突样式
-    merge-conflict-ours-diff-header-style = cyan bold
-    merge-conflict-ours-diff-header-decoration-style = none
-    merge-conflict-theirs-diff-header-style = green bold
-    merge-conflict-theirs-diff-header-decoration-style = none
+	; 冲突样式
+	merge-conflict-ours-diff-header-style = cyan bold
+	merge-conflict-ours-diff-header-decoration-style = none
+	merge-conflict-theirs-diff-header-style = green bold
+	merge-conflict-theirs-diff-header-decoration-style = none
 [merge]
-    conflictstyle = zdiff3
+	conflictstyle = zdiff3
 [http]
 	sslVersion = tlsv1.2
 [merge "mergiraf"]
 	name = mergiraf
 	driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
 [help]
-	autocorrect = immediate 
+	autocorrect = immediate
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
