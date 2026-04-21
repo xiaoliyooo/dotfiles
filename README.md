@@ -136,6 +136,7 @@ export PATH="$HOME/.local/bin:$PATH"
 - `~/.config/starship.toml` → `starship/starship.toml`
 - `~/.config/yazi/*` → `yazi/*`
 - `~/.config/atuin/config.toml` → `atuin/config.toml`
+- `~/Library/LaunchAgents/com.atuin.daemon.plist` → `atuin/com.atuin.daemon.plist`
 - `~/.lesskey` → `less/.lesskey`
 - `~/.bunfig.toml` → `bun/.bunfig.toml`
 

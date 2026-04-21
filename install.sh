@@ -445,6 +445,11 @@ ln -sf "$DOTFILES_DIR/yazi/theme.toml" "$CONFIG_DIR/yazi/theme.toml"
 ln -sf "$DOTFILES_DIR/yazi/yazi.toml" "$CONFIG_DIR/yazi/yazi.toml"
 ln -sf "$DOTFILES_DIR/yazi/init.lua" "$CONFIG_DIR/yazi/init.lua"
 ln -sf "$DOTFILES_DIR/atuin/config.toml" "$CONFIG_DIR/atuin/config.toml"
+
+# atuin daemon被懒加载导致atuin的autostart没有效果，手动配置开机自启atuin daemon
+ln -sf "$DOTFILES_DIR/atuin/com.atuin.daemon.plist" "$HOME/Library/LaunchAgents/com.atuin.daemon.plist"
+launchctl load "$HOME/Library/LaunchAgents/com.atuin.daemon.plist" 2>/dev/null
+
 setup_local
 
 link_dir "kitty"
