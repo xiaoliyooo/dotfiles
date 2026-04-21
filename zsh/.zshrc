@@ -13,6 +13,6 @@ setup_local && source "$HOME/.zshrc.local"
 
 # PATH 去重
 typeset -gU path
-setopt NO_HUP
+setopt NO_HUP # 确保nohup有效
 
 date
