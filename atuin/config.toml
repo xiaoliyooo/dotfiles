@@ -8,6 +8,7 @@ search_mode = "fulltext"
 
 [daemon]
 enabled = true
+autostart = true
 
 [theme]
 name = "marine"
