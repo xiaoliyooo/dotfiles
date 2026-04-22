@@ -8,7 +8,8 @@ export all_proxy="socks5://127.0.0.1:7897"
 
 export TIME_STYLE="+%Y-%m-%d %H:%M"
 export EDITOR=nvim
-export LIGHT_GREEN="#0bf432" # 注释绿色
+export HIST_STAMPS="yyyy-mm-dd" #omz history 时间戳
+export LIGHT_GREEN="#0bf432"    # 注释绿色
 export PAGER=nvimpager
 
 # Ctrl+T 搜索文件
