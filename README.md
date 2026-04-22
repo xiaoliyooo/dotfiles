@@ -225,6 +225,7 @@ export PATH="$HOME/.local/bin:$PATH"
 | **visual-studio-code** | VS Code 编辑器                     |
 | **keystats**           | macOS 菜单栏键盘鼠标使用统计工具   |
 | **doubao**             | 豆包 AI 助手                       |
+| **homerow**            | 键盘驱动的全局点击与滚动控制工具   |
 
 ### Dmg App
 
