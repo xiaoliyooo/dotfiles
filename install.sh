@@ -142,6 +142,23 @@ install_tap_if_missing() {
   fi
 }
 
+# 将 dotfiles/homebrew 链接为 local/tap，用于锁定特定版本的 formula
+setup_local_tap() {
+  local tap_dir
+  tap_dir="$(brew --repository)/Library/Taps/local"
+  local target="$tap_dir/homebrew-tap"
+
+  if [ -L "$target" ] && [ "$(readlink "$target")" = "$DOTFILES_DIR/homebrew" ]; then
+    echo "✓ local/tap 已链接到 dotfiles/homebrew"
+  else
+    echo "🔗 链接 dotfiles/homebrew -> local/tap..."
+    mkdir -p "$tap_dir"
+    rm -rf "$target"
+    ln -sfn "$DOTFILES_DIR/homebrew" "$target"
+    echo "✓ local/tap 链接完成"
+  fi
+}
+
 install_rust_if_missing() {
   if command_exists "rustc"; then
     echo "✓ Rust 已安装"
@@ -335,6 +352,7 @@ echo "🚀 开始安装 dotfiles..."
 ln -sf "$DOTFILES_DIR/bun/.bunfig.toml" "$HOME/.bunfig.toml"
 
 install_brew_if_missing
+setup_local_tap
 install_rust_if_missing
 install_nvm_if_missing
 install_pip3_if_missing
@@ -355,7 +373,7 @@ install_if_missing "bat"
 install_if_missing "delta"
 install_if_missing "eza"
 install_if_missing "tree"
-install_if_missing "nvim" "neovim"
+install_if_missing "nvim" "local/tap/neovim"
 install_if_missing "nvimpager"
 install_if_missing "gdate" "coreutils"
 install_if_missing "mergiraf"
