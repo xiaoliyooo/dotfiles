@@ -26,6 +26,9 @@ setup_macos_defaults() {
   # 关闭自动大写字词的首字母
   defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 
+  # 使用电源适配器供电且显示器关闭时，防止自动进入睡眠
+  sudo pmset -c disablesleep 1
+
   # Finder 默认显示隐藏文件
   defaults write com.apple.finder AppleShowAllFiles -bool true
   killall Finder
