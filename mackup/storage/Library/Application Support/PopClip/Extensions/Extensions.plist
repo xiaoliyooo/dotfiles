@@ -8,11 +8,11 @@
 			<key>Enabled</key>
 			<true/>
 			<key>Extension Identifier</key>
-			<string>com.pilotmoon.popclip.extension.mdn</string>
+			<string>com.ripperhe.popclip.extension.Bob</string>
 			<key>Extension Name</key>
-			<string>MDN Web Docs</string>
+			<string>Bob</string>
 			<key>Package Name</key>
-			<string>@t65bec.com.pilotmoon.popclip.extension.mdn.popclipext</string>
+			<string>@f59ba6.com.ripperhe.popclip.extension.Bob.popclipext</string>
 		</dict>
 		<dict>
 			<key>Enabled</key>
@@ -23,6 +23,16 @@
 			<string>GitHub Search</string>
 			<key>Package Name</key>
 			<string>GitHub-Search.popclipext</string>
+		</dict>
+		<dict>
+			<key>Enabled</key>
+			<true/>
+			<key>Extension Identifier</key>
+			<string>com.pilotmoon.popclip.extension.mdn</string>
+			<key>Extension Name</key>
+			<string>MDN Web Docs</string>
+			<key>Package Name</key>
+			<string>@t65bec.com.pilotmoon.popclip.extension.mdn.popclipext</string>
 		</dict>
 		<dict>
 			<key>Enabled</key>

@@ -1,0 +1,14 @@
+{
+  "name": "Bob",
+  "identifier": "com.ripperhe.popclip.extension.Bob",
+  "description": "Translate text with Bob.",
+  "popclipVersion": 4151,
+  "icon": "Bob.png",
+  "app": {
+    "name": "Bob",
+    "link": "https://bobtranslate.com/",
+    "bundleIdentifiers": ["com.hezongyidev.Bob", "com.ripperhe.Bob"],
+    "checkInstalled": true
+  },
+  "applescriptFile": "Bob.applescript"
+}

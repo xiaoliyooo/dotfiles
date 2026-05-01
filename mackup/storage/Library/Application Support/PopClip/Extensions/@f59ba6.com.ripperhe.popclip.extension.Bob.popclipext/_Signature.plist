@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Signature</key>
+	<data>I/L/9mB1IwBOTmaTP+vLdSL2e9HvgHZi5d71k2swXRVefOyNrT3ploC2aoitJIWYeVGIuY0wKCp8WaDQJLc3PiUp5MzxH9/BKA46EgRc8zzgbuw6e5ysohwLq+EkVs95144IXHKAb03qfo3YrxzYk33mR0tYVMza6miOOVxyErg=</data>
+	<key>SignatureV2</key>
+	<data>W/vgAi9IJ54hFQvPx1gkmF2/Eljym/e2ZbCmXuJHMeSijEzalCAV0WXgfD11w3QYt7tL/bM/Of9rpDgKxKXrCg==</data>
+	<key>Metadata</key>
+	<dict>
+		<key>identifier</key>
+		<string>com.ripperhe.popclip.extension.Bob</string>
+		<key>shortcode</key>
+		<string>f59ba6</string>
+		<key>version</key>
+		<string>3</string>
+	</dict>
+</dict>
+</plist>
