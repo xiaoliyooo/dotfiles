@@ -27,7 +27,7 @@ setup_macos_defaults() {
   defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 
   # 使用电源适配器供电且显示器关闭时，防止自动进入睡眠
-  sudo pmset -c disablesleep 1
+  # sudo pmset -c disablesleep 1
 
   # Finder 默认显示隐藏文件
   defaults write com.apple.finder AppleShowAllFiles -bool true
