@@ -1,0 +1,22 @@
+matches:
+  - trigger: 'log;'
+    replace: 'console.log("$|$")'
+
+  - trigger: 'err;'
+    replace: 'console.error("$|$")'
+
+  - trigger: 'trace;'
+    replace: 'console.trace($|$)'
+
+  - trigger: 'profile;'
+    replace: |-
+      console.profile("time");
+      console.profileEnd("time");
+
+  - trigger: 'time;'
+    replace: |-
+      console.time("time");
+      console.timeEnd("time");
+
+  - trigger: 'cc;'
+    replace: 'contentview/index.vue'

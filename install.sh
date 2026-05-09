@@ -16,6 +16,23 @@ link_dir() {
   ln -sfn "$src" "$dest"
 }
 
+setup_espanso() {
+  local target="$HOME/Library/Application Support/espanso"
+  [ -d "$target" ] && [ ! -L "$target" ] && rm -rf "$target"
+  ln -sfn "$DOTFILES_DIR/espanso" "$target"
+
+  command_exists espanso || return
+
+  if ! espanso status 2>/dev/null | grep -q running; then
+    echo "🚀 启动 espanso 服务..."
+    espanso service register || true
+    espanso start || echo "⚠ espanso 启动失败，请运行 'espanso log' 查看原因"
+  else
+    espanso restart >/dev/null 2>&1 || true
+    echo "✓ espanso 已重载配置"
+  fi
+}
+
 link_git_scripts() {
   echo "🔗 正在链接 git 脚本..."
   local git_scripts_dir="$DOTFILES_DIR/git"
@@ -449,6 +466,7 @@ install_app_if_missing "AltTab" "alt-tab"
 install_app_if_missing "KeyStats" "keystats"
 install_app_if_missing "Doubao" "doubao"
 install_app_if_missing "Homerow" "homerow"
+install_app_if_missing "Espanso" "espanso"
 
 clone_apps_repo
 scan_and_install_dmgs "$HOME/apps/app-dmg"
@@ -485,6 +503,8 @@ link_dir "mprocs"
 link_dir "bat"
 link_dir "btop"
 link_dir "karabiner"
+
+setup_espanso
 
 echo "🔗 配置 nvimpager..."
 ln -sfn "$CONFIG_DIR/nvim" "$CONFIG_DIR/nvimpager"
