@@ -8,7 +8,7 @@ MACKUP_PREFS_DIR="$HOME/dotfiles/mackup/storage/Library/Preferences"
 echo "🔄 恢复 mackup 应用配置..."
 
 echo "  暂停运行中的应用..."
-for app in "Alfred Preferences" "Alfred" "Moom" "AltTab" "PopClip" "ScreenBrush" "Ice" "Homerow" "Keyboard Maestro Engine" "Keyboard Maestro"; do
+for app in "Alfred Preferences" "Alfred" "Moom" "AltTab" "PopClip" "ScreenBrush" "Ice" "Homerow"; do
   killall "$app" 2>/dev/null
 done
 sleep 1
@@ -41,6 +41,5 @@ start_app "PopClip"
 start_app "ScreenBrush"
 start_app "Ice"
 start_app "Homerow"
-start_app "Keyboard Maestro"
 
 echo "✅ 应用配置恢复完成！"

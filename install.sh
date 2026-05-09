@@ -537,6 +537,6 @@ echo "✓ zsh 配置已重载"
 
 echo "✅ 安装完成！"
 echo ""
-echo "💡 如需同步Map应用配置(Moom、AltTab、Keyboard Maestro 等)，请手动执行："
+echo "💡 如需同步Map应用配置(Moom、AltTab 等)，请手动执行："
 echo "   sh ./app-restore.sh"
 echo "   Bob配置文件在apps中~"
