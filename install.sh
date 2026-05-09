@@ -260,14 +260,21 @@ install_cask_if_missing() {
 install_app_if_missing() {
   local app_name="$1"
   local cask_name="$2"
+  local app_path="${3:-/Applications/$app_name.app}"
 
-  if [ -d "/Applications/$app_name.app" ]; then
+  if [ -d "$app_path" ]; then
     echo "✓ $app_name 已安装"
   else
     echo "⚠ $app_name 未找到，正在安装..."
 
     if [ "$cask_name" = "keystats" ]; then
       install_tap_if_missing "debugtheworldbot/keystats"
+    fi
+
+    if [ "$cask_name" = "sogouinput" ]; then
+      echo "🌐 搜狗输入法 cask 在国内网络下不可用，打开官网下载页"
+      open "https://pinyin.sogou.com/mac/"
+      return
     fi
 
     brew install --cask "$cask_name"
@@ -424,6 +431,7 @@ install_if_missing "sql-formatter"
 #   ━━━━━━━━━━━━━━━━━━━━━ neovim formatter/linter end ━━━━━━━━━━━━━━━━━━━
 
 install_app_if_missing "WeChat" "wechat"
+install_app_if_missing "搜狗输入法" "sogouinput" "/Library/Input Methods/SogouInput.app"
 install_app_if_missing "QQMusic" "qqmusic"
 install_app_if_missing "NeteaseMusic" "neteasemusic"
 install_app_if_missing "Google Chrome" "google-chrome"
@@ -436,6 +444,7 @@ install_app_if_missing "SwitchHosts" "switchhosts"
 install_app_if_missing "Ice" "jordanbaird-ice"
 install_app_if_missing "Tencent Lemon" "tencent-lemon"
 # install_app_if_missing "Visual Studio Code" "visual-studio-code"
+# install_app_if_missing "Antigravity" "antigravity"
 install_app_if_missing "AltTab" "alt-tab"
 install_app_if_missing "KeyStats" "keystats"
 install_app_if_missing "Doubao" "doubao"
