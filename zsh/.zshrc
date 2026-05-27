@@ -15,5 +15,6 @@ setup_local && source "$HOME/.zshrc.local"
 typeset -gU path
 setopt NO_HUP              # 确保nohup有效
 setopt interactivecomments # 交互式zsh 支持注释
+setopt extended_glob
 
 date
