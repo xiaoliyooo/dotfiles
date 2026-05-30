@@ -16,8 +16,8 @@ setup_macos_defaults() {
     defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add "$1" \
       "<dict><key>enabled</key><${2}/><key>value</key><dict><key>parameters</key><array><integer>${3}</integer><integer>${4}</integer><integer>${5}</integer></array><key>type</key><string>standard</string></dict></dict>"
   }
-  _hotkey 60 false 32 49 262144 # 选择上一个输入法 (^Space) — 禁用
-  _hotkey 61 true 113 12 262144 # 选择下一个输入法 (^Q) — 启用
+  _hotkey 60 false 32 49 262144  # 选择上一个输入法 (^Space) — 禁用
+  _hotkey 61 false 113 12 262144 # 选择下一个输入法 (^Q) — 禁用
   unset -f _hotkey
 
   # 关闭连按两下空格键插入句号

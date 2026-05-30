@@ -2,6 +2,7 @@ local M = {}
 
 local ABC = "com.apple.keylayout.ABC"
 local SOGOU = "com.sogou.inputmethod.sogou.pinyin"
+local KOREAN_PREFIX = "com.apple.inputmethod.Korean"
 
 local abcApps = {
 	["com.microsoft.VSCode"] = "Visual Studio Code",
@@ -47,6 +48,32 @@ local function switchIfNeeded(app)
 end
 
 local watcher
+
+local function cycleSources()
+	local sources = hs.fnutils.concat(hs.keycodes.layouts(true), hs.keycodes.methods(true))
+	for _, id in ipairs(sources) do
+		if id:sub(1, #KOREAN_PREFIX) == KOREAN_PREFIX then
+			return id
+		end
+	end
+end
+
+function M.toggle()
+	local current = hs.keycodes.currentSourceID()
+	hs.keycodes.currentSourceID(current == SOGOU and ABC or SOGOU)
+end
+
+function M.toKorean()
+	local korean = cycleSources()
+	if korean then
+		hs.keycodes.currentSourceID(korean)
+	end
+end
+
+function M.bindHotkeys()
+	hs.hotkey.bind({ "ctrl" }, "Q", M.toggle)
+	hs.hotkey.bind({ "ctrl", "shift" }, "Q", M.toKorean)
+end
 
 function M.start()
 	watcher = hs.application.watcher.new(function(_, eventType, app)

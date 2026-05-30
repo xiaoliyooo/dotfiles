@@ -21,4 +21,5 @@ local reminder = require("modules.reminder")
 reminder.start()
 
 local imSwitcher = require("modules.im_switcher")
+imSwitcher.bindHotkeys()
 imSwitcher.start()
