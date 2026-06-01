@@ -4,27 +4,19 @@ local ABC = "com.apple.keylayout.ABC"
 local SOGOU = "com.sogou.inputmethod.sogou.pinyin"
 local KOREAN_PREFIX = "com.apple.inputmethod.Korean"
 
-local abcApps = {
-	["com.microsoft.VSCode"] = "Visual Studio Code",
-	["com.google.antigravity"] = "Antigravity",
-	["com.googlecode.iterm2"] = "iTerm",
-	["net.kovidgoyal.kitty"] = "kitty",
-	["com.apple.finder"] = "访达",
-	["com.jinghaoshe.qspace.pro"] = "QSpace Pro",
+local appToIM = {
+	-- ABC
+	["com.microsoft.VSCode"] = ABC, -- Visual Studio Code
+	["com.google.antigravity"] = ABC, -- Antigravity
+	["com.googlecode.iterm2"] = ABC, -- iTerm
+	["net.kovidgoyal.kitty"] = ABC, -- kitty
+	["com.apple.finder"] = ABC, -- 访达
+	["com.jinghaoshe.qspace.pro"] = ABC, -- QSpace Pro
+	-- 搜狗
+	["com.tencent.xinWeChat"] = SOGOU, -- 微信
+	["com.electron.lark"] = SOGOU, -- 飞书
+	["com.bot.pc.doubao"] = SOGOU, -- 豆包
 }
-
-local sogouApps = {
-	["com.tencent.xinWeChat"] = "微信",
-	["com.electron.lark"] = "飞书",
-}
-
-local appToIM = {}
-for bundleID in pairs(abcApps) do
-	appToIM[bundleID] = ABC
-end
-for bundleID in pairs(sogouApps) do
-	appToIM[bundleID] = SOGOU
-end
 
 local function switchIfNeeded(app)
 	if not app then
