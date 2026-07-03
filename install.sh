@@ -288,12 +288,6 @@ install_app_if_missing() {
       install_tap_if_missing "debugtheworldbot/keystats"
     fi
 
-    if [ "$cask_name" = "sogouinput" ]; then
-      echo "🌐 搜狗输入法 cask 在国内网络下不可用，打开官网下载页"
-      open "https://pinyin.sogou.com/mac/"
-      return
-    fi
-
     brew install --cask "$cask_name"
   fi
 }
@@ -448,7 +442,7 @@ install_if_missing "sql-formatter"
 #   ━━━━━━━━━━━━━━━━━━━━━ neovim formatter/linter end ━━━━━━━━━━━━━━━━━━━
 
 install_app_if_missing "WeChat" "wechat"
-install_app_if_missing "搜狗输入法" "sogouinput" "/Library/Input Methods/SogouInput.app"
+install_app_if_missing "微信输入法" "wetype" "/Library/Input Methods/WeType.app"
 install_app_if_missing "QQMusic" "qqmusic"
 install_app_if_missing "NeteaseMusic" "neteasemusic"
 install_app_if_missing "Google Chrome" "google-chrome"

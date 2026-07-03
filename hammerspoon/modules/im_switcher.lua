@@ -1,7 +1,7 @@
 local M = {}
 
 local ABC = "com.apple.keylayout.ABC"
-local SOGOU = "com.sogou.inputmethod.sogou.pinyin"
+local PINYIN = "com.tencent.inputmethod.wetype.pinyin"
 local KOREAN_PREFIX = "com.apple.inputmethod.Korean"
 
 local appToIM = {
@@ -12,10 +12,10 @@ local appToIM = {
 	["net.kovidgoyal.kitty"] = ABC, -- kitty
 	["com.apple.finder"] = ABC, -- 访达
 	["com.jinghaoshe.qspace.pro"] = ABC, -- QSpace Pro
-	-- 搜狗
-	["com.tencent.xinWeChat"] = SOGOU, -- 微信
-	["com.electron.lark"] = SOGOU, -- 飞书
-	["com.bot.pc.doubao"] = SOGOU, -- 豆包
+	-- 微信输入法
+	["com.tencent.xinWeChat"] = PINYIN, -- 微信
+	["com.electron.lark"] = PINYIN, -- 飞书
+	["com.bot.pc.doubao"] = PINYIN, -- 豆包
 }
 
 local function switchIfNeeded(app)
@@ -52,7 +52,7 @@ end
 
 function M.toggle()
 	local current = hs.keycodes.currentSourceID()
-	hs.keycodes.currentSourceID(current == SOGOU and ABC or SOGOU)
+	hs.keycodes.currentSourceID(current == PINYIN and ABC or PINYIN)
 end
 
 function M.toKorean()

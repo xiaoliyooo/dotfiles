@@ -216,6 +216,7 @@ export PATH="$HOME/.local/bin:$PATH"
 | **switchhosts**        | Hosts 文件管理                     |
 | **tencent-lemon**      | macOS 系统本地垃圾缓存清理工具     |
 | **wechat**             | 微信                               |
+| **wetype**             | 微信输入法                         |
 | **qqmusic**            | QQ 音乐                            |
 | **google-chrome**      | Google Chrome 浏览器               |
 | **firefox**            | Firefox 浏览器                     |
