@@ -18,6 +18,12 @@ local reminders = {
 			"17:15",
 		},
 	},
+	{
+		text = "点外卖！",
+		times = {
+			"11:25",
+		},
+	},
 }
 
 local function closeReminder()
