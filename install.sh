@@ -442,7 +442,7 @@ install_if_missing "sql-formatter"
 #   ━━━━━━━━━━━━━━━━━━━━━ neovim formatter/linter end ━━━━━━━━━━━━━━━━━━━
 
 install_app_if_missing "WeChat" "wechat"
-install_app_if_missing "微信输入法" "wetype" "/Library/Input Methods/WeType.app"
+install_app_if_missing "微信输入法" "wetype" "$HOME/Library/Input Methods/WeType.app"
 install_app_if_missing "QQMusic" "qqmusic"
 install_app_if_missing "NeteaseMusic" "neteasemusic"
 install_app_if_missing "Google Chrome" "google-chrome"
