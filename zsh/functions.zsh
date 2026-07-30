@@ -5,6 +5,27 @@ TRAPUSR1() {
   fi
 }
 
+bin() {
+  if (($# != 1)); then
+    print -u2 '用法：bin <命令>'
+    return 2
+  fi
+
+  local name=$1
+  local result=$(type -- "$name" 2>&1) || {
+    print -r -- "$result"
+    return 127
+  }
+
+  local candidate=${result##* is }
+
+  if [[ $candidate == /* && -e $candidate ]]; then
+    print -r -- "${candidate:A}"
+  else
+    print -r -- "$result"
+  fi
+}
+
 d() {
   local index=0 dir
   for dir in "$PWD" "${dirstack[@]}"; do
