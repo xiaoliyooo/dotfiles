@@ -5,6 +5,14 @@ TRAPUSR1() {
   fi
 }
 
+d() {
+  local index=0 dir
+  for dir in "$PWD" "${dirstack[@]}"; do
+    printf '\e[33m%-2d\e[0m %s\n' "$index" "${dir/#$HOME/~}"
+    ((index++))
+  done
+}
+
 git() {
   if [[ "$1" == "init" ]]; then
     command git init "${@:2}"
@@ -234,7 +242,9 @@ reload() {
 }
 
 chpwd() {
-  eza -a --icons --color=always --group-directories-first -w $((COLUMNS * 2 / 3))
+  eza -la --no-filesize --no-user --git --group-directories-first
+  printf '\033[90m%s\033[0m\n' "$(printf '%*s' "$COLUMNS" '' | tr ' ' '─')"
+  d
 }
 
 oo() {

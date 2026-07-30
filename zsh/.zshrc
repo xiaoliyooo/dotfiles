@@ -16,5 +16,7 @@ typeset -gU path
 setopt NO_HUP              # 确保nohup有效
 setopt interactivecomments # 交互式zsh 支持注释
 setopt extended_glob
+setopt AUTO_PUSHD
+setopt PUSHD_MINUS
 
 date
