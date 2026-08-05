@@ -264,8 +264,8 @@ reload() {
 
 chpwd() {
   eza -la --no-filesize --no-user --git --group-directories-first
-  printf '\033[90m%s\033[0m\n' "$(printf '%*s' "$COLUMNS" '' | tr ' ' '─')"
-  d
+  # printf '\033[90m%s\033[0m\n' "$(printf '%*s' "$COLUMNS" '' | tr ' ' '─')"
+  # d
 }
 
 oo() {
