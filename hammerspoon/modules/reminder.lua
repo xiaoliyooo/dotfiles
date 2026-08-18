@@ -12,6 +12,18 @@ local reminderStyle = {
 
 local reminders = {
 	{
+		text = "打卡",
+		times = {
+			"08:55",
+		},
+	},
+	{
+		text = "打卡",
+		times = {
+			"20:55",
+		},
+	},
+	{
 		text = "点外卖",
 		times = {
 			"11:10",
