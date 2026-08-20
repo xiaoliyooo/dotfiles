@@ -218,6 +218,15 @@ install_nvm_if_missing() {
   fi
 }
 
+install_tode_if_missing() {
+  if command_exists "tode"; then
+    echo "✓ tode 已安装"
+  else
+    echo "⚠ tode 未找到，正在安装..."
+    curl -fsSL https://tode.sh/install | bash
+  fi
+}
+
 install_npm_if_missing() {
   local cmd="$1"
   local package="${2:-$1}"
@@ -373,6 +382,7 @@ install_brew_if_missing
 setup_local_tap
 install_rust_if_missing
 install_nvm_if_missing
+install_tode_if_missing
 install_pip3_if_missing
 install_zinit_if_missing
 install_zinit_plugins
