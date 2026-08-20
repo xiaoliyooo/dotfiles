@@ -23,7 +23,7 @@ alias c='pbcopy'
 
 alias -g G='| rg'
 alias -g C='| wc -l'
-alias -g Y='| tee >(pbcopy)'
+alias -g Y='| tee >(perl -0pe '\''s/\n\z//'\'' | pbcopy)'
 
 alias tq='curl "wttr.in/北京朝阳区?lang=zh-cn"'
 
