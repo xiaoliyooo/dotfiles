@@ -21,8 +21,8 @@ matches:
   - trigger: 'cc;'
     replace: 'contentview/index.vue'
 
-  - trigger: 'mm;'
-    replace: '检查 mcp-relationships.json 和 capability-packs 目录下的能力包是否有需要更新'
-
   - trigger: 'ck;'
     replace: '整体再检查一遍，确保没有遗漏修改和遗漏修改'
+
+  - trigger: 'tt;'
+    replace: "/timeline\n"
