@@ -3,6 +3,7 @@ local M = {}
 local ABC = "com.apple.keylayout.ABC"
 local PINYIN = "com.tencent.inputmethod.wetype.pinyin"
 local KOREAN_PREFIX = "com.apple.inputmethod.Korean"
+local SWITCH_RETRY_DELAYS = { 0, 0.05, 0.15 }
 
 local appToIM = {
 	-- ABC
@@ -18,25 +19,31 @@ local appToIM = {
 	["com.bot.pc.doubao"] = PINYIN, -- 豆包
 }
 
+local function isFrontmost(bundleID)
+	local app = hs.application.frontmostApplication()
+	return app and app:bundleID() == bundleID
+end
+
+local function switchTo(target, bundleID)
+	for _, delay in ipairs(SWITCH_RETRY_DELAYS) do
+		hs.timer.doAfter(delay, function()
+			if bundleID and not isFrontmost(bundleID) then
+				return
+			end
+			hs.keycodes.currentSourceID(target)
+		end)
+	end
+end
+
 local function switchIfNeeded(app)
 	if not app then
 		return
 	end
 	local bundleID = app:bundleID()
-	if not bundleID then
-		return
+	local target = bundleID and appToIM[bundleID]
+	if target then
+		switchTo(target, bundleID)
 	end
-
-	local target = appToIM[bundleID]
-	if not target then
-		return
-	end
-
-	if hs.keycodes.currentSourceID() == target then
-		return
-	end
-
-	hs.keycodes.currentSourceID(target)
 end
 
 local watcher
@@ -52,13 +59,17 @@ end
 
 function M.toggle()
 	local current = hs.keycodes.currentSourceID()
-	hs.keycodes.currentSourceID(current == PINYIN and ABC or PINYIN)
+	local app = hs.application.frontmostApplication()
+	local bundleID = app and app:bundleID()
+	switchTo(current == PINYIN and ABC or PINYIN, bundleID)
 end
 
 function M.toKorean()
 	local korean = cycleSources()
 	if korean then
-		hs.keycodes.currentSourceID(korean)
+		local app = hs.application.frontmostApplication()
+		local bundleID = app and app:bundleID()
+		switchTo(korean, bundleID)
 	end
 end
 
