@@ -132,6 +132,8 @@ export PATH="$HOME/.local/bin:$PATH"
 安装脚本会链接或生成以下关键配置：
 
 - `~/.gitconfig` → `git/gitconfig`
+- `~/.vimrc` → `vim/.vimrc`
+- `~/.tmux.conf` → `tmux/.tmux.conf`
 - `~/.config/lazygit/config.yml` → `lazygit/lazygit_config.yml`
 - `~/.config/starship.toml` → `starship/starship.toml`
 - `~/.config/yazi/*` → `yazi/*`
@@ -187,6 +189,8 @@ export PATH="$HOME/.local/bin:$PATH"
 | **pip3**          | Python 包管理器                         |
 | **ni**            | 抹平各个 JS 包管理器差异的统一命令入口  |
 | **nvm**           | Node.js 版本管理器                      |
+| **vim**           | vim                                     |
+| **tmux**          | tmux                                    |
 | **bun**           | JavaScript 运行时及包管理工具           |
 | **pnpm**          | 前端项目依赖包管理器                    |
 | **prettier**      | 前端跨文件代码格式化工具                |
