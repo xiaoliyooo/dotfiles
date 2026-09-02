@@ -83,10 +83,6 @@ install_if_missing() {
       tldr --update
     fi
 
-    if [ "$package" = "kitty" ]; then
-      replace_kitty_icon
-    fi
-
     if [ "$package" = "git-lfs" ]; then
       git lfs install
     fi
@@ -239,37 +235,11 @@ install_npm_if_missing() {
   fi
 }
 
-replace_kitty_icon() {
-  # https://github.com/DinkDonk/kitty-icon
-  local icon_source="$DOTFILES_DIR/kitty/kitty-dark.icns"
-  local kitty_app="/Applications/kitty.app"
-  local icon_dest="$kitty_app/Contents/Resources/kitty.icns"
-
-  if [ ! -d "$kitty_app" ]; then
-    echo "⚠ kitty.app 未找到，跳过图标替换"
-    return
-  fi
-
-  if [ ! -f "$icon_source" ]; then
-    echo "⚠ kitty-dark.icns 未找到，跳过图标替换"
-    return
-  fi
-
-  if cmp -s "$icon_source" "$icon_dest"; then
-    echo "✓ kitty 图标已是最新"
-    return
-  fi
-
-  echo "🎨 替换 kitty 图标..."
-  cp "$icon_source" "$icon_dest"
-
+setup_kitty_icon() {
+  kitty +runpy 'from kitty.fast_data_types import cocoa_set_app_icon; import sys; cocoa_set_app_icon(*sys.argv[1:]); print("OK")' kitty/kitty-alternative.icns
   rm -rf /var/folders/*/*/*/com.apple.dock.iconcache 2>/dev/null || true
-  killall Dock 2>/dev/null || true
-
-  # 触发 Finder 刷新应用图标
-  touch "$kitty_app"
-
-  echo "✓ kitty 图标替换完成"
+  killall Dock
+  echo "✓ Dock 图标已刷新"
 }
 
 install_cask_if_missing() {
@@ -505,6 +475,7 @@ launchctl load "$HOME/Library/LaunchAgents/com.atuin.daemon.plist" 2>/dev/null
 setup_local
 
 link_dir "kitty"
+setup_kitty_icon
 link_dir "tealdeer"
 link_dir "mprocs"
 link_dir "bat"
