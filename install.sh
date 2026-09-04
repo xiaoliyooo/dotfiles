@@ -236,7 +236,13 @@ install_npm_if_missing() {
 }
 
 setup_kitty_icon() {
-  kitty +runpy 'from kitty.fast_data_types import cocoa_set_app_icon; import sys; cocoa_set_app_icon(*sys.argv[1:]); print("OK")' kitty/kitty-alternative.icns
+  kitty +runpy 'exec(__import__("textwrap").dedent("""
+    from kitty.fast_data_types import cocoa_set_app_icon
+    import sys
+
+    cocoa_set_app_icon(*sys.argv[1:])
+    print("OK")
+  """))' "$DOTFILES_DIR/kitty/kitty-alternative.icns"
   rm -rf /var/folders/*/*/*/com.apple.dock.iconcache 2>/dev/null || true
   killall Dock
   echo "✓ Dock 图标已刷新"
