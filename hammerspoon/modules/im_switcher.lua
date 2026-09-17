@@ -1,9 +1,15 @@
 local M = {}
+local log = hs.logger.new("im_switcher")
 
 local ABC = "com.apple.keylayout.ABC"
 local PINYIN = "com.tencent.inputmethod.wetype.pinyin"
 local KOREAN_PREFIX = "com.apple.inputmethod.Korean"
-local SWITCH_RETRY_DELAYS = { 0, 0.05, 0.15 }
+local MACISM_TEMPORARY_WINDOW_BUNDLE_ID = "laishulu.macism.TemporaryWindow"
+local FINDER_BUNDLE_ID = "com.apple.finder"
+
+local macismOutput, macismFound = hs.execute("command -v macism", true)
+local macismPath = macismOutput:match("([^\r\n]+)%s*$")
+assert(macismFound and macismPath, "macism not found in PATH")
 
 local appToIM = {
 	-- ABC
@@ -24,15 +30,92 @@ local function isFrontmost(bundleID)
 	return app and app:bundleID() == bundleID
 end
 
-local function switchTo(target, bundleID)
-	for _, delay in ipairs(SWITCH_RETRY_DELAYS) do
-		hs.timer.doAfter(delay, function()
-			if bundleID and not isFrontmost(bundleID) then
-				return
-			end
-			hs.keycodes.currentSourceID(target)
-		end)
+local activeTask
+local switchRequest = 0
+local ignoredActivationBundleID
+local ignoredActivationTimer
+
+local function invalidateSwitch()
+	switchRequest = switchRequest + 1
+end
+
+local function clearIgnoredActivation()
+	ignoredActivationBundleID = nil
+	if ignoredActivationTimer then
+		ignoredActivationTimer:stop()
+		ignoredActivationTimer = nil
 	end
+end
+
+local function ignoreNextActivation(bundleID)
+	clearIgnoredActivation()
+	ignoredActivationBundleID = bundleID
+	ignoredActivationTimer = hs.timer.doAfter(1, clearIgnoredActivation)
+end
+
+local function cancelSwitch()
+	invalidateSwitch()
+	clearIgnoredActivation()
+
+	if activeTask then
+		activeTask:terminate()
+		activeTask = nil
+	end
+end
+
+local function runMacism(target, bundleID, request)
+	if request ~= switchRequest or (bundleID and not isFrontmost(bundleID)) then
+		return
+	end
+
+	local task
+	local arguments = { target }
+	if bundleID == FINDER_BUNDLE_ID then
+		-- Finder's rename field loses focus when TemporaryWindow is activated.
+		arguments[#arguments + 1] = "0"
+	end
+	task = hs.task.new(macismPath, function(exitCode, _, stderr)
+		if activeTask == task then
+			activeTask = nil
+		end
+
+		if request ~= switchRequest then
+			return
+		end
+
+		if exitCode ~= 0 then
+			local detail = stderr and stderr:gsub("%s+$", "") or "unknown error"
+			log.e("macism failed (%s): %s", tostring(exitCode), detail)
+		end
+	end, arguments)
+
+	if not task then
+		log.e("failed to create macism task")
+		return
+	end
+
+	if target ~= ABC and bundleID then
+		ignoreNextActivation(bundleID)
+	end
+
+	activeTask = task
+	if not task:start() then
+		clearIgnoredActivation()
+		if request == switchRequest then
+			activeTask = nil
+		end
+		log.e("failed to start macism")
+	end
+end
+
+local function switchTo(target, bundleID)
+	if not target then
+		return
+	end
+
+	cancelSwitch()
+	local request = switchRequest
+	runMacism(target, bundleID, request)
 end
 
 local function switchIfNeeded(app)
@@ -43,6 +126,9 @@ local function switchIfNeeded(app)
 	local target = bundleID and appToIM[bundleID]
 	if target then
 		switchTo(target, bundleID)
+	else
+		-- Do not kill macism while its temporary window is refreshing the input context.
+		invalidateSwitch()
 	end
 end
 
@@ -61,7 +147,8 @@ function M.toggle()
 	local current = hs.keycodes.currentSourceID()
 	local app = hs.application.frontmostApplication()
 	local bundleID = app and app:bundleID()
-	switchTo(current == PINYIN and ABC or PINYIN, bundleID)
+	local target = current == PINYIN and ABC or PINYIN
+	switchTo(target, bundleID)
 end
 
 function M.toKorean()
@@ -81,6 +168,14 @@ end
 function M.start()
 	watcher = hs.application.watcher.new(function(_, eventType, app)
 		if eventType == hs.application.watcher.activated then
+			local bundleID = app and app:bundleID()
+			if bundleID == MACISM_TEMPORARY_WINDOW_BUNDLE_ID then
+				return
+			end
+			if bundleID and bundleID == ignoredActivationBundleID then
+				clearIgnoredActivation()
+				return
+			end
 			switchIfNeeded(app)
 		end
 	end)

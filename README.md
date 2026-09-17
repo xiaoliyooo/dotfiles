@@ -185,7 +185,7 @@ export PATH="$HOME/.local/bin:$PATH"
 | **magick**        | 图像渲染与格式转换工具                  |
 | **killport**      | 端口进程清理与终止工具                  |
 | **onefetch**      | 终端 Git 仓库概览展板工具               |
-| **im-select**     | 终端中英文输入法状态自动切换组件        |
+| **macism**        | 可靠切换 macOS 中英文输入法的命令行工具   |
 | **pip3**          | Python 包管理器                         |
 | **ni**            | 抹平各个 JS 包管理器差异的统一命令入口  |
 | **nvm**           | Node.js 版本管理器                      |
