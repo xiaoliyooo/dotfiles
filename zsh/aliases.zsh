@@ -29,4 +29,7 @@ alias tq='curl "wttr.in/北京朝阳区?lang=zh-cn"'
 
 alias app='open -a'
 
-alias ssh='kitty +kitten ssh -R 127.0.0.1:7897:127.0.0.1:7897'
+# alias ssh='kitty +kitten ssh -R 127.0.0.1:7897:127.0.0.1:7897'
+alias ssh='kitty +kitten ssh'
+alias ff='fg'
+alias bb='bg'
