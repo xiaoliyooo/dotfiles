@@ -22,13 +22,14 @@ zinit light zdharma-continuum/null
 zinit ice wait lucid atload'source ${ZDOTDIR}/plugins/fzf-tab.zsh'
 zinit light Aloxaf/fzf-tab
 
-zinit ice wait lucid atload'_zsh_autosuggest_start'
-zinit light zsh-users/zsh-autosuggestions
-
 # fast-syntax-highlighting 必须在 fzf-tab 后加载
 # 在 fzf-tab 之后包装 ZLE widgets 才能正确响应补全后的重新高亮
 zinit ice wait lucid
 zinit light zdharma-continuum/fast-syntax-highlighting
+
+# autosuggestions 在 FSH 后加载，确保部分接受后的建议高亮不被覆盖
+zinit ice wait lucid atload'_zsh_autosuggest_start'
+zinit light zsh-users/zsh-autosuggestions
 
 # atuin 懒加载
 zinit ice wait lucid as"null" atload'eval "$(atuin init zsh --disable-up-arrow)"'
