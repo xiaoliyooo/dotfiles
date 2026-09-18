@@ -152,42 +152,8 @@ install_tap_if_missing() {
 }
 
 install_macism_if_missing() {
-  local macism_version="3.1.1"
-  local source_dir
-
-  if brew trust --help >/dev/null 2>&1; then
-    brew trust --tap "laishulu/homebrew"
-  fi
   install_tap_if_missing "laishulu/homebrew"
-
   install_if_missing "macism" "laishulu/homebrew/macism"
-
-  if [ -d "/Applications/TemporaryWindow.app" ]; then
-    echo "✓ TemporaryWindow 已安装"
-  else
-    echo "📦 安装 TemporaryWindow..."
-    source_dir="$(mktemp -d)"
-    if ! (
-      set -e
-      trap 'rm -rf "$source_dir"' EXIT
-      curl -fsSL \
-        "https://github.com/laishulu/macism/archive/refs/tags/v${macism_version}.tar.gz" \
-        -o "$source_dir/macism.tar.gz"
-      tar -xzf "$source_dir/macism.tar.gz" -C "$source_dir" --strip-components=1
-      xcrun swiftc \
-        "$source_dir/WindowUtils.swift" \
-        "$source_dir/TemporaryWindow.swift" \
-        -o "$source_dir/TemporaryWindow"
-      mkdir -p "$source_dir/TemporaryWindow.app/Contents/MacOS"
-      cp "$source_dir/TemporaryWindow" "$source_dir/TemporaryWindow.app/Contents/MacOS/"
-      codesign --force --deep --sign - "$source_dir/TemporaryWindow.app"
-      cp -R "$source_dir/TemporaryWindow.app" "/Applications/TemporaryWindow.app"
-    ); then
-      echo "✗ TemporaryWindow 安装失败"
-      return 1
-    fi
-    echo "✓ TemporaryWindow 安装完成"
-  fi
 }
 
 # 将 dotfiles/homebrew 链接为 local/tap，用于锁定特定版本的 formula
