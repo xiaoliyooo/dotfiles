@@ -1,1 +1,1 @@
-export LS_COLORS="$(vivid generate lava)"
+# export LS_COLORS="$(# vivid generate lava)"
