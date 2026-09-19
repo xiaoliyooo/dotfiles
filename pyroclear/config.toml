@@ -1,0 +1,10 @@
+[color]
+palette = "cyberpunkneon"
+
+[animation]
+fps = 120
+wind = 0
+height = 3
+direction = 0
+duration = 1.0
+flames_duration = 0.38

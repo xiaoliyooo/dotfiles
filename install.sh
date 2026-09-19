@@ -180,6 +180,8 @@ install_rust_if_missing() {
     echo "⚠ Rust 未找到，正在安装..."
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   fi
+
+  [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 }
 
 install_pip3_if_missing() {
@@ -200,6 +202,18 @@ install_pipx_package_if_missing() {
   else
     echo "⚠ $cmd 未找到，正在通过 pipx 安装 $package..."
     pipx install "$package"
+  fi
+}
+
+install_cargo_package_if_missing() {
+  local cmd="$1"
+  local package="${2:-$1}"
+
+  if command_exists "$cmd"; then
+    echo "✓ $cmd 已安装"
+  else
+    echo "⚠ $cmd 未找到，正在通过 Cargo 安装 $package..."
+    cargo install "$package"
   fi
 }
 
@@ -358,6 +372,7 @@ ln -sf "$DOTFILES_DIR/bun/.bunfig.toml" "$HOME/.bunfig.toml"
 install_brew_if_missing
 setup_local_tap
 install_rust_if_missing
+install_cargo_package_if_missing "pyroclear"
 install_nvm_if_missing
 install_tode_if_missing
 install_pip3_if_missing
@@ -488,6 +503,7 @@ link_dir "mprocs"
 link_dir "bat"
 link_dir "btop"
 link_dir "karabiner"
+link_dir "pyroclear"
 
 setup_espanso
 

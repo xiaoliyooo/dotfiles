@@ -5,7 +5,9 @@ alias j='z'
 alias code="tode"
 alias ls="eza -la --no-filesize --no-user --git --group-directories-first"
 
-alias clear='printf "\033[2J\033[3J\033[H"'
+# alias clear='printf "\033[2J\033[3J\033[H"'
+alias clear="pyroclear"
+
 alias cat="nvimpager"
 alias top="btop"
 alias vim="nvim"

@@ -138,6 +138,7 @@ export PATH="$HOME/.local/bin:$PATH"
 - `~/.config/starship.toml` → `starship/starship.toml`
 - `~/.config/yazi/*` → `yazi/*`
 - `~/.config/atuin/config.toml` → `atuin/config.toml`
+- `~/.config/pyroclear` → `pyroclear/`
 - `~/Library/LaunchAgents/com.atuin.daemon.plist` → `atuin/com.atuin.daemon.plist`
 - `~/.lesskey` → `less/.lesskey`
 - `~/.bunfig.toml` → `bun/.bunfig.toml`
@@ -171,6 +172,7 @@ export PATH="$HOME/.local/bin:$PATH"
 | **fzf**           | 终端命令行模糊搜索器                    |
 | **yazi**          | 异步的 TUI 终端文件管理器               |
 | **mprocs**        | 多进程统一调度 TUI 日志面板             |
+| **pyroclear**     | 带火焰动画的终端清屏工具                |
 | **ttyd**          | 终端到 Web 的命令行远程接入工具         |
 | **lazygit**       | 终端 TUI 模式的 Git 交互面板            |
 | **delta**         | 支持语法高亮与代码块移动检查的 Git diff |
