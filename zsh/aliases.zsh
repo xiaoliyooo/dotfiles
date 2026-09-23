@@ -10,7 +10,6 @@ alias clear="pyroclear"
 
 alias cat="nvimpager"
 alias top="btop"
-alias vim="nvim"
 
 alias date='gdate "+%Y-%m-%d %H:%M:%S %A"'
 alias dt='date'

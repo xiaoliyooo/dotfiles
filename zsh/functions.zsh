@@ -1,3 +1,5 @@
+source "$ZDOTDIR/pyrofire.zsh"
+
 TRAPUSR1() {
   if [[ -o interactive ]]; then
     reload
@@ -269,5 +271,14 @@ chpwd() {
 }
 
 oo() {
-  command opencode "$@"
+  opencode "$@"
+}
+
+vim() {
+  # _pyrofire_command nvim "$@"
+  nvim "$@"
+}
+
+opencode() {
+  _pyrofire_command opencode "$@"
 }
