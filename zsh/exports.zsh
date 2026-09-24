@@ -13,7 +13,7 @@ export LIGHT_GREEN="#0bf432"    # 注释绿色
 export PAGER=nvimpager
 
 # Ctrl+T 搜索文件
-export FZF_CTRL_T_COMMAND="fd --type f --follow --exclude '{.git,node_modules,*.lock,*lock.json,js-debug,.zsh_sessions,apps,awrit,Library,Pictures}'"
+export FZF_CTRL_T_COMMAND="fd --type f --hidden --follow --exclude '{.git,node_modules,*.lock,*lock.json,js-debug,.zsh_sessions,apps,awrit,Library,Pictures}'"
 # 预览时现实相对路径，插入转换为绝对路径
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}' --bind 'enter:become(zsh -c '\\''print -rl -- \${@:a}'\\'' -- {+})'"
 # Ctrl+D 搜索目录
