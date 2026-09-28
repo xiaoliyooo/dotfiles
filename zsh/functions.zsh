@@ -199,6 +199,19 @@ zle -N dirs-widget
 # Ctrl+; 通过 kitty send_text 发送 CSI u 序列 \x1b[59;5u
 bindkey '\e[59;5u' dirs-widget
 
+# Ctrl+Shift+T：按 FZF_ALT_C_COMMAND 搜索目录，并将路径插入命令行
+fzf-dir-insert-widget() {
+  local dir
+  dir="$(eval "$FZF_ALT_C_COMMAND" | \
+    FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} ${FZF_ALT_C_OPTS}" \
+    fzf --reverse --scheme=path +m)" || return
+  [[ -n "$dir" ]] || return
+  LBUFFER+="${(q)dir} "
+  zle reset-prompt
+}
+zle -N fzf-dir-insert-widget
+bindkey '\e[116;6u' fzf-dir-insert-widget
+
 lss() {
   eza -la --no-filesize --no-time --no-user --git | rg -i "$@"
 }
