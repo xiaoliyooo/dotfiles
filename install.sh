@@ -4,6 +4,7 @@
 DOTFILES_DIR="$HOME/dotfiles"
 CONFIG_DIR="$HOME/.config"
 source "$DOTFILES_DIR/local/index.zsh"
+source "$DOTFILES_DIR/atuin/setup.sh"
 
 command_exists() {
   command -v "$1" >/dev/null 2>&1
@@ -420,7 +421,6 @@ install_if_missing "ttyd"
 install_if_missing "ni"
 install_if_missing "killport"
 install_if_missing "onefetch"
-install_if_missing "atuin"
 install_if_missing "tldr" "tealdeer"
 install_if_missing "vivid"
 install_if_missing "carapace"
@@ -471,7 +471,6 @@ mkdir -p "$CONFIG_DIR/lazygit"
 mkdir -p "$CONFIG_DIR/git"
 mkdir -p "$CONFIG_DIR/yazi"
 mkdir -p "$CONFIG_DIR/opencode"
-mkdir -p "$CONFIG_DIR/atuin"
 mkdir -p "$CONFIG_DIR/btop"
 
 ln -sf "$DOTFILES_DIR/git/gitconfig" "$HOME/.gitconfig"
@@ -488,11 +487,7 @@ ln -sf "$DOTFILES_DIR/yazi/keymap.toml" "$CONFIG_DIR/yazi/keymap.toml"
 ln -sf "$DOTFILES_DIR/yazi/theme.toml" "$CONFIG_DIR/yazi/theme.toml"
 ln -sf "$DOTFILES_DIR/yazi/yazi.toml" "$CONFIG_DIR/yazi/yazi.toml"
 ln -sf "$DOTFILES_DIR/yazi/init.lua" "$CONFIG_DIR/yazi/init.lua"
-ln -sf "$DOTFILES_DIR/atuin/config.toml" "$CONFIG_DIR/atuin/config.toml"
-
-# atuin daemon被懒加载导致atuin的autostart没有效果，手动配置开机自启atuin daemon
-ln -sf "$DOTFILES_DIR/atuin/com.atuin.daemon.plist" "$HOME/Library/LaunchAgents/com.atuin.daemon.plist"
-launchctl load "$HOME/Library/LaunchAgents/com.atuin.daemon.plist" 2>/dev/null
+setup_atuin "$CONFIG_DIR" "$DOTFILES_DIR/atuin" || exit 1
 
 setup_local
 

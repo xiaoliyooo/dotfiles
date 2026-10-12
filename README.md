@@ -137,9 +137,8 @@ export PATH="$HOME/.local/bin:$PATH"
 - `~/.config/lazygit/config.yml` → `lazygit/lazygit_config.yml`
 - `~/.config/starship.toml` → `starship/starship.toml`
 - `~/.config/yazi/*` → `yazi/*`
-- `~/.config/atuin/config.toml` → `atuin/config.toml`
+- `~/.config/atuin/config.toml` → `atuin/config.toml`（Atuin ≥ 18.23 使用官方 daemon 自动启动）
 - `~/.config/pyroclear` → `pyroclear/`
-- `~/Library/LaunchAgents/com.atuin.daemon.plist` → `atuin/com.atuin.daemon.plist`
 - `~/.lesskey` → `less/.lesskey`
 - `~/.bunfig.toml` → `bun/.bunfig.toml`
 
