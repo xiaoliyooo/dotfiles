@@ -293,5 +293,11 @@ vim() {
 }
 
 opencode() {
-  _pyrofire_command opencode "$@"
+  # Only animate when launching the interactive conversation. CLI commands
+  # such as `opencode --version` and `opencode session list` must keep stdout.
+  if (($# == 0)); then
+    _pyrofire_command opencode
+  else
+    command opencode "$@"
+  fi
 }
