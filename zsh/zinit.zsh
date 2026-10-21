@@ -39,7 +39,7 @@ zinit ice wait lucid as"program" pick"git-open"
 zinit light paulirish/git-open
 
 autoload -Uz compinit
-compinit -C -u
+compinit -C -u -d ~/.zcompdump
 
 # 前台启动使用补全缓存，每24小时后台重建缓存
 refresh_stamp=(~/.zcompdump-refresh-stamp(N.mh+24))

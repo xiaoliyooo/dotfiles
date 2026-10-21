@@ -118,7 +118,7 @@ pull() {
   local dotfiles_dir="$HOME/dotfiles"
   if [ -f "$dotfiles_dir/install.sh" ]; then
     echo -e "\033[1;32m==> Running dotfiles install.sh...\033[0m"
-    sh "$dotfiles_dir/install.sh"
+    bash "$dotfiles_dir/install.sh"
   fi
 }
 
@@ -221,7 +221,7 @@ tree() {
 }
 
 ii() {
-  cd ~/dotfiles && sh install.sh
+  cd ~/dotfiles && bash install.sh
 }
 
 x() {

@@ -20,4 +20,4 @@ setopt AUTO_CD
 setopt AUTO_PUSHD
 setopt PUSHD_MINUS
 
-date
+dt

@@ -70,12 +70,6 @@ install_if_missing() {
 
     brew install "$package"
 
-    if [ "$cmd" = "opencode" ]; then
-      echo "📦 安装 oh-my-opencode..."
-      (cd "$CONFIG_DIR/opencode" && bun i oh-my-opencode@3.0.0-beta.6)
-      echo "✓ oh-my-opencode 安装完成"
-    fi
-
     if [ "$package" = "tealdeer" ]; then
       tldr --update
     fi
@@ -227,6 +221,13 @@ install_nvm_if_missing() {
   else
     echo "⚠ nvm 未找到，正在安装..."
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  fi
+
+  # 新机器上 nvm 刚装好时没有 node
+  if command_exists "nvm" && ! command_exists "node"; then
+    echo "📦 安装 Node.js LTS..."
+    nvm install --lts && nvm alias default 'lts/*'
   fi
 }
 
@@ -252,6 +253,17 @@ install_npm_if_missing() {
 }
 
 setup_kitty_icon() {
+  local icon="$DOTFILES_DIR/kitty/kitty-alternative.icns"
+  local stamp="$HOME/.cache/dotfiles/kitty-icon.sha"
+  local sha
+  sha="$(shasum "$icon" | cut -d' ' -f1)"
+
+  # 自定义图标仍在（kitty 升级会清掉 Icon\r）且图标文件未变时跳过，避免每次重启 Dock
+  if [ -e "/Applications/kitty.app/Icon"$'\r' ] && [ "$(cat "$stamp" 2>/dev/null)" = "$sha" ]; then
+    echo "✓ kitty 图标已设置"
+    return
+  fi
+
   kitty +runpy 'exec(__import__("textwrap").dedent("""
     from kitty.fast_data_types import cocoa_set_app_icon
     import sys
@@ -261,6 +273,7 @@ setup_kitty_icon() {
   """))' "$DOTFILES_DIR/kitty/kitty-alternative.icns"
   rm -rf /var/folders/*/*/*/com.apple.dock.iconcache 2>/dev/null || true
   killall Dock
+  mkdir -p "${stamp%/*}" && echo "$sha" >"$stamp"
   echo "✓ Dock 图标已刷新"
 }
 
@@ -474,7 +487,6 @@ mkdir -p "$CONFIG_DIR/opencode"
 mkdir -p "$CONFIG_DIR/btop"
 
 ln -sf "$DOTFILES_DIR/git/gitconfig" "$HOME/.gitconfig"
-rm -rf "$HOME/.vimrc" "$HOME/.tmux.conf"
 ln -sf "$DOTFILES_DIR/vim/.vimrc" "$HOME/.vimrc"
 ln -sf "$DOTFILES_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
 [ -d "$HOME/.hammerspoon" ] && [ ! -L "$HOME/.hammerspoon" ] && rm -rf "$HOME/.hammerspoon"

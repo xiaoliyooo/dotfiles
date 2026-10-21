@@ -30,8 +30,11 @@ setup_macos_defaults() {
   # sudo pmset -c disablesleep 1
 
   # Finder 默认显示隐藏文件
-  defaults write com.apple.finder AppleShowAllFiles -bool true
-  killall Finder
+  # 仅在配置变化时重启 Finder
+  if [ "$(defaults read com.apple.finder AppleShowAllFiles 2>/dev/null)" != "1" ]; then
+    defaults write com.apple.finder AppleShowAllFiles -bool true
+    killall Finder
+  fi
 
   /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 

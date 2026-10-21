@@ -8,7 +8,7 @@ _setup_zshrc_local() {
 
   if [ ! -f "$zshrc_local" ]; then
     touch "$zshrc_local"
-    echo "${_ZSHRC_GREEN}📝 已创建 ~/.zshrc.local${_ZSHRC_NC}"
+    printf '%b\n' "${_ZSHRC_GREEN}📝 已创建 ~/.zshrc.local${_ZSHRC_NC}"
   fi
 }
 
@@ -25,7 +25,8 @@ _setup_gitconfig_local() {
   email = your@email.com
 EOF
 
-  echo "${_ZSHRC_GREEN}📝 已创建 ~/.gitconfig.local，请替换为你的真实信息${_ZSHRC_NC}"
+  # printf '%b' 在 bash/zsh 下都会解析 \033 转义
+  printf '%b\n' "${_ZSHRC_GREEN}📝 已创建 ~/.gitconfig.local，请替换为你的真实信息${_ZSHRC_NC}"
 }
 
 setup_local() {

@@ -11,8 +11,7 @@ alias clear="pyroclear"
 alias cat="nvimpager"
 alias top="btop"
 
-alias date='gdate "+%Y-%m-%d %H:%M:%S %A"'
-alias dt='date'
+alias dt='gdate "+%Y-%m-%d %H:%M:%S %A"'
 
 alias kp="killport"
 alias repo="onefetch --churn-pool-size 1000 --number-of-file-churns 15"
