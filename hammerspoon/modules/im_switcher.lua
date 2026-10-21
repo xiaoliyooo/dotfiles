@@ -23,6 +23,8 @@ local appToIM = {
 	["com.tencent.xinWeChat"] = PINYIN, -- 微信
 	["com.electron.lark"] = PINYIN, -- 飞书
 	["com.bot.pc.doubao"] = PINYIN, -- 豆包
+	["md.obsidian"] = PINYIN, -- Obsidian
+	["com.alibaba.tongyi"] = PINYIN, -- 千问
 }
 
 local function isFrontmost(bundleID)
