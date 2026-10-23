@@ -7,8 +7,17 @@ atuin_version_at_least() {
   major="${BASH_REMATCH[1]}"
   minor="${BASH_REMATCH[2]}"
   patch="${BASH_REMATCH[3]}"
-  (( major > 18 || (major == 18 && minor > 23) ||
-    (major == 18 && minor == 23 && patch >= 0) ))
+  ((major > 18 || (major == 18 && minor > 23) || (\
+  major == 18 && minor == 23 && patch >= 0)))
+}
+
+atuin_auto_upgrade_supported() {
+  local macos_version major
+
+  macos_version="$(sw_vers -productVersion 2>/dev/null)" || return 1
+  major="${macos_version%%.*}"
+  [[ "$major" =~ ^[0-9]+$ ]] || return 1
+  ((major >= 15))
 }
 
 ensure_atuin_version() {
@@ -33,19 +42,23 @@ ensure_atuin_version() {
   fi
 
   if ! atuin_version_at_least "$version"; then
-    echo "📦 Atuin $version 低于 18.23.0，正在升级..."
-    if brew list --formula atuin >/dev/null 2>&1; then
-      brew update || return 1
-      brew upgrade atuin || return 1
+    if atuin_auto_upgrade_supported; then
+      echo "📦 Atuin $version 低于 18.23.0，正在升级..."
+      if brew list --formula atuin >/dev/null 2>&1; then
+        brew update || return 1
+        brew upgrade atuin || return 1
+      else
+        brew install atuin || return 1
+      fi
+      hash -r
+      atuin_bin="$(brew --prefix atuin)/bin/atuin"
+      version="$("$atuin_bin" --version)" || return 1
+      if ! atuin_version_at_least "$version"; then
+        echo "⚠ Atuin 升级后仍低于 18.23.0: $version" >&2
+        return 1
+      fi
     else
-      brew install atuin || return 1
-    fi
-    hash -r
-    atuin_bin="$(brew --prefix atuin)/bin/atuin"
-    version="$("$atuin_bin" --version)" || return 1
-    if ! atuin_version_at_least "$version"; then
-      echo "⚠ Atuin 升级后仍低于 18.23.0: $version" >&2
-      return 1
+      echo "⚠ Atuin $version 低于 18.23.0，当前 macOS 版本已跳过自动升级" >&2
     fi
   fi
 
