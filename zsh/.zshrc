@@ -22,5 +22,6 @@ setopt extended_glob
 setopt AUTO_CD
 setopt AUTO_PUSHD
 setopt PUSHD_MINUS
+zle_highlight=('paste:none')
 
 dt
