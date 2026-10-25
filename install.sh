@@ -4,7 +4,6 @@
 DOTFILES_DIR="$HOME/dotfiles"
 CONFIG_DIR="$HOME/.config"
 source "$DOTFILES_DIR/local/index.zsh"
-source "$DOTFILES_DIR/atuin/setup.sh"
 
 command_exists() {
   command -v "$1" >/dev/null 2>&1
@@ -240,6 +239,23 @@ install_tode_if_missing() {
   fi
 }
 
+# 官方安装脚本直接装最新版到 ~/.atuin/bin（PATH 由 exports.zsh 管理，禁止它改 rc 文件）
+install_atuin_if_missing() {
+  if [ -x "$HOME/.atuin/bin/atuin" ]; then
+    echo "✓ atuin 已安装"
+    return
+  fi
+
+  if brew list --formula atuin &>/dev/null; then
+    echo "📦 卸载 Homebrew 版 atuin，改用官方安装..."
+    brew uninstall atuin
+  fi
+
+  echo "⚠ atuin 未找到，正在安装..."
+  curl --proto '=https' --tlsv1.2 -LsSf https://github.com/atuinsh/atuin/releases/latest/download/atuin-installer.sh |
+    ATUIN_NO_MODIFY_PATH=1 sh
+}
+
 install_npm_if_missing() {
   local cmd="$1"
   local package="${2:-$1}"
@@ -389,6 +405,7 @@ install_rust_if_missing
 install_cargo_package_if_missing "pyroclear"
 install_nvm_if_missing
 install_tode_if_missing
+install_atuin_if_missing
 install_pip3_if_missing
 install_zinit_if_missing
 install_zinit_plugins
@@ -485,6 +502,7 @@ mkdir -p "$CONFIG_DIR/git"
 mkdir -p "$CONFIG_DIR/yazi"
 mkdir -p "$CONFIG_DIR/opencode"
 mkdir -p "$CONFIG_DIR/btop"
+mkdir -p "$CONFIG_DIR/atuin"
 
 ln -sf "$DOTFILES_DIR/git/gitconfig" "$HOME/.gitconfig"
 ln -sf "$DOTFILES_DIR/vim/.vimrc" "$HOME/.vimrc"
@@ -499,7 +517,7 @@ ln -sf "$DOTFILES_DIR/yazi/keymap.toml" "$CONFIG_DIR/yazi/keymap.toml"
 ln -sf "$DOTFILES_DIR/yazi/theme.toml" "$CONFIG_DIR/yazi/theme.toml"
 ln -sf "$DOTFILES_DIR/yazi/yazi.toml" "$CONFIG_DIR/yazi/yazi.toml"
 ln -sf "$DOTFILES_DIR/yazi/init.lua" "$CONFIG_DIR/yazi/init.lua"
-setup_atuin "$CONFIG_DIR" "$DOTFILES_DIR/atuin" || exit 1
+ln -sf "$DOTFILES_DIR/atuin/config.toml" "$CONFIG_DIR/atuin/config.toml"
 
 setup_local
 
