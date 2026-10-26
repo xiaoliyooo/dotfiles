@@ -1,6 +1,8 @@
 export PATH="/opt/homebrew/bin:$PATH" # 强制 Homebrew 的 bin 目录排在系统路径之前 覆盖bash版本
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.atuin/bin:$PATH"
+# atuin daemon socket 固定放本机磁盘，不随 TMPDIR（可能在移动硬盘上）
+export ATUIN_DAEMON__SOCKET_PATH="$HOME/.local/share/atuin/atuin.sock"
 export PATH="$HOME/dotfiles/bin:$PATH"
 
 export https_proxy="http://127.0.0.1:7897"
