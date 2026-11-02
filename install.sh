@@ -230,15 +230,6 @@ install_nvm_if_missing() {
   fi
 }
 
-install_tode_if_missing() {
-  if command_exists "tode"; then
-    echo "✓ tode 已安装"
-  else
-    echo "⚠ tode 未找到，正在安装..."
-    curl -fsSL https://tode.sh/install | bash
-  fi
-}
-
 # 官方安装脚本直接装最新版到 ~/.atuin/bin（PATH 由 exports.zsh 管理，禁止它改 rc 文件）
 install_atuin_if_missing() {
   if [ -x "$HOME/.atuin/bin/atuin" ]; then
@@ -404,7 +395,6 @@ setup_local_tap
 install_rust_if_missing
 install_cargo_package_if_missing "pyroclear"
 install_nvm_if_missing
-install_tode_if_missing
 install_atuin_if_missing
 install_pip3_if_missing
 install_zinit_if_missing
