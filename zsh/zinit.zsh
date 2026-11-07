@@ -56,7 +56,7 @@ if [[ ! -e ~/.zcompdump-refresh-stamp || ${#refresh_stamp} -ne 0 ]]; then
     autoload -Uz compinit
     compinit -u -d ~/.zcompdump >/dev/null 2>&1
     print -P "%F{244}[zcompdump]%f done: rebuilt .zcompdump"
-  ) &!
+  ) >/dev/null 2>&1 &!
 fi
 
 # 禁用补全 "do you wish to see all X possibilities?" 提示
