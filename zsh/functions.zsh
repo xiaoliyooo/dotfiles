@@ -94,7 +94,9 @@ gs() {
 
 pull() {
   setopt local_options no_notify no_monitor
-  local pids=()
+  local -A pid_proj
+  local -a failed
+  local proj pid
 
   for proj in "${GIT_PROJECTS[@]}"; do
     proj="${proj/#\~/$HOME}"
@@ -102,17 +104,25 @@ pull() {
     if [ -d "$proj/.git" ]; then
       (
         result=$(git -C "$proj" pull 2>&1)
+        ret=$?
         echo -e "\033[1;34m==> $proj\033[0m\n$result"
+        exit $ret
       ) &
-      pids+=($!)
+      pid_proj[$!]=$proj
     else
       echo -e "\033[1;33m==> Skipping: $proj (Not a git repo)\033[0m"
     fi
   done
 
-  for pid in "${pids[@]}"; do
-    wait $pid
+  for pid in "${(@k)pid_proj}"; do
+    wait $pid || failed+=("${pid_proj[$pid]}")
   done
+
+  if (( ${#failed} )); then
+    echo -e "\n\033[1;31m==> git pull 失败，已中止后续步骤：\033[0m"
+    printf '\033[1;31m    - %s\033[0m\n' "${failed[@]}"
+    return 1
+  fi
 
   # 自动执行 dotfiles 安装脚本
   local dotfiles_dir="$HOME/dotfiles"
