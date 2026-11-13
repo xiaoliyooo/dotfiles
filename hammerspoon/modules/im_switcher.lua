@@ -1,11 +1,21 @@
 local M = {}
 local log = hs.logger.new("im_switcher")
+local imIndicator = require("modules.im_indicator")
 
 local ABC = "com.apple.keylayout.ABC"
 local PINYIN = "com.tencent.inputmethod.wetype.pinyin"
 local KOREAN_PREFIX = "com.apple.inputmethod.Korean"
 local MACISM_TEMPORARY_WINDOW_BUNDLE_ID = "laishulu.macism.TemporaryWindow"
 local FINDER_BUNDLE_ID = "com.apple.finder"
+
+local IM_NAMES = {
+	[ABC] = "ABC",
+	[PINYIN] = "拼音",
+}
+
+local function imName(id)
+	return IM_NAMES[id] or "한국어"
+end
 
 local macismOutput, macismFound = hs.execute("command -v macism", true)
 local macismPath = macismOutput:match("([^\r\n]+)%s*$")
@@ -120,6 +130,16 @@ local function switchTo(target, bundleID)
 	runMacism(target, bundleID, request)
 end
 
+-- 在光标处显示要切换到的输入法（只有 kitty 能取到光标位置，其他 App 不显示）。
+-- 先取位置再切换：macism 切换时会短暂激活临时窗口，焦点会离开 kitty。
+local function switchWithIndicator(target, app)
+	local anchor = imIndicator.captureAnchor(app)
+	if anchor then
+		imIndicator.show(anchor, imName(target))
+	end
+	switchTo(target, app and app:bundleID())
+end
+
 local function switchIfNeeded(app)
 	if not app then
 		return
@@ -147,18 +167,14 @@ end
 
 function M.toggle()
 	local current = hs.keycodes.currentSourceID()
-	local app = hs.application.frontmostApplication()
-	local bundleID = app and app:bundleID()
 	local target = current == PINYIN and ABC or PINYIN
-	switchTo(target, bundleID)
+	switchWithIndicator(target, hs.application.frontmostApplication())
 end
 
 function M.toKorean()
 	local korean = cycleSources()
 	if korean then
-		local app = hs.application.frontmostApplication()
-		local bundleID = app and app:bundleID()
-		switchTo(korean, bundleID)
+		switchWithIndicator(korean, hs.application.frontmostApplication())
 	end
 end
 
