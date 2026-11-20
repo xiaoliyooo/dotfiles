@@ -6,7 +6,9 @@ local ABC = "com.apple.keylayout.ABC"
 local PINYIN = "com.tencent.inputmethod.wetype.pinyin"
 local KOREAN_PREFIX = "com.apple.inputmethod.Korean"
 local MACISM_TEMPORARY_WINDOW_BUNDLE_ID = "laishulu.macism.TemporaryWindow"
+-- 输入框失焦即关闭，不能用 macism 临时窗口
 local FINDER_BUNDLE_ID = "com.apple.finder"
+local FLOATING_INPUT_BUNDLE_IDS = { "com.runningwithcrayons.Alfred", "com.apple.Spotlight" }
 
 local IM_NAMES = {
 	[ABC] = "ABC",
@@ -36,6 +38,17 @@ local appToIM = {
 	["md.obsidian"] = PINYIN, -- Obsidian
 	["com.alibaba.tongyi"] = PINYIN, -- 千问
 }
+
+local function floatingInputOpen()
+	for _, bundleID in ipairs(FLOATING_INPUT_BUNDLE_IDS) do
+		for _, app in ipairs(hs.application.applicationsForBundleID(bundleID)) do
+			if app:focusedWindow() then
+				return true
+			end
+		end
+	end
+	return false
+end
 
 local function isFrontmost(bundleID)
 	local app = hs.application.frontmostApplication()
@@ -75,15 +88,14 @@ local function cancelSwitch()
 	end
 end
 
-local function runMacism(target, bundleID, request)
+local function runMacism(target, bundleID, request, useTemporaryWindow)
 	if request ~= switchRequest or (bundleID and not isFrontmost(bundleID)) then
 		return
 	end
 
 	local task
 	local arguments = { target }
-	if bundleID == FINDER_BUNDLE_ID then
-		-- Finder's rename field loses focus when TemporaryWindow is activated.
+	if not useTemporaryWindow then
 		arguments[#arguments + 1] = "0"
 	end
 	task = hs.task.new(macismPath, function(exitCode, _, stderr)
@@ -106,7 +118,7 @@ local function runMacism(target, bundleID, request)
 		return
 	end
 
-	if target ~= ABC and bundleID then
+	if useTemporaryWindow and target ~= ABC and bundleID then
 		ignoreNextActivation(bundleID)
 	end
 
@@ -120,24 +132,33 @@ local function runMacism(target, bundleID, request)
 	end
 end
 
-local function switchTo(target, bundleID)
+local function switchTo(target, bundleID, useTemporaryWindow)
 	if not target then
 		return
+	end
+	if useTemporaryWindow == nil then
+		useTemporaryWindow = bundleID ~= FINDER_BUNDLE_ID
 	end
 
 	cancelSwitch()
 	local request = switchRequest
-	runMacism(target, bundleID, request)
+	runMacism(target, bundleID, request, useTemporaryWindow)
 end
 
 -- 在光标处显示要切换到的输入法（只有 kitty 能取到光标位置，其他 App 不显示）。
 -- 先取位置再切换：macism 切换时会短暂激活临时窗口，焦点会离开 kitty。
 local function switchWithIndicator(target, app)
+	local bundleID = app and app:bundleID()
+	if floatingInputOpen() then
+		switchTo(target, bundleID, false)
+		return
+	end
+
 	local anchor = imIndicator.captureAnchor(app)
 	if anchor then
 		imIndicator.show(anchor, imName(target))
 	end
-	switchTo(target, app and app:bundleID())
+	switchTo(target, bundleID)
 end
 
 local function switchIfNeeded(app)
